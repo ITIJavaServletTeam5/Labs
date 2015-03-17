@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>Trainee</servlet-name>
+        <servlet-class>main.webapp.admin.controller.Trainee</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Trainee</servlet-name>
+        <url-pattern>/Trainee</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>/admin/view/Trainee</welcome-file>
+    </welcome-file-list>
 </web-app>

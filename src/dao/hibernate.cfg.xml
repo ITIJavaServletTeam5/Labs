@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3307/inheritance1</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/inheritance1</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <property name="hibernate.connection.username">root</property>
@@ -15,9 +15,6 @@
     </property>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
-        <!--<mapping class="dao.Person"/>-->
-        <!--<mapping class="dao.Student"/>-->
-        <!--<mapping class="dao.Teacher"/>-->
         <mapping resource="dao/Person.hbm.xml"/>
         <mapping resource="dao/Student.hbm.xml"/>
         <mapping resource="dao/Teacher.hbm.xml"/>
