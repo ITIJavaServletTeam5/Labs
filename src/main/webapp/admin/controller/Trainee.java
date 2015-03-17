@@ -1,4 +1,4 @@
-package main.webapp.admin.controller;
+package admin.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ public class Trainee extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<String> trainees = new Vector<>();
+        List<String> trainees = new Vector<String>();
         trainees.add("Mohamed");
         trainees.add("Bishoy");
         trainees.add("Marwa");
