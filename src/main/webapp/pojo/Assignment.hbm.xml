@@ -9,12 +9,6 @@
             <key-many-to-one name="trainee"  class="pojo.Trainee"column="trainee_id"/>
           
         </composite-id>
-        <many-to-one name="lab" class="pojo.Lab" update="false" insert="false" fetch="select">
-            <column name="lab_id" not-null="true" />
-        </many-to-one>
-        <many-to-one name="trainee" class="pojo.Trainee" update="false" insert="false" fetch="select">
-            <column name="trainee_id" not-null="true" />
-        </many-to-one>
         <property name="uploadTime" type="date">
             <column name="upload_time" length="10" />
         </property>
