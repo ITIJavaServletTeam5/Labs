@@ -24,7 +24,7 @@ public class TraineeListView extends javax.servlet.http.HttpServlet {
         Trainee t1 = new Trainee();
         t1.setUsername("sharno");
         t1.setEmail("sharnoby3@gmail.com");
-//        trainees.add(t1);
+        trainees.add(t1);
 
         request.setAttribute("trainees", trainees);
         getServletContext().getRequestDispatcher("/admin/view/Trainee.jsp").forward(request, response);
