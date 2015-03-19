@@ -24,6 +24,10 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>common.controller.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>admin.controller.Group</servlet-name>
+        <servlet-class>admin.controller.GroupListView</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>admin.controller.Trainee</servlet-name>
@@ -32,6 +36,10 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>admin.controller.Group</servlet-name>
+        <url-pattern>/admin/view/Group</url-pattern>
     </servlet-mapping>
     
     <welcome-file-list>
