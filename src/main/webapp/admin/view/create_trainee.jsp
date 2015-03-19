@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Create Trainee</title>
+    <title>Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../common/view/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
