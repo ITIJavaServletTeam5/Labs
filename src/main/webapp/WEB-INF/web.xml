@@ -18,7 +18,7 @@
     
     <servlet>
         <servlet-name>admin.controller.Trainee</servlet-name>
-        <servlet-class>admin.controller.Trainee</servlet-class>
+        <servlet-class>admin.controller.TraineeListView</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
