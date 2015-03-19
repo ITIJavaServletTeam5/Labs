@@ -389,7 +389,7 @@
                     <div class="col-lg-10">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Activated Group List
+                                Activated Course List
                             </div>
 
                             <c:choose>
@@ -400,24 +400,24 @@
                                             <table class="table table-striped table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>Groupname</th>
+                                                        <th>Coursename</th>
                                                         <th></th>
                                                         <th></th>
                                                         
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach items="${requestScope.groups}" var="groups">
+                                                    <c:forEach items="${requestScope.courses}" var="courses">
                                                         <tr>
-                                                            <td>${groups.name}</td>
+                                                            <td>${courses.name}</td>
 
                                                             <td>
-                                                                <form action="/EditGroup" method="get">
+                                                                <form action="/EditCourse" method="get">
                                                                     <button type="submit" class="btn btn-outline btn-primary">Edit</button>
                                                                 </form>
                                                             </td>
                                                             <td>
-                                                                <form action="/DeactivateGroup" method="post">
+                                                                <form action="/DeactivateCourse" method="post">
                                                                     <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                                 </form>
                                                             </td>
@@ -429,8 +429,8 @@
                                         </div>
                                         <!-- /.table-responsive -->
                                         <div class="col-lg-3 col-lg-offset-9">
-                                            <form action="/CreateGroup.jsp" method="get">
-                                                <button type="submit" class="btn btn-outline btn-primary">Create Group</button>
+                                            <form action="/CreateCourse.jsp" method="get">
+                                                <button type="submit" class="btn btn-outline btn-primary">Create Course</button>
                                             </form>
                                         </div>
                                     </div>
