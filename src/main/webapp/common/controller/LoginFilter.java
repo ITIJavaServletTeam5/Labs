@@ -2,6 +2,8 @@ package common.controller;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -9,18 +11,28 @@ import java.io.IOException;
  */
 @WebFilter(filterName = "LoginFilter")
 public class LoginFilter implements Filter {
-    public void destroy() {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
     }
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        chain.doFilter(request, response);
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpSession session = httpRequest.getSession(false);
+//        if (session == null) {
+//            request.getRequestDispatcher("/login");
+//        } else {
+            chain.doFilter(request, response);
+//        }
 //        if (! (Boolean)request.getAttribute("loggedin")) {
 //            request.getRequestDispatcher("Login").forward(request, response);
 //        }
     }
 
-    public void init(FilterConfig config) throws ServletException {
+    @Override
+    public void destroy() {
 
     }
-
 }

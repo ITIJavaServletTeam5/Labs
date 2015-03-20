@@ -9,13 +9,13 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/20/15.
  */
-public class EditTrainee extends HttpServlet {
+public class ActivateTrainee extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        // load trainee from database and update him with activated
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO load trainee from database
-
+        // this actually does nothing for now
+        response.sendRedirect("/admin/trainee");
     }
 }

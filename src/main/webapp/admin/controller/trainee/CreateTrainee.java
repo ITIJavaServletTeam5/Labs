@@ -19,6 +19,10 @@ public class CreateTrainee extends HttpServlet {
         trainee.setUsername(request.getParameter("username"));
         trainee.setEmail(request.getParameter("email"));
         trainee.setPassword(request.getParameter("password"));
+        trainee.setActivated(true);
+
+        // TODO
+        // persist this trainee
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

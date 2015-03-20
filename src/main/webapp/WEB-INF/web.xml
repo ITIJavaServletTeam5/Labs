@@ -43,6 +43,14 @@
         <servlet-name>Deactivate Trainee</servlet-name>
         <url-pattern>/admin/trainee/deactivate</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Activate Trainee</servlet-name>
+        <servlet-class>admin.controller.trainee.ActivateTrainee</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Activate Trainee</servlet-name>
+        <url-pattern>/admin/trainee/activate</url-pattern>
+    </servlet-mapping>
 
     <!--Group_of_Admin-->
     <servlet>
