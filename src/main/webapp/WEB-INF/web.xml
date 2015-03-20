@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>Labs System ITI project</display-name>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/Controller</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-
     <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>common.controller.LoginFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>SessionRequestFilter</filter-name>
+        <filter-class>hibernate.SessionRequestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionRequestFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    
     <servlet>
         <servlet-name>admin.controller.Trainee</servlet-name>
         <servlet-class>admin.controller.TraineeListView</servlet-class>
@@ -24,7 +34,10 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>common.controller.Login</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>trainee.controller.Controller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>admin.controller.Trainee</servlet-name>
         <url-pattern>/admin/view/Trainee</url-pattern>
@@ -33,7 +46,6 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
-    
     <welcome-file-list>
         <welcome-file>Login</welcome-file>
     </welcome-file-list>

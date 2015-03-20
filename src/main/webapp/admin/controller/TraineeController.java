@@ -1,7 +1,7 @@
 package admin.controller;
 
 import org.hibernate.Session;
-import pojo.NewHibernateUtil;
+import hibernate.SessionUtil;
 import pojo.Trainee;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class TraineeController {
     public List<Trainee> getAllTrainees() {
-        Session session = NewHibernateUtil.getSession();
+        Session session = SessionUtil.getSession();
 //        session.get(Trainee.class, null);
         return null;
     }

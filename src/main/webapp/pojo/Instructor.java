@@ -1,5 +1,5 @@
 package pojo;
-// Generated Mar 18, 2015 12:18:02 AM by Hibernate Tools 4.3.1
+// Generated Mar 20, 2015 2:19:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,60 +11,37 @@ import java.util.Set;
 public class Instructor  implements java.io.Serializable {
 
 
-     private Integer id;
-     private String username;
-     private String password;
-     private String email;
-     private Boolean activated;
+     private int id;
+     private User user;
      private Set courses = new HashSet(0);
      private Set labs = new HashSet(0);
 
     public Instructor() {
     }
 
-    public Instructor(String username, String password, String email, Boolean activated, Set courses, Set labs) {
-       this.username = username;
-       this.password = password;
-       this.email = email;
-       this.activated = activated;
+	
+    public Instructor(User user) {
+        this.user = user;
+    }
+    public Instructor(User user, Set courses, Set labs) {
+       this.user = user;
        this.courses = courses;
        this.labs = labs;
     }
    
-    public Integer getId() {
+    public int getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
-    public String getUsername() {
-        return this.username;
+    public User getUser() {
+        return this.user;
     }
     
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return this.password;
-    }
-    
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public String getEmail() {
-        return this.email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public Boolean getActivated() {
-        return this.activated;
-    }
-    
-    public void setActivated(Boolean activated) {
-        this.activated = activated;
+    public void setUser(User user) {
+        this.user = user;
     }
     public Set getCourses() {
         return this.courses;

@@ -1,25 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 18, 2015 12:18:03 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Mar 20, 2015 2:19:01 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.Trainee" table="trainee" catalog="labmanagement" optimistic-lock="version">
-        <id name="id" type="java.lang.Integer">
+        <id name="id" type="int">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="foreign">
+                <param name="property">user</param>
+            </generator>
         </id>
-        <property name="username" type="string">
-            <column name="username" length="45" />
-        </property>
-        <property name="password" type="string">
-            <column name="password" length="45" />
-        </property>
-        <property name="email" type="string">
-            <column name="email" length="45" />
-        </property>
-        <property name="activated" type="java.lang.Boolean">
-            <column name="activated" />
-        </property>
+        <one-to-one name="user" class="pojo.User" constrained="true"></one-to-one>
         <set name="assistancequeues" table="assistancequeue" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="trainee_id" not-null="true" />
