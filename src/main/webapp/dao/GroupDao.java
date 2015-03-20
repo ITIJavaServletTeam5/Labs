@@ -6,7 +6,9 @@
 package dao;
 
 import hibernate.GenericDAO;
+import java.util.List;
 import pojo.Group;
+import pojo.Trainee;
 
 /**
  *
@@ -17,4 +19,5 @@ import pojo.Group;
  */
 public interface GroupDao extends GenericDAO <Group , Long>{
     
+    public List<Group> getTrainees(Group g);
 }
