@@ -4,6 +4,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class Login extends HttpServlet {
@@ -11,7 +12,12 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/common/view/login.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+        if (session == null) {
+            request.getRequestDispatcher("/common/view/login.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("/admin/trainee");
+        }
     }
 
     @Override
@@ -21,8 +27,10 @@ public class Login extends HttpServlet {
 
         if (email.equals("admin@gmail.com") && password.equals("admin")) {
             response.sendRedirect("/admin/trainee");
+            HttpSession session = request.getSession();
+            session.setAttribute("user", "admin");
         } else {
-            response.sendRedirect("/");
+            response.sendRedirect("/Login");
         }
     }
 }

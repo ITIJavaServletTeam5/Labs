@@ -21,11 +21,11 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpSession session = httpRequest.getSession(false);
-//        if (session == null) {
-//            request.getRequestDispatcher("/login");
-//        } else {
+        if (session == null) {
+            request.getRequestDispatcher("/Login").forward(request, response);
+        } else {
             chain.doFilter(request, response);
-//        }
+        }
 //        if (! (Boolean)request.getAttribute("loggedin")) {
 //            request.getRequestDispatcher("Login").forward(request, response);
 //        }
