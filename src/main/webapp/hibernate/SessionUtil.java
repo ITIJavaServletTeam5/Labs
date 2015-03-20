@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pojo;
+package hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -18,8 +18,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
  *
  * @author root
  */
-public class NewHibernateUtil {
-        private static final Session session;
+public class SessionUtil {
+        private static final SessionFactory sessionFactory;
     
     static {
         try {
@@ -28,8 +28,7 @@ public class NewHibernateUtil {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        session = sessionFactory.openSession();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);
@@ -37,7 +36,7 @@ public class NewHibernateUtil {
         }
     }
     
-    public static Session getSession() {
-        return session;
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 }

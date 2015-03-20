@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>Labs System ITI project</display-name>
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/Controller</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -71,9 +75,27 @@
         <url-pattern>/admin/group/create</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>Edit Group</servlet-name>
+        <servlet-class>admin.controller.group.EditGroup</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit Group</servlet-name>
+        <url-pattern>/admin/group/edit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Deactivate Group</servlet-name>
+        <servlet-class>admin.controller.group.DeactivateGroup</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deactivate Group</servlet-name>
+        <url-pattern>/admin/group/deactive</url-pattern>
+    </servlet-mapping>
+    
     <!--Course_of_Admin-->
     
-     <servlet>
+    <servlet>
         <servlet-name>admin.controller.Course</servlet-name>
         <servlet-class>admin.controller.course.CourseListView</servlet-class>
     </servlet>
@@ -89,6 +111,24 @@
     <servlet-mapping>
         <servlet-name>Create Course</servlet-name>
         <url-pattern>/admin/course/create</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Edit Course</servlet-name>
+        <servlet-class>admin.controller.course.EditCourse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit Course</servlet-name>
+        <url-pattern>/admin/course/edit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Deactive Course</servlet-name>
+        <servlet-class>admin.controller.course.DeactivateCourse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deactive Course</servlet-name>
+        <url-pattern>/admin/course/deactive</url-pattern>
     </servlet-mapping>
     
     <!--Lab_of_Admin-->
@@ -110,6 +150,26 @@
         <servlet-name>Create Lab</servlet-name>
         <url-pattern>/admin/lab/create</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Edit Lab</servlet-name>
+        <servlet-class>admin.controller.lab.EditLab</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit Lab</servlet-name>
+        <url-pattern>/admin/lab/edit</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>Deactivate Lab</servlet-name>
+        <servlet-class>admin.controller.lab.DeactivateLab</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deactivate Lab</servlet-name>
+        <url-pattern>/admin/lab/deactive</url-pattern>
+    </servlet-mapping>
+    
+    
 
 
     <!--Common-->
@@ -128,10 +188,39 @@
         <filter-name>LoginFilter</filter-name>
         <filter-class>common.controller.LoginFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>SessionRequestFilter</filter-name>
+        <filter-class>hibernate.SessionRequestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionRequestFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <servlet>
+        <servlet-name>admin.controller.Trainee</servlet-name>
+        <servlet-class>admin.controller.TraineeListView</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>common.controller.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>trainee.controller.Controller</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin.controller.Trainee</servlet-name>
+        <url-pattern>/admin/view/Trainee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
 
     <!--Welcome-->
     <welcome-file-list>

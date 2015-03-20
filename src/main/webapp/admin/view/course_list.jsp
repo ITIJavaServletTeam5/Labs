@@ -52,12 +52,12 @@
                                                         <td>${courses.name}</td>
 
                                                         <td>
-                                                            <form action="/EditCourse" method="get">
+                                                            <form action="${pageContext.request.contextPath}/admin/course/edit" method="get">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Edit</button>
                                                             </form>
                                                         </td>
                                                         <td>
-                                                            <form action="/DeactivateCourse" method="post">
+                                                            <form action="${pageContext.request.contextPath}/admin/course/deactive" method="post">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                             </form>
                                                         </td>

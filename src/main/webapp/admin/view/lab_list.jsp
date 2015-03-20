@@ -50,12 +50,12 @@
                                                         <td>${labs.name}</td>
 
                                                         <td>
-                                                            <form action="/EditLab" method="get">
+                                                            <form action="${pageContext.request.contextPath}/admin/lab/edit" method="get">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Edit</button>
                                                             </form>
                                                         </td>
                                                         <td>
-                                                            <form action="/DeactivateLab" method="post">
+                                                            <form action="${pageContext.request.contextPath}/admin/lab/deactive" method="post">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                             </form>
                                                         </td>

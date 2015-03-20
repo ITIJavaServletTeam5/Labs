@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/labmanagement?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <mapping resource="pojo/Deliveryqueue.hbm.xml"/>
+    <mapping resource="pojo/Assistancequeue.hbm.xml"/>
+    <mapping resource="pojo/Course.hbm.xml"/>
+    <mapping resource="pojo/Group.hbm.xml"/>
+    <mapping resource="pojo/Assignment.hbm.xml"/>
+    <mapping resource="pojo/Instructor.hbm.xml"/>
+    <mapping resource="pojo/Trainee.hbm.xml"/>
+    <mapping resource="pojo/User.hbm.xml"/>
+    <mapping resource="pojo/Lab.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

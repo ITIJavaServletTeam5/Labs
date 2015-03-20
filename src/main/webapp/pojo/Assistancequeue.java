@@ -1,5 +1,5 @@
 package pojo;
-// Generated Mar 18, 2015 12:18:02 AM by Hibernate Tools 4.3.1
+// Generated Mar 20, 2015 2:19:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -9,6 +9,8 @@ import java.util.Date;
  */
 public class Assistancequeue  implements java.io.Serializable {
 
+
+     private AssistancequeueId id;
      private Lab lab;
      private Trainee trainee;
      private Date requestDate;
@@ -18,17 +20,26 @@ public class Assistancequeue  implements java.io.Serializable {
     }
 
 	
-    public Assistancequeue( Lab lab, Trainee trainee) {
+    public Assistancequeue(AssistancequeueId id, Lab lab, Trainee trainee) {
+        this.id = id;
         this.lab = lab;
         this.trainee = trainee;
     }
-    public Assistancequeue( Lab lab, Trainee trainee, Date requestDate, Boolean activated) {
+    public Assistancequeue(AssistancequeueId id, Lab lab, Trainee trainee, Date requestDate, Boolean activated) {
+       this.id = id;
        this.lab = lab;
        this.trainee = trainee;
        this.requestDate = requestDate;
        this.activated = activated;
     }
+   
+    public AssistancequeueId getId() {
+        return this.id;
+    }
     
+    public void setId(AssistancequeueId id) {
+        this.id = id;
+    }
     public Lab getLab() {
         return this.lab;
     }

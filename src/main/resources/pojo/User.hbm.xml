@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 20, 2015 2:19:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.User" table="user" catalog="labmanagement" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="email" type="string">
+            <column name="email" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="45" />
+        </property>
+        <property name="role" type="string">
+            <column name="role" length="45" not-null="true" />
+        </property>
+        <property name="activated" type="java.lang.Boolean">
+            <column name="activated" />
+        </property>
+        <one-to-one name="trainee" class="pojo.Trainee"></one-to-one>
+        <one-to-one name="instructor" class="pojo.Instructor"></one-to-one>
+    </class>
+</hibernate-mapping>
