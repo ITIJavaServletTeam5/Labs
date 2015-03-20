@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-lg-6">
 
-                        <form role="form" method="get">
+                        <form role="form" method="post" action="${pageContext.request.contextPath}/admin/group/create">
                             <div class="form-group">
                                 <label>Group Name</label>
                                 <input class="form-control" placeholder="Group Name">

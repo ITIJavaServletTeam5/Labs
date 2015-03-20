@@ -69,7 +69,7 @@
                                     </div>
                                     <!-- /.table-responsive -->
                                     <div class="col-lg-3 col-lg-offset-9">
-                                        <form action="${pageContext.request.contextPath}/admin/view/create_course.jsp" method="get">
+                                        <form action="${pageContext.request.contextPath}/admin/course/create" method="get">
                                             <button type="submit" class="btn btn-outline btn-primary">Create Course</button>
                                         </form>
                                     </div>

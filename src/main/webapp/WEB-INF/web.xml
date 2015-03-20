@@ -47,31 +47,60 @@
     <!--Group_of_Admin-->
     <servlet>
         <servlet-name>admin.controller.Group</servlet-name>
-        <servlet-class>admin.controller.GroupListView</servlet-class>
+        <servlet-class>admin.controller.group.GroupListView</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>admin.controller.Group</servlet-name>
-        <url-pattern>/admin/view/Group</url-pattern>
+        <url-pattern>/admin/group</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Create Group</servlet-name>
+        <servlet-class>admin.controller.group.CreateGroup</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Create Group</servlet-name>
+        <url-pattern>/admin/group/create</url-pattern>
     </servlet-mapping>
     
     <!--Course_of_Admin-->
-    <servlet>
+    
+     <servlet>
         <servlet-name>admin.controller.Course</servlet-name>
-        <servlet-class>admin.controller.CourseListView</servlet-class>
+        <servlet-class>admin.controller.course.CourseListView</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>admin.controller.Course</servlet-name>
-        <url-pattern>/admin/view/Course</url-pattern>
+        <url-pattern>/admin/course</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Create Course</servlet-name>
+        <servlet-class>admin.controller.course.CreateCourse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Create Course</servlet-name>
+        <url-pattern>/admin/course/create</url-pattern>
     </servlet-mapping>
     
     <!--Lab_of_Admin-->
+    
     <servlet>
         <servlet-name>admin.controller.Lab</servlet-name>
-        <servlet-class>admin.controller.LabListView</servlet-class>
+        <servlet-class>admin.controller.lab.LabListView</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>admin.controller.Lab</servlet-name>
-        <url-pattern>/admin/view/Lab</url-pattern>
+        <url-pattern>/admin/lab</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Create Lab</servlet-name>
+        <servlet-class>admin.controller.lab.CreateLab</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Create Lab</servlet-name>
+        <url-pattern>/admin/lab/create</url-pattern>
     </servlet-mapping>
 
 

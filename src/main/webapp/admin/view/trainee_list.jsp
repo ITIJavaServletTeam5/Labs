@@ -65,7 +65,7 @@
                             </div>
                             <!-- /.table-responsive -->
                             <div class="col-lg-3 col-lg-offset-9">
-                                <form action="/admin/trainee/create" method="get">
+                                <form action="${pageContext.request.contextPath}/admin/trainee/create" method="get">
                                     <button type="submit" class="btn btn-success">Create Trainee</button>
                                 </form>
                             </div>

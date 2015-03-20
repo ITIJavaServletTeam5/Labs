@@ -67,7 +67,7 @@
                                     </div>
                                     <!-- /.table-responsive -->
                                     <div class="col-lg-3 col-lg-offset-9">
-                                        <form action="${pageContext.request.contextPath}/admin/view/create_group.jsp" method="get">
+                                        <form action="${pageContext.request.contextPath}/admin/group/create" method="get">
                                             <button type="submit" class="btn btn-outline btn-primary">Create Group</button>
                                         </form>
                                     </div>
