@@ -42,7 +42,7 @@ public class LabListView extends javax.servlet.http.HttpServlet {
         labs.add(c2);
 
         request.setAttribute("labs", labs);
-        getServletContext().getRequestDispatcher("/admin/view/create_lab_list.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin/view/lab_list.jsp").forward(request, response);
     }
 
 }
