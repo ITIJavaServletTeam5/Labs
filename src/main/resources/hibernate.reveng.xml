@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="labmanagement"/>
+  <table-filter match-name="instructor"/>
+  <table-filter match-name="group_trainee"/>
+  <table-filter match-name="deliveryqueue"/>
+  <table-filter match-name="assignment"/>
+  <table-filter match-name="assistancequeue"/>
+  <table-filter match-name="lab_instructor"/>
+  <table-filter match-name="trainee"/>
+  <table-filter match-name="group"/>
+  <table-filter match-name="lab"/>
+  <table-filter match-name="course_instructor"/>
+  <table-filter match-name="course"/>
+  <table-filter match-name="user"/>
+</hibernate-reverse-engineering>

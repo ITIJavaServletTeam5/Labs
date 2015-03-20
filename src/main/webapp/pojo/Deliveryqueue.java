@@ -1,5 +1,5 @@
 package pojo;
-// Generated Mar 18, 2015 12:18:02 AM by Hibernate Tools 4.3.1
+// Generated Mar 20, 2015 2:19:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,6 +10,7 @@ import java.util.Date;
 public class Deliveryqueue  implements java.io.Serializable {
 
 
+     private DeliveryqueueId id;
      private Lab lab;
      private Trainee trainee;
      private Date requestDate;
@@ -20,16 +21,25 @@ public class Deliveryqueue  implements java.io.Serializable {
 
 	
     public Deliveryqueue(DeliveryqueueId id, Lab lab, Trainee trainee) {
+        this.id = id;
         this.lab = lab;
         this.trainee = trainee;
     }
     public Deliveryqueue(DeliveryqueueId id, Lab lab, Trainee trainee, Date requestDate, Boolean activated) {
+       this.id = id;
        this.lab = lab;
        this.trainee = trainee;
        this.requestDate = requestDate;
        this.activated = activated;
     }
    
+    public DeliveryqueueId getId() {
+        return this.id;
+    }
+    
+    public void setId(DeliveryqueueId id) {
+        this.id = id;
+    }
     public Lab getLab() {
         return this.lab;
     }

@@ -1,5 +1,5 @@
 package pojo;
-// Generated Mar 18, 2015 12:18:02 AM by Hibernate Tools 4.3.1
+// Generated Mar 20, 2015 2:19:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,6 +10,7 @@ import java.util.Date;
 public class Assignment  implements java.io.Serializable {
 
 
+     private AssignmentId id;
      private Lab lab;
      private Trainee trainee;
      private Date uploadTime;
@@ -19,17 +20,26 @@ public class Assignment  implements java.io.Serializable {
     }
 
 	
-    public Assignment(Lab lab, Trainee trainee) {
+    public Assignment(AssignmentId id, Lab lab, Trainee trainee) {
+        this.id = id;
         this.lab = lab;
         this.trainee = trainee;
     }
-    public Assignment( Lab lab, Trainee trainee, Date uploadTime, byte[] assignmentData) {
+    public Assignment(AssignmentId id, Lab lab, Trainee trainee, Date uploadTime, byte[] assignmentData) {
+       this.id = id;
        this.lab = lab;
        this.trainee = trainee;
        this.uploadTime = uploadTime;
        this.assignmentData = assignmentData;
     }
    
+    public AssignmentId getId() {
+        return this.id;
+    }
+    
+    public void setId(AssignmentId id) {
+        this.id = id;
+    }
     public Lab getLab() {
         return this.lab;
     }

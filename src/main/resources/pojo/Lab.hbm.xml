@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 20, 2015 2:19:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Lab" table="lab" catalog="labmanagement" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="course" class="pojo.Course" fetch="select">
+            <column name="course_id" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="startTimeQueues" type="string">
+            <column name="start_time_queues" length="45" />
+        </property>
+        <property name="endTimeQueues" type="string">
+            <column name="end_time_queues" length="45" />
+        </property>
+        <property name="startTimeFileUpload" type="string">
+            <column name="start_time_fileUpload" length="45" />
+        </property>
+        <property name="endTimeFileUpload" type="string">
+            <column name="end_time_fileUpload" length="45" />
+        </property>
+        <property name="activated" type="java.lang.Boolean">
+            <column name="activated" />
+        </property>
+        <set name="deliveryqueues" table="deliveryqueue" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="lab_id" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Deliveryqueue" />
+        </set>
+        <set name="assignments" table="assignment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="lab_id" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Assignment" />
+        </set>
+        <set name="instructors" table="lab_instructor" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="lab_id" not-null="true" />
+            </key>
+            <many-to-many entity-name="pojo.Instructor">
+                <column name="instructor_id" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="assistancequeues" table="assistancequeue" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="lab_id" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Assistancequeue" />
+        </set>
+    </class>
+</hibernate-mapping>
