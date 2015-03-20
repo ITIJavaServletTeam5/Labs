@@ -29,13 +29,27 @@ public class CreateGroup extends HttpServlet {
         GroupDao groupDao = dAOFactory.getGroupDAO();
         Group g = new Group("group1", "this is bishoy's", Boolean.TRUE, null, null);
         groupDao.makePersistent(g);
+        
+        DAOFactory dAOFactory1 = DAOFactory.instance(DAOFactory.HIBERNATE);
+        GroupDao groupDao1 = dAOFactory1.getGroupDAO();
+        Group g1 = new Group("group1", "this is bishoy's", Boolean.TRUE, null, null);
+        groupDao.makePersistent(g1);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAOFactory dAOFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         GroupDao groupDao = dAOFactory.getGroupDAO();
+        
         Group g = new Group("group1", "this is bishoy's", Boolean.TRUE, null, null);
-        System.out.println(groupDao.getTrainees(g));
+        g.setId(1);
+        groupDao.makePersistent(g);
+        
+        DAOFactory dAOFactory1 = DAOFactory.instance(DAOFactory.HIBERNATE);
+        GroupDao groupDao1 = dAOFactory1.getGroupDAO();
+        Group g1 = new Group("group2", "this is BAD", Boolean.TRUE, null, null);
+       
+        g.setId(1);
+        groupDao1.makePersistent(g1);
         
     }
 }
