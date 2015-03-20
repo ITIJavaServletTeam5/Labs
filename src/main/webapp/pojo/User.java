@@ -9,7 +9,7 @@ package pojo;
 public class User  implements java.io.Serializable {
 
 
-     private Integer id;
+     private int id;
      private String email;
      private String password;
      private String username;
@@ -37,11 +37,11 @@ public class User  implements java.io.Serializable {
        this.instructor = instructor;
     }
    
-    public Integer getId() {
+    public int getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getEmail() {

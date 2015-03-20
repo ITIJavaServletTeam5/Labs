@@ -1,5 +1,6 @@
 package admin.controller.trainee;
 
+import dao.TraineeDao;
 import pojo.Trainee;
 
 import javax.servlet.ServletException;
