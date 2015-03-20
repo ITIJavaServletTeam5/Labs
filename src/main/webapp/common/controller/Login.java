@@ -20,7 +20,7 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
 
         if (email.equals("admin@gmail.com") && password.equals("admin")) {
-            response.sendRedirect("admin/view/Trainee");
+            response.sendRedirect("admin/trainee");
         } else {
 
         }

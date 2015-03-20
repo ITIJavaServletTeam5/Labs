@@ -45,14 +45,14 @@
                                             <td>${trainee.username}</td>
                                             <td>${trainee.email}</td>
                                             <td>
-                                                <form action="/EditTrainee" method="get">
+                                                <form action="/admin/trainee/edit" method="get">
                                                     <button type="submit" class="btn btn-primary"
                                                             id="trainee${trainee.id}">Edit
                                                     </button>
                                                 </form>
                                             </td>
                                             <td>
-                                                <form action="/DeactivateTrainee" method="post">
+                                                <form action="/admin/trainee/deactivate" method="post">
                                                     <button type="submit" class="btn btn-danger"
                                                             id="trainee${trainee.id}">Deactivate
                                                     </button>
@@ -65,7 +65,7 @@
                             </div>
                             <!-- /.table-responsive -->
                             <div class="col-lg-3 col-lg-offset-9">
-                                <form action="/CreateTrainee.jsp" method="get">
+                                <form action="/admin/trainee/create" method="get">
                                     <button type="submit" class="btn btn-success">Create Trainee</button>
                                 </form>
                             </div>

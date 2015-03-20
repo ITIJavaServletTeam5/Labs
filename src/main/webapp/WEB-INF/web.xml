@@ -13,11 +13,35 @@
     <!--Trainee_Of_Admin-->
     <servlet>
         <servlet-name>admin.controller.Trainee</servlet-name>
-        <servlet-class>admin.controller.TraineeListView</servlet-class>
+        <servlet-class>admin.controller.trainee.TraineeListView</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>admin.controller.Trainee</servlet-name>
-        <url-pattern>/admin/view/Trainee</url-pattern>
+        <url-pattern>/admin/trainee</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Create Trainee</servlet-name>
+        <servlet-class>admin.controller.trainee.CreateTrainee</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Create Trainee</servlet-name>
+        <url-pattern>/admin/trainee/create</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Edit Trainee</servlet-name>
+        <servlet-class>admin.controller.trainee.EditTrainee</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit Trainee</servlet-name>
+        <url-pattern>/admin/trainee/edit</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Deactivate Trainee</servlet-name>
+        <servlet-class>admin.controller.trainee.DeactivateTrainee</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deactivate Trainee</servlet-name>
+        <url-pattern>/admin/trainee/deactivate</url-pattern>
     </servlet-mapping>
 
     <!--Group_of_Admin-->

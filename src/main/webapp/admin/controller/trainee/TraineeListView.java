@@ -1,4 +1,4 @@
-package admin.controller;
+package admin.controller.trainee;
 
 import pojo.Trainee;
 
