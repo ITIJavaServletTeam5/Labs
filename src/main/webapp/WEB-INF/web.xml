@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>Labs System ITI project</display-name>
-    <servlet-mapping>
-        <servlet-name>Controller</servlet-name>
-        <url-pattern>/Controller</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -14,7 +10,7 @@
     <!--Servlets-->
 
     <!--Admin-->
-    <!--Trainee_Of_Admin-->
+        <!--Trainee_Of_Admin-->
     <servlet>
         <servlet-name>admin.controller.Trainee</servlet-name>
         <servlet-class>admin.controller.trainee.TraineeListView</servlet-class>
@@ -56,7 +52,7 @@
         <url-pattern>/admin/trainee/activate</url-pattern>
     </servlet-mapping>
 
-    <!--Group_of_Admin-->
+        <!--Group_of_Admin-->
     <servlet>
         <servlet-name>admin.controller.Group</servlet-name>
         <servlet-class>admin.controller.group.GroupListView</servlet-class>
@@ -93,7 +89,7 @@
         <url-pattern>/admin/group/deactive</url-pattern>
     </servlet-mapping>
     
-    <!--Course_of_Admin-->
+        <!--Course_of_Admin-->
     
     <servlet>
         <servlet-name>admin.controller.Course</servlet-name>
@@ -131,8 +127,7 @@
         <url-pattern>/admin/course/deactive</url-pattern>
     </servlet-mapping>
     
-    <!--Lab_of_Admin-->
-    
+        <!--Lab_of_Admin-->
     <servlet>
         <servlet-name>admin.controller.Lab</servlet-name>
         <servlet-class>admin.controller.lab.LabListView</servlet-class>
@@ -169,8 +164,6 @@
         <url-pattern>/admin/lab/deactive</url-pattern>
     </servlet-mapping>
     
-    
-
 
     <!--Common-->
     <servlet>
@@ -180,6 +173,14 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>common.controller.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
 
@@ -201,26 +202,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <servlet>
-        <servlet-name>admin.controller.Trainee</servlet-name>
-        <servlet-class>admin.controller.TraineeListView</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>common.controller.Login</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Controller</servlet-name>
-        <servlet-class>trainee.controller.Controller</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>admin.controller.Trainee</servlet-name>
-        <url-pattern>/admin/view/Trainee</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
 
     <!--Welcome-->
     <welcome-file-list>
