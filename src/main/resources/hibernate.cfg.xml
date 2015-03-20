@@ -9,6 +9,8 @@
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
+    <property name="current_session_context_class">thread</property>
+    <property name="connection.pool_size">1</property>
     <mapping resource="pojo/Deliveryqueue.hbm.xml"/>
     <mapping resource="pojo/Assistancequeue.hbm.xml"/>
     <mapping resource="pojo/Course.hbm.xml"/>
