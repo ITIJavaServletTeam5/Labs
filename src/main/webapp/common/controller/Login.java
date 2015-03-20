@@ -27,8 +27,8 @@ public class Login extends HttpServlet {
 
         if (email.equals("admin@gmail.com") && password.equals("admin")) {
             response.sendRedirect("/admin/trainee");
-            HttpSession session = request.getSession();
-            session.setAttribute("user", "admin");
+//            HttpSession session = request.getSession();
+//            session.setAttribute("user", "admin");
         } else {
             response.sendRedirect("/Login");
         }
