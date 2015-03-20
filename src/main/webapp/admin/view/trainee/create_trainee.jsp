@@ -9,7 +9,7 @@
     <title>Admin</title>
 </head>
 <body>
-<jsp:include page="/admin/view/top_and_navigation.jsp"/>
+<jsp:include page="/admin/view/common/top_and_navigation.jsp"/>
 
 <div id="page-wrapper">
     <div class="row">

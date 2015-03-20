@@ -1,8 +1,9 @@
-package admin.controller.trainee;
+package admin.controller.instructor;
 
 //import dao.TraineeController;
 import hibernate.SessionUtil;
 import org.hibernate.Session;
+import pojo.Instructor;
 import pojo.Trainee;
 
 import javax.servlet.ServletException;
@@ -16,23 +17,22 @@ import java.io.IOException;
  * Created by sharno on 3/20/15.
  */
 @WebServlet(name = "CreateTrainee")
-public class CreateTrainee extends HttpServlet {
+public class CreateInstructor extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Trainee trainee = new Trainee();
-        trainee.setUsername(request.getParameter("username"));
-        trainee.setEmail(request.getParameter("email"));
-        trainee.setPassword(request.getParameter("password"));
-        trainee.setActivated(true);
+        Instructor instructor = new Instructor();
+        instructor.setUsername(request.getParameter("username"));
+        instructor.setEmail(request.getParameter("email"));
+        instructor.setPassword(request.getParameter("password"));
+        instructor.setActivated(true);
 
-//        TraineeController.insertTrainee(trainee);
         Session session = SessionUtil.getSessionFactory().getCurrentSession();
-        session.persist(trainee);
+        session.persist(instructor);
 
         // TODO
-        // persist this trainee
+        // persist this instructor
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/admin/view/trainee/create_trainee.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/view/create_instructor.jsp").forward(request, response);
     }
 }

@@ -5,19 +5,14 @@
  */
 package admin.controller.lab;
 
-import admin.controller.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Vector;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pojo.Course;
-import pojo.Group;
+
 import pojo.Lab;
-import pojo.Trainee;
 
 /**
  *
@@ -43,7 +38,7 @@ public class LabListView extends javax.servlet.http.HttpServlet {
         labs.add(c2);
 
         request.setAttribute("labs", labs);
-        getServletContext().getRequestDispatcher("/admin/view/lab_list.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin/view/lab/lab_list.jsp").forward(request, response);
     }
 
 }

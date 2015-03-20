@@ -7,18 +7,20 @@
 <%@ taglib prefix="c"
            uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+<!DOCTYPE html>
 <html>
     <head>
         <jsp:include page="/common/view/head.jsp" />
         <title>Create Trainee</title>
     </head>
     <body>
-        <jsp:include page="/admin/view/top_and_navigation.jsp" />
+        <jsp:include page="/admin/view/common/top_and_navigation.jsp" />
 
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Labs</h1>
+                    <h1 class="page-header">Groups</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -27,35 +29,35 @@
                 <div class="col-lg-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Activated Lab List
+                            Activated Course List
                         </div>
 
                         <c:choose>
-                            <c:when test="${not empty requestScope.labs}">
+                            <c:when test="${not empty requestScope.courses}">
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Labname</th>
+                                                    <th>Coursename</th>
                                                     <th></th>
                                                     <th></th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${requestScope.labs}" var="labs">
+                                                <c:forEach items="${requestScope.courses}" var="courses">
                                                     <tr>
-                                                        <td>${labs.name}</td>
+                                                        <td>${courses.name}</td>
 
                                                         <td>
-                                                            <form action="${pageContext.request.contextPath}/admin/lab/edit" method="get">
+                                                            <form action="${pageContext.request.contextPath}/admin/course/edit" method="get">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Edit</button>
                                                             </form>
                                                         </td>
                                                         <td>
-                                                            <form action="${pageContext.request.contextPath}/admin/lab/deactive" method="post">
+                                                            <form action="${pageContext.request.contextPath}/admin/course/deactive" method="post">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                             </form>
                                                         </td>
@@ -67,15 +69,15 @@
                                     </div>
                                     <!-- /.table-responsive -->
                                     <div class="col-lg-3 col-lg-offset-9">
-                                        <form action="${pageContext.request.contextPath}/admin/lab/create" method="get">
-                                            <button type="submit" class="btn btn-outline btn-primary">Create Lab</button>
+                                        <form action="${pageContext.request.contextPath}/admin/course/create" method="get">
+                                            <button type="submit" class="btn btn-outline btn-primary">Create Course</button>
                                         </form>
                                     </div>
                                 </div>
                                 <!-- /.panel-body -->
                             </c:when>
                             <c:otherwise>
-                                <div>There's no Labs to display</div>
+                                <div>There's no labs to display</div>
                             </c:otherwise>
                         </c:choose>
 
@@ -89,7 +91,6 @@
             <!-- /#page-wrapper -->
 
         </div>
-        <!-- /#wrapper -->
         <jsp:include page="/common/view/scripts.jsp" />
     </body>
 </html>

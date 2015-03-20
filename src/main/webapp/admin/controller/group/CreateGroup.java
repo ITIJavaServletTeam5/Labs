@@ -6,7 +6,6 @@
 package admin.controller.group;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +23,6 @@ public class CreateGroup extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/admin/view/create_group.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/view/group/create_group.jsp").forward(request, response);
     }
 }

@@ -14,8 +14,8 @@
     <mapping resource="pojo/Course.hbm.xml"/>
     <mapping resource="pojo/Group.hbm.xml"/>
     <mapping resource="pojo/Assignment.hbm.xml"/>
-    <mapping resource="pojo/Instructor.hbm.xml"/>
-    <mapping resource="pojo/Trainee.hbm.xml"/>
+    <!--<mapping resource="pojo/Instructor.hbm.xml"/>-->
+    <!--<mapping resource="pojo/Trainee.hbm.xml"/>-->
     <mapping resource="pojo/User.hbm.xml"/>
     <mapping resource="pojo/Lab.hbm.xml"/>
   </session-factory>

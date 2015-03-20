@@ -6,7 +6,6 @@
 package admin.controller.course;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +23,6 @@ public class CreateCourse extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/admin/view/create_course.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/view/course/create_course.jsp").forward(request, response);
     }
 }

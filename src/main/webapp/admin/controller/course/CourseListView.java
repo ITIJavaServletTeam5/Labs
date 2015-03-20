@@ -5,9 +5,7 @@
  */
 package admin.controller.course;
 
-import admin.controller.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Vector;
 import javax.servlet.ServletException;
@@ -15,8 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Course;
-import pojo.Group;
-import pojo.Trainee;
 
 /**
  *
@@ -40,6 +36,6 @@ public class CourseListView extends HttpServlet {
         courses.add(g2);
 
         request.setAttribute("courses", courses);
-        request.getRequestDispatcher("/admin/view/course_list.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/view/course/course_list.jsp").forward(request, response);
     }
 }

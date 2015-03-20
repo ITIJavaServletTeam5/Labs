@@ -27,6 +27,6 @@ public class TraineeListView extends javax.servlet.http.HttpServlet {
         trainees.add(t1);
 
         request.setAttribute("trainees", trainees);
-        getServletContext().getRequestDispatcher("/admin/view/trainee_list.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin/view/trainee/trainee_list.jsp").forward(request, response);
     }
 }

@@ -5,17 +5,13 @@
  */
 package admin.controller.group;
 
-import admin.controller.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Vector;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Group;
-import pojo.Trainee;
 
 /**
  *
@@ -41,7 +37,7 @@ public class GroupListView extends javax.servlet.http.HttpServlet {
         groups.add(g2);
 
         request.setAttribute("groups", groups);
-        getServletContext().getRequestDispatcher("/admin/view/group_list.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin/view/group/group_list.jsp").forward(request, response);
     }
 
 }
