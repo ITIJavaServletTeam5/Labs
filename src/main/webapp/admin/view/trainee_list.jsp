@@ -45,14 +45,14 @@
                                             <td>${trainee.username}</td>
                                             <td>${trainee.email}</td>
                                             <td>
-                                                <form action="/admin/trainee/edit" method="get">
+                                                <form action="${pageContext.request.contextPath}/admin/trainee/edit" method="get">
                                                     <button type="submit" class="btn btn-primary"
                                                             id="trainee${trainee.id}">Edit
                                                     </button>
                                                 </form>
                                             </td>
                                             <td>
-                                                <form action="/admin/trainee/deactivate" method="post">
+                                                <form action="${pageContext.request.contextPath}/admin/trainee/deactivate" method="post">
                                                     <button type="submit" class="btn btn-danger"
                                                             id="trainee${trainee.id}">Deactivate
                                                     </button>
