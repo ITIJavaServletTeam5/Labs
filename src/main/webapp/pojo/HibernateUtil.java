@@ -18,6 +18,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
  */
 public class HibernateUtil {
     private static final Session session;
+
     static {
         try {
 // Create the SessionFactory from standard (hibernate.cfg.xml)
@@ -33,6 +34,8 @@ public class HibernateUtil {
             throw new ExceptionInInitializerError(ex);
         }
     }
+
     public static Session getSession() {
         return session;
     }
+}
