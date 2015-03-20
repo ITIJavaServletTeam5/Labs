@@ -41,7 +41,7 @@ public class CourseListView extends javax.servlet.http.HttpServlet {
         courses.add(c2);
 
         request.setAttribute("courses", courses);
-        getServletContext().getRequestDispatcher("/admin/view/create_course_list.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin/view/course_list.jsp").forward(request, response);
     }
 
 }

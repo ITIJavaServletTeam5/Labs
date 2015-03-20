@@ -40,7 +40,7 @@ public class GroupListView extends javax.servlet.http.HttpServlet {
         groups.add(g2);
 
         request.setAttribute("groups", groups);
-        getServletContext().getRequestDispatcher("/admin/view/create_group_list.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin/view/group_list.jsp").forward(request, response);
     }
 
 }
