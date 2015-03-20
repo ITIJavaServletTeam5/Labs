@@ -21,7 +21,7 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-            <form role="form" method="post" action="/admin/trainee/create">
+            <form role="form" method="post" action="${pageContext.request.contextPath}/admin/trainee/create">
                 <div class="form-group">
                     <label>Username</label>
                     <input name="username" class="form-control" placeholder="Username" required="">
