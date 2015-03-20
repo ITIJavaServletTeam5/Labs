@@ -63,9 +63,27 @@
         <url-pattern>/admin/group/create</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>Edit Group</servlet-name>
+        <servlet-class>admin.controller.group.EditGroup</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit Group</servlet-name>
+        <url-pattern>/admin/group/edit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Deactivate Group</servlet-name>
+        <servlet-class>admin.controller.group.DeactivateGroup</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deactivate Group</servlet-name>
+        <url-pattern>/admin/group/deactive</url-pattern>
+    </servlet-mapping>
+    
     <!--Course_of_Admin-->
     
-     <servlet>
+    <servlet>
         <servlet-name>admin.controller.Course</servlet-name>
         <servlet-class>admin.controller.course.CourseListView</servlet-class>
     </servlet>
@@ -81,6 +99,24 @@
     <servlet-mapping>
         <servlet-name>Create Course</servlet-name>
         <url-pattern>/admin/course/create</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Edit Course</servlet-name>
+        <servlet-class>admin.controller.course.EditCourse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit Course</servlet-name>
+        <url-pattern>/admin/course/edit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Deactive Course</servlet-name>
+        <servlet-class>admin.controller.course.DeactivateCourse</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deactive Course</servlet-name>
+        <url-pattern>/admin/course/deactive</url-pattern>
     </servlet-mapping>
     
     <!--Lab_of_Admin-->
@@ -102,6 +138,26 @@
         <servlet-name>Create Lab</servlet-name>
         <url-pattern>/admin/lab/create</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Edit Lab</servlet-name>
+        <servlet-class>admin.controller.lab.EditLab</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit Lab</servlet-name>
+        <url-pattern>/admin/lab/edit</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>Deactivate Lab</servlet-name>
+        <servlet-class>admin.controller.lab.DeactivateLab</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Deactivate Lab</servlet-name>
+        <url-pattern>/admin/lab/deactive</url-pattern>
+    </servlet-mapping>
+    
+    
 
 
     <!--Common-->

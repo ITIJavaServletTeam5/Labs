@@ -50,12 +50,12 @@
                                                         <td>${groups.name}</td>
 
                                                         <td>
-                                                            <form action="/EditGroup" method="get">
+                                                            <form action="${pageContext.request.contextPath}/admin/group/edit" method="get">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Edit</button>
                                                             </form>
                                                         </td>
                                                         <td>
-                                                            <form action="/DeactivateGroup" method="post">
+                                                            <form action="${pageContext.request.contextPath}/admin/group/deactive" method="post">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                             </form>
                                                         </td>
