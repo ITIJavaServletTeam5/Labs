@@ -28,6 +28,13 @@
                     <div class="col-lg-6">
 
                         <form role="form" method="post"  action="${pageContext.request.contextPath}/admin/course/create">
+                            <fieldset disabled>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Group Name</label>
+                                    <!-- Enter the group name from request-->
+                                    <input class="form-control" id="disabledInput" type="text">
+                                </div>
+                            </fieldset>
                             <div class="form-group">
                                 <label>Course Name</label>
                                 <input class="form-control" placeholder="Course Name">
@@ -37,7 +44,7 @@
                                 <textarea class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                
+
                             </div>
                             <button type="submit" class="btn btn-default">Submit</button>
                             <button type="reset" class="btn btn-default">Reset</button>

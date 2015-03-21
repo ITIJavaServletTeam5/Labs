@@ -19,6 +19,28 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
+
+
+    <div class="row">
+        <c:choose>
+            <c:when test="${requestScope.created}">
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Trainee has been created successfully.
+                </div>
+            </c:when>
+
+            <c:when test="${requestScope.emailError}">
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    There's already a trainee with that email
+                </div>
+            </c:when>
+        </c:choose>
+    </div>
+
+    <!-- /.row -->
+
     <div class="row">
         <div class="col-lg-12">
             <form role="form" method="post" action="${pageContext.request.contextPath}/admin/trainee/create">
@@ -32,7 +54,9 @@
                 </div>
                 <div class="form-group">
                     <label>Default Password</label>
-                    <input name="password" type="text" value="123456" class="form-control" placeholder="Password" required="">
+                    <input name="password" type="text" value="123456" class="form-control" placeholder="Password"
+                           required="">
+
                     <p class="help-block">All trainees will have to change their password upon first login</p>
                 </div>
                 <button type="submit" class="btn btn-default">Submit Button</button>

@@ -9,8 +9,9 @@
             <generator class="identity" />
         </id>
 
-        <discriminator column="role" />
+        <discriminator column="role"/>
 
+        <property name="role" column="role" insert="false" update="false"/>
         <property name="email" type="string">
             <column name="email" length="45" not-null="true" unique="true" />
         </property>
@@ -20,14 +21,9 @@
         <property name="username" type="string">
             <column name="username" length="45" />
         </property>
-        <!--<property name="role" type="string">-->
-            <!--<column name="role" length="45" not-null="true" />-->
-        <!--</property>-->
         <property name="activated" type="java.lang.Boolean">
             <column name="activated" />
         </property>
-        <!--<one-to-one name="trainee" class="pojo.Trainee"></one-to-one>-->
-        <!--<one-to-one name="instructor" class="pojo.Instructor"></one-to-one>-->
 
         <subclass name="pojo.Trainee" discriminator-value="TRAINEE">
             <set name="assistancequeues" table="assistancequeue" inverse="true" lazy="true" fetch="select">
@@ -82,55 +78,5 @@
                 <key column="id" />
             </join>
         </subclass>
-
-        <!--<joined-subclass name="pojo.Instructor" table="instructor">-->
-            <!--<key column="id" />-->
-            <!--<set name="courses" table="course_instructor" inverse="false" lazy="true" fetch="select">-->
-                <!--<key>-->
-                    <!--<column name="instructor_id" not-null="true" />-->
-                <!--</key>-->
-                <!--<many-to-many entity-name="pojo.Course">-->
-                    <!--<column name="course_id" not-null="true" />-->
-                <!--</many-to-many>-->
-            <!--</set>-->
-            <!--<set name="labs" table="lab_instructor" inverse="false" lazy="true" fetch="select">-->
-                <!--<key>-->
-                    <!--<column name="instructor_id" not-null="true" />-->
-                <!--</key>-->
-                <!--<many-to-many entity-name="pojo.Lab">-->
-                    <!--<column name="lab_id" not-null="true" />-->
-                <!--</many-to-many>-->
-            <!--</set>-->
-        <!--</joined-subclass>-->
-
-        <!--<joined-subclass name="pojo.Trainee" table="trainee"  >-->
-            <!--<key column="id" />-->
-            <!--<set name="assistancequeues" table="assistancequeue" inverse="true" lazy="true" fetch="select">-->
-                <!--<key>-->
-                    <!--<column name="trainee_id" not-null="true" />-->
-                <!--</key>-->
-                <!--<one-to-many class="pojo.Assistancequeue" />-->
-            <!--</set>-->
-            <!--<set name="assignments" table="assignment" inverse="true" lazy="true" fetch="select">-->
-                <!--<key>-->
-                    <!--<column name="trainee_id" not-null="true" />-->
-                <!--</key>-->
-                <!--<one-to-many class="pojo.Assignment" />-->
-            <!--</set>-->
-            <!--<set name="deliveryqueues" table="deliveryqueue" inverse="true" lazy="true" fetch="select">-->
-                <!--<key>-->
-                    <!--<column name="trainee_id" not-null="true" />-->
-                <!--</key>-->
-                <!--<one-to-many class="pojo.Deliveryqueue" />-->
-            <!--</set>-->
-            <!--<set name="groups" table="group_trainee" inverse="false" lazy="true" fetch="select">-->
-                <!--<key>-->
-                    <!--<column name="trainee_id" not-null="true" />-->
-                <!--</key>-->
-                <!--<many-to-many entity-name="pojo.Group">-->
-                    <!--<column name="group_id" not-null="true" />-->
-                <!--</many-to-many>-->
-            <!--</set>-->
-        <!--</joined-subclass>-->
     </class>
 </hibernate-mapping>

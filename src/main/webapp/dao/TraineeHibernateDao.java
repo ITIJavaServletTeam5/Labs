@@ -7,6 +7,8 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+
+import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
 import pojo.Trainee;
@@ -17,6 +19,13 @@ import pojo.Trainee;
  * 
  * @author root
  */
-public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Integer> implements TraineeDao{
-    
+public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Long> implements TraineeDao{
+
+    @Override
+    public Trainee findByEmail(String email) {
+        Query query = getSession().createQuery("from Trainee where email = :email");
+        query.setEntity("email", email);
+
+        return (Trainee) query.uniqueResult();
+    }
 }

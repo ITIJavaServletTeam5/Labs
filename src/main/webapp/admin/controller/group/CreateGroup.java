@@ -25,30 +25,22 @@ import pojo.Group;
 public class CreateGroup extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-      /*  DAOFactory dAOFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
-        GroupDao groupDao = dAOFactory.getGroupDAO();
-        Group g = new Group("group1", "this is bishoy's", Boolean.TRUE, null, null);
-        groupDao.makePersistent(g);
+        Group group = new Group();
+        group.setName(request.getParameter("groupname"));
+        group.setDescription(request.getParameter("description"));
         
-        DAOFactory dAOFactory1 = DAOFactory.instance(DAOFactory.HIBERNATE);
-        GroupDao groupDao1 = dAOFactory1.getGroupDAO();
-        Group g1 = new Group("group1", "this is bishoy's", Boolean.TRUE, null, null);
-        groupDao.makePersistent(g1);*/
+        group.setActivated(true);
+
+        // persist this group
+        
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        GroupDao groupDao = daoFactory.getGroupDAO();
+        groupDao.makePersistent(group);
+ 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     /*   DAOFactory dAOFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
-        GroupDao groupDao = dAOFactory.getGroupDAO();
-        
-        Group g = new Group("group1", "this is bishoy's", Boolean.TRUE, null, null);
-        g.setId(1);
-        groupDao.makePersistent(g);
-        
-        DAOFactory dAOFactory1 = DAOFactory.instance(DAOFactory.HIBERNATE);
-        GroupDao groupDao1 = dAOFactory1.getGroupDAO();
-        Group g1 = new Group("group2", "this is BAD", Boolean.TRUE, null, null);
-       
-        g.setId(1);*/
+     
         getServletContext().getRequestDispatcher("/admin/view/group/create_group.jsp").forward(request, response);
         
     }

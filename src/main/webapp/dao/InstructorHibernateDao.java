@@ -7,6 +7,8 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+
+import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
 import pojo.Instructor;
@@ -17,6 +19,13 @@ import pojo.Instructor;
  * 
  * @author root
  */
-public class InstructorHibernateDao extends GenericHibernateDAO<Instructor, Integer> implements InstructorDao{
-    
+public class InstructorHibernateDao extends GenericHibernateDAO<Instructor, Long> implements InstructorDao{
+
+    @Override
+    public Instructor findByEmail(String email) {
+        Query query = getSession().createQuery("from Instructor where email = :email");
+        query.setEntity("email", email);
+
+        return (Instructor) query.uniqueResult();
+    }
 }

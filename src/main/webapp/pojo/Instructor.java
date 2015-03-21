@@ -11,7 +11,7 @@ import java.util.Set;
 public class Instructor extends User implements java.io.Serializable {
 
 
-     private int id;
+//     private int id;
      private Set courses = new HashSet(0);
      private Set labs = new HashSet(0);
 
@@ -24,13 +24,13 @@ public class Instructor extends User implements java.io.Serializable {
        this.labs = labs;
     }
    
-    public int getId() {
-        return this.id;
-    }
-    
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return this.id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public Set getCourses() {
         return this.courses;
