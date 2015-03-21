@@ -16,6 +16,6 @@ import pojo.User;
  * if anyone wants to add his own customized quarry 
  * please use XXXHibernateDao
  */
-public interface UserDao extends GenericDAO <User, Long>{
+public interface UserDao extends GenericDAO <User, Integer>{
     
 }

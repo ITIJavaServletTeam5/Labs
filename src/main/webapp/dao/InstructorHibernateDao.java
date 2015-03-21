@@ -17,6 +17,6 @@ import pojo.Instructor;
  * 
  * @author root
  */
-public class InstructorHibernateDao extends GenericHibernateDAO<Instructor, Long> implements InstructorDao{
+public class InstructorHibernateDao extends GenericHibernateDAO<Instructor, Integer> implements InstructorDao{
     
 }
