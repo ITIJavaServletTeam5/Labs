@@ -16,7 +16,7 @@ public class Login extends HttpServlet {
         if (session == null) {
             request.getRequestDispatcher("/common/view/login.jsp").forward(request, response);
         } else {
-            response.sendRedirect("/admin/trainee");
+            response.sendRedirect(request.getContextPath() + "/admin/trainee");
         }
     }
 
