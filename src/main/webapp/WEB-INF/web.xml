@@ -53,25 +53,25 @@
     </servlet-mapping>
 
         <!--Group_of_Admin-->
-    <servlet>
+  <!--  <servlet>
         <servlet-name>admin.controller.Group</servlet-name>
         <servlet-class>admin.controller.group.GroupListView</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>admin.controller.Group</servlet-name>
         <url-pattern>/admin/group</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> -->
     
-    <servlet>
+   <!-- <servlet>
         <servlet-name>Create Group</servlet-name>
         <servlet-class>admin.controller.group.CreateGroup</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Create Group</servlet-name>
         <url-pattern>/admin/group/create</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> -->
     
-    <servlet>
+    <!--<servlet>
         <servlet-name>Edit Group</servlet-name>
         <servlet-class>admin.controller.group.EditGroup</servlet-class>
     </servlet>
@@ -89,7 +89,7 @@
         <url-pattern>/admin/group/deactive</url-pattern>
     </servlet-mapping>
     
-        <!--Course_of_Admin-->
+        
     
     <servlet>
         <servlet-name>admin.controller.Course</servlet-name>
@@ -127,7 +127,7 @@
         <url-pattern>/admin/course/deactive</url-pattern>
     </servlet-mapping>
     
-        <!--Lab_of_Admin-->
+        
     <servlet>
         <servlet-name>admin.controller.Lab</servlet-name>
         <servlet-class>admin.controller.lab.LabListView</servlet-class>
@@ -162,8 +162,8 @@
     <servlet-mapping>
         <servlet-name>Deactivate Lab</servlet-name>
         <url-pattern>/admin/lab/deactive</url-pattern>
-    </servlet-mapping>
-    
+    </servlet-mapping> 
+    -->
 
     <!--Common-->
     <servlet>

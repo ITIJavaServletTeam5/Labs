@@ -12,7 +12,7 @@
 <html>
     <head>
         <jsp:include page="/common/view/head.jsp" />
-        <title>Create Trainee</title>
+        <title>Course</title>
     </head>
     <body>
         <jsp:include page="/admin/view/common/top_and_navigation.jsp" />

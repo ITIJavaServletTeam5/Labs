@@ -26,11 +26,13 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
 
         if (email.equals("admin@gmail.com") && password.equals("admin")) {
-            response.sendRedirect("/admin/trainee");
+            
+           // request.getRequestDispatcher("/admin/trainee").forward(request, response);
+            response.sendRedirect(request.getContextPath()+"/admin/trainee");
 //            HttpSession session = request.getSession();
 //            session.setAttribute("user", "admin");
         } else {
-            response.sendRedirect("/Login");
+            response.sendRedirect(request.getContextPath()+"/Login");
         }
     }
 }

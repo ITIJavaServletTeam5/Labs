@@ -17,15 +17,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marwa
  */
-@WebServlet(name = "DeactivateLab", urlPatterns = {"/DeactivateLab"})
+@WebServlet(urlPatterns = {"/admin/lab/deactive"})
 public class DeactivateLab extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getParameter("labs");
+        response.sendRedirect(request.getContextPath()+"/admin/lab");
         // TODO
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // this actually does nothing for now
-        response.sendRedirect("/admin/lab");
+        response.sendRedirect(request.getContextPath()+"/admin/lab");
     }
 }
