@@ -14,5 +14,5 @@ import pojo.Trainee;
  * to add his own customized quarry please use XXXHibernateDao
  */
 public interface TraineeDao extends GenericDAO<Trainee, Long> {
-
+    public Trainee findByEmail (String email);
 }

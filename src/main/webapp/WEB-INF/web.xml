@@ -19,14 +19,14 @@
         <servlet-name>admin.controller.Trainee</servlet-name>
         <url-pattern>/admin/trainee</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>Create Trainee</servlet-name>
-        <servlet-class>admin.controller.trainee.CreateTrainee</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Create Trainee</servlet-name>
-        <url-pattern>/admin/trainee/create</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>Create Trainee</servlet-name>-->
+        <!--<servlet-class>admin.controller.trainee.CreateTrainee</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>Create Trainee</servlet-name>-->
+        <!--<url-pattern>/admin/trainee/create</url-pattern>-->
+    <!--</servlet-mapping>-->
     <servlet>
         <servlet-name>Edit Trainee</servlet-name>
         <servlet-class>admin.controller.trainee.EditTrainee</servlet-class>
