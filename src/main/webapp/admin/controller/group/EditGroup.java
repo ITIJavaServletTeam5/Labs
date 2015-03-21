@@ -24,6 +24,7 @@ public class EditGroup extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/admin/view/group/create_group.jsp").forward(request, response);
+        //request.getParameter("");
+        getServletContext().getRequestDispatcher("/admin/view/group/edit_group.jsp").forward(request, response);
     }
 }
