@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>Labs System ITI project</display-name>
@@ -7,11 +6,6 @@
             30
         </session-timeout>
     </session-config>
-
-    <!--Servlets-->
-
-    <!--Admin-->
-        <!--Trainee_Of_Admin-->
     <servlet>
         <servlet-name>admin.controller.Trainee</servlet-name>
         <servlet-class>admin.controller.trainee.TraineeListView</servlet-class>
@@ -51,140 +45,6 @@
     <servlet-mapping>
         <servlet-name>Activate Trainee</servlet-name>
         <url-pattern>/admin/trainee/activate</url-pattern>
-    </servlet-mapping>
-
-        <!--Group_of_Admin-->
-  <!--  <servlet>
-        <servlet-name>admin.controller.Group</servlet-name>
-        <servlet-class>admin.controller.group.GroupListView</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>admin.controller.Group</servlet-name>
-        <url-pattern>/admin/group</url-pattern>
-    </servlet-mapping> -->
-    
-   <!-- <servlet>
-        <servlet-name>Create Group</servlet-name>
-        <servlet-class>admin.controller.group.CreateGroup</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Create Group</servlet-name>
-        <url-pattern>/admin/group/create</url-pattern>
-    </servlet-mapping> -->
-    
-    <!--<servlet>
-        <servlet-name>Edit Group</servlet-name>
-        <servlet-class>admin.controller.group.EditGroup</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Edit Group</servlet-name>
-        <url-pattern>/admin/group/edit</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Deactivate Group</servlet-name>
-        <servlet-class>admin.controller.group.DeactivateGroup</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Deactivate Group</servlet-name>
-        <url-pattern>/admin/group/deactive</url-pattern>
-    </servlet-mapping>
-    
-        
-    
-    <servlet>
-        <servlet-name>admin.controller.Course</servlet-name>
-        <servlet-class>admin.controller.course.CourseListView</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>admin.controller.Course</servlet-name>
-        <url-pattern>/admin/course</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Create Course</servlet-name>
-        <servlet-class>admin.controller.course.CreateCourse</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Create Course</servlet-name>
-        <url-pattern>/admin/course/create</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Edit Course</servlet-name>
-        <servlet-class>admin.controller.course.EditCourse</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Edit Course</servlet-name>
-        <url-pattern>/admin/course/edit</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Deactive Course</servlet-name>
-        <servlet-class>admin.controller.course.DeactivateCourse</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Deactive Course</servlet-name>
-        <url-pattern>/admin/course/deactive</url-pattern>
-    </servlet-mapping>
-    
-        
-    <servlet>
-        <servlet-name>admin.controller.Lab</servlet-name>
-        <servlet-class>admin.controller.lab.LabListView</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>admin.controller.Lab</servlet-name>
-         <url-pattern>/admin/lab</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Create Lab</servlet-name>
-        <servlet-class>admin.controller.lab.CreateLab</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Create Lab</servlet-name>
-        <url-pattern>/admin/lab/create</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Edit Lab</servlet-name>
-        <servlet-class>admin.controller.lab.EditLab</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Edit Lab</servlet-name>
-        <url-pattern>/admin/lab/edit</url-pattern>
-    </servlet-mapping>
-    
-     <servlet>
-        <servlet-name>Deactivate Lab</servlet-name>
-        <servlet-class>admin.controller.lab.DeactivateLab</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Deactivate Lab</servlet-name>
-        <url-pattern>/admin/lab/deactive</url-pattern>
-    </servlet-mapping> 
-    -->
-    
-    
-        <!--Assignments_Staff-->
-    <servlet>
-        <servlet-name>instructor.controller.Assignments</servlet-name>
-        <servlet-class>instructor.controller.AssignmentsDownload</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>instructor.controller.Assignments</servlet-name>
-        <url-pattern>/instructor/view/Assignments</url-pattern>
-    </servlet-mapping>
-    
-    <!--Queues_Staff-->
-    <servlet>
-        <servlet-name>instructor.controller.QueuesList</servlet-name>
-        <servlet-class>instructor.controller.QueuesList</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>instructor.controller.QueuesList</servlet-name>
-        <url-pattern>/instructor/view/QueuesList</url-pattern>
     </servlet-mapping>
 
 

@@ -30,7 +30,7 @@
                         <form role="form" method="get" action="${pageContext.request.contextPath}/admin/group/create">
                             <div class="form-group">
                                 <label>Group Name</label>
-                                <input class="form-control" name="groupname" placeholder="Group Name">
+                                <input class="form-control" name="groupname" >
                             </div>
                             <div class="form-group">
                                 <label>Group Description</label>
