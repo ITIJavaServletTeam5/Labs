@@ -23,7 +23,8 @@ import pojo.Assistancequeue;
  *
  * @author engy
  */
-@WebServlet(name = "QueuesList", urlPatterns = {"/QueuesList"})
+//@WebServlet(name = "QueuesList", urlPatterns = {"/QueuesList"})
+@WebServlet(urlPatterns = {"/instructor/view/QueuesList"})
 public class QueuesList extends HttpServlet {
 
     
@@ -48,7 +49,7 @@ public class QueuesList extends HttpServlet {
         Assistancequeues.add(assistancequeue2);
         request.setAttribute("Assistancequeues", Assistancequeues);
         
-        RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Assistance_Queues_list.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
         rd.forward(request, response);
     }
 

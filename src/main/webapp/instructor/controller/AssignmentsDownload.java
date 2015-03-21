@@ -22,7 +22,7 @@ import pojo.Trainee;
  *
  * @author engy
  */
-
+@WebServlet(urlPatterns = {"/instructor/view/Assignments"})
 public class AssignmentsDownload extends HttpServlet {
 
     

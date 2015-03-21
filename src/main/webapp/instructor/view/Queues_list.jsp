@@ -19,7 +19,7 @@
         </head>
 
         <body>
-            <jsp:include page="/admin/view/top_and_navigation.jsp" />
+            <jsp:include page="/instructor/view/common/navigation.jsp" />
             <div id="wrapper">
 
                 <!-- Navigation -->
