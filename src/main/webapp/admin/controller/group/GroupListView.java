@@ -5,6 +5,8 @@
  */
 package admin.controller.group;
 
+import dao.GroupDao;
+import hibernate.DAOFactory;
 import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
@@ -30,14 +32,17 @@ public class GroupListView extends javax.servlet.http.HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Group> groups = new Vector<Group>();
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        GroupDao groupDao = daoFactory.getGroupDAO();
+       groups= groupDao.findAll();
 
-        Group g = new Group();
+     /*   Group g = new Group();
         g.setName("First Group");
         groups.add(g);
 
         Group g2 = new Group();
         g2.setName("sec Group");
-        groups.add(g2);
+        groups.add(g2);*/
 
         request.setAttribute("groups", groups);
         getServletContext().getRequestDispatcher("/admin/view/group/group_list.jsp").forward(request, response);

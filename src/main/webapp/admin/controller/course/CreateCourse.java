@@ -29,6 +29,7 @@ public class CreateCourse extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      //  request.setAttribute("groups",request.getParameter("groupname") );
         request.getRequestDispatcher("/admin/view/course/create_course.jsp").forward(request, response);
     }
 }
