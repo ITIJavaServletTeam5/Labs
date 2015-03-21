@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marwa
  */
-@WebServlet(name = "DeactivateGroup", urlPatterns = {"/DeactivateGroup"})
+@WebServlet(urlPatterns = {"/admin/group/deactive"})
 public class DeactivateGroup extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getParameter("groups");
@@ -26,6 +26,6 @@ public class DeactivateGroup extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // this actually does nothing for now
-        response.sendRedirect("/admin/group");
+        response.sendRedirect(request.getContextPath()+"/admin/group");
     }
 }

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marwa
  */
-@WebServlet(name = "DeactivateCourse", urlPatterns = {"/DeactivateCourse"})
+@WebServlet(urlPatterns = {"/admin/course/deactive"})
 public class DeactivateCourse extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getParameter("courses");
@@ -26,6 +26,6 @@ public class DeactivateCourse extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // this actually does nothing for now
-        response.sendRedirect("/admin/course");
+        response.sendRedirect(request.getContextPath()+"/admin/course");
     }
 }

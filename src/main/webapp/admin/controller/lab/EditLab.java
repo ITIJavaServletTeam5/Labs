@@ -17,13 +17,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marwa
  */
-@WebServlet(name = "EditLab", urlPatterns = {"/EditLab"})
+@WebServlet(urlPatterns = {"/admin/lab/edit"})
 public class EditLab extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+         request.getRequestDispatcher("/admin/view/lab/create_lab.jsp").forward(request, response);
     }
 }

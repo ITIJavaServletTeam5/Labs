@@ -1,6 +1,8 @@
 package admin.controller.trainee;
 
 //import dao.TraineeController;
+import dao.TraineeDao;
+import hibernate.DAOFactory;
 import hibernate.SessionUtil;
 import org.hibernate.Session;
 import pojo.Trainee;
@@ -21,15 +23,15 @@ public class CreateTrainee extends HttpServlet {
         Trainee trainee = new Trainee();
         trainee.setUsername(request.getParameter("username"));
         trainee.setEmail(request.getParameter("email"));
+
+        System.out.println(request.getParameter("password"));
         trainee.setPassword(request.getParameter("password"));
         trainee.setActivated(true);
 
-//        TraineeController.insertTrainee(trainee);
-        Session session = SessionUtil.getSessionFactory().getCurrentSession();
-        session.persist(trainee);
-
-        // TODO
         // persist this trainee
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        TraineeDao traineeDao = daoFactory.getTraineeDAO();
+        traineeDao.makePersistent(trainee);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -17,13 +17,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marwa
  */
-@WebServlet(name = "EditGroup", urlPatterns = {"/EditGroup"})
+@WebServlet(urlPatterns = {"/admin/group/edit"})
 public class EditGroup extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        getServletContext().getRequestDispatcher("/admin/view/group/create_group.jsp").forward(request, response);
     }
 }
