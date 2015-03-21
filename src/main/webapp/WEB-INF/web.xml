@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <display-name>Labs System ITI project</display-name>
@@ -134,7 +135,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>admin.controller.Lab</servlet-name>
-        <url-pattern>/admin/lab</url-pattern>
+         <url-pattern>/admin/lab</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -164,6 +165,28 @@
         <url-pattern>/admin/lab/deactive</url-pattern>
     </servlet-mapping> 
     -->
+    
+    
+        <!--Assignments_Staff-->
+    <servlet>
+        <servlet-name>instructor.controller.Assignments</servlet-name>
+        <servlet-class>instructor.controller.AssignmentsDownload</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>instructor.controller.Assignments</servlet-name>
+        <url-pattern>/instructor/view/Assignments</url-pattern>
+    </servlet-mapping>
+    
+    <!--Queues_Staff-->
+    <servlet>
+        <servlet-name>instructor.controller.QueuesList</servlet-name>
+        <servlet-class>instructor.controller.QueuesList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>instructor.controller.QueuesList</servlet-name>
+        <url-pattern>/instructor/view/QueuesList</url-pattern>
+    </servlet-mapping>
+
 
     <!--Common-->
     <servlet>
