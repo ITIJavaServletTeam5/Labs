@@ -16,6 +16,6 @@ public class ActivateTrainee extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // this actually does nothing for now
-        response.sendRedirect("/admin/trainee");
+        response.sendRedirect(request.getContextPath()+"/admin/trainee");
     }
 }

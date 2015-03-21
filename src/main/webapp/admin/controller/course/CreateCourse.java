@@ -19,7 +19,7 @@ import pojo.Course;
  *
  * @author Marwa
  */
-@WebServlet(name = "CreateCourse", urlPatterns = {"/CreateCourse"})
+@WebServlet(urlPatterns = {"/admin/course/create"})
 public class CreateCourse extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAOFactory dAOFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
