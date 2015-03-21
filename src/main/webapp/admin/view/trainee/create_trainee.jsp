@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label>Default Password</label>
-                    <input name="password" type="text" value="123456" class="form-control" placeholder="Password" disabled required="">
+                    <input name="password" type="text" value="123456" class="form-control" placeholder="Password" required="">
                     <p class="help-block">All trainees will have to change their password upon first login</p>
                 </div>
                 <button type="submit" class="btn btn-default">Submit Button</button>

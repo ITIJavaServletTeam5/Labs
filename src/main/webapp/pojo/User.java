@@ -13,7 +13,6 @@ public class User  implements java.io.Serializable {
      private String email;
      private String password;
      private String username;
-     private String role;
      private Boolean activated;
      private Trainee trainee;
      private Instructor instructor;
@@ -22,16 +21,14 @@ public class User  implements java.io.Serializable {
     }
 
 	
-    public User(String email, String password, String role) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.role = role;
     }
-    public User(String email, String password, String username, String role, Boolean activated, Trainee trainee, Instructor instructor) {
+    public User(String email, String password, String username, Boolean activated, Trainee trainee, Instructor instructor) {
        this.email = email;
        this.password = password;
        this.username = username;
-       this.role = role;
        this.activated = activated;
        this.trainee = trainee;
        this.instructor = instructor;
@@ -65,13 +62,6 @@ public class User  implements java.io.Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getRole() {
-        return this.role;
-    }
-    
-    public void setRole(String role) {
-        this.role = role;
-    }
     public Boolean getActivated() {
         return this.activated;
     }
@@ -93,10 +83,6 @@ public class User  implements java.io.Serializable {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
-
-
-
-
 }
 
 
