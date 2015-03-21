@@ -3,6 +3,7 @@ package admin.controller.trainee;
 import pojo.Trainee;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.util.Vector;
 /**
  * Created by sharno on 3/16/15.
  */
+@WebServlet (urlPatterns = "/admin/trainee")
 public class TraineeListView extends javax.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String trainee = request.getParameter("trainee");
