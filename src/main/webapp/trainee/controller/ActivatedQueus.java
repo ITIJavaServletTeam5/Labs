@@ -25,7 +25,7 @@ import pojo.Trainee;
  * @author Mai Rostom
  *
  */
-@WebServlet(urlPatterns = {"//trainee/view/ActivatedQueus "})
+@WebServlet(urlPatterns = {"/trainee/view/ActivatedQueus"})
 public class ActivatedQueus extends HttpServlet {
 
     /**

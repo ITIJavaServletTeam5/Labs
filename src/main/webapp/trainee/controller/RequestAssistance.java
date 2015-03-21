@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mai Rostom
  */
- @WebServlet(urlPatterns = {"/trainee/view/RequestAssistance "})
+ @WebServlet(urlPatterns = {"/trainee/view/RequestAssistance"})
 public class RequestAssistance extends HttpServlet {
 
     /**

@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <jsp:include page="/admin/view/Navigation.jsp" />
+    <jsp:include page="/trainee/view/Navigation.jsp" />
 
    
         
