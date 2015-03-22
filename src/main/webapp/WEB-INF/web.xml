@@ -9,7 +9,7 @@
 
     <!--Servlets-->
     
-        <!--Assignments_Staff-->
+<!--        Assignments_Staff
     <servlet>
         <servlet-name>instructor.controller.Assignments</servlet-name>
         <servlet-class>instructor.controller.AssignmentsDownload</servlet-class>
@@ -17,17 +17,17 @@
     <servlet-mapping>
         <servlet-name>instructor.controller.Assignments</servlet-name>
         <url-pattern>/instructor/view/Assignments</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     
     <!--Queues_Staff-->
-    <servlet>
+<!--    <servlet>
         <servlet-name>instructor.controller.QueuesList</servlet-name>
         <servlet-class>instructor.controller.QueuesList</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>instructor.controller.QueuesList</servlet-name>
         <url-pattern>/instructor/view/QueuesList</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
 
 
     <!--Common-->

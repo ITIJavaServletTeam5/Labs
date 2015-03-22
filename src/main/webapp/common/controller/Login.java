@@ -28,17 +28,17 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("/common/view/login.jsp").forward(request, response);
         } else {
             User user = (User) request.getSession().getAttribute("user");
-            switch (user.getRole()) {
-                case "TRAINEE":
+//            switch (user.getRole()) {
+//                case "TRAINEE":
                     response.sendRedirect(request.getContextPath() + "/admin/trainee");
-                    break;
-                case "INSTRUCTOR":
-                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
-                    break;
-                case "ADMIN":
-                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
-                    break;
-            }
+//                    break;
+//                case "INSTRUCTOR":
+//                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
+//                    break;
+//                case "ADMIN":
+//                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
+//                    break;
+//            }
         }
     }
 
