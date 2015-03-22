@@ -21,25 +21,34 @@ import pojo.MyGroup;
  */
 @WebServlet(urlPatterns = {"/admin/group/create"})
 public class CreateGroup extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
+        String name = request.getParameter("groupname");
+
         MyGroup myGroup = new MyGroup();
         myGroup.setName(request.getParameter("groupname"));
         myGroup.setDescription(request.getParameter("description"));
-        
         myGroup.setActivated(true);
 
         // persist this group
-        
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         GroupDao groupDao = daoFactory.getGroupDAO();
-        groupDao.makePersistent(myGroup);
- 
+
+        if (groupDao.findByName(name) == null) {
+            request.setAttribute("created", true);
+            groupDao.makePersistent(myGroup);
+        } else {
+            request.setAttribute("nameError", true);
+        }
+
+        getServletContext().getRequestDispatcher("/admin/view/group/create_group.jsp").forward(request, response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     
+
         getServletContext().getRequestDispatcher("/admin/view/group/create_group.jsp").forward(request, response);
-        
+
     }
 }

@@ -29,7 +29,7 @@ public class LoginFilter implements Filter {
                         httpRequest.getRequestURI().contains("/trainee") ||
                         httpRequest.getRequestURI().contains("/instructor"))) {
 //            chain.doFilter(request, response);
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
+         httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
 //            request.getRequestDispatcher("login").forward(request, response);
 //            chain.doFilter(request, response);
         } else {

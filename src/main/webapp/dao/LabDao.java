@@ -6,6 +6,7 @@
 package dao;
 
 import hibernate.GenericDAO;
+import pojo.Course;
 import pojo.Lab;
 
 /**
@@ -16,5 +17,7 @@ import pojo.Lab;
  * please use XXXHibernateDao
  */
 public interface LabDao extends GenericDAO <Lab, Long>{
+     public Lab findLabByNameAndCourseName(String labName,Course course);
+
     
 }

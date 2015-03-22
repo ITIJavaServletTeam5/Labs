@@ -34,15 +34,7 @@ public class GroupListView extends javax.servlet.http.HttpServlet {
         List<MyGroup> myGroups = new Vector<MyGroup>();
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         GroupDao groupDao = daoFactory.getGroupDAO();
-       myGroups = groupDao.findAll();
-
-     /*   Group g = new Group();
-        g.setName("First Group");
-        groups.add(g);
-
-        Group g2 = new Group();
-        g2.setName("sec Group");
-        groups.add(g2);*/
+        myGroups = groupDao.findAll();
 
         request.setAttribute("groups", myGroups);
         getServletContext().getRequestDispatcher("/admin/view/group/group_list.jsp").forward(request, response);

@@ -23,11 +23,29 @@
                 <!-- /.col-lg-12 -->
             </div>
 
+            <div class="row">
+                <c:choose>
+                    <c:when test="${requestScope.created}">
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Group has been created successfully.
+                        </div>
+                    </c:when>
+
+                    <c:when test="${requestScope.nameError}">
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            There's already a Group with that name
+                        </div>
+                    </c:when>
+                </c:choose>
+            </div>
+
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
 
-                        <form role="form" method="get" action="${pageContext.request.contextPath}/admin/group/create">
+                        <form role="form" method="post" action="${pageContext.request.contextPath}/admin/group/create">
                             <div class="form-group">
                                 <label>Group Name</label>
                                 <input class="form-control" name="groupname" placeholder="Group Name">
@@ -42,6 +60,7 @@
                             <button type="submit" class="btn btn-default">Submit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         </form>
+
 
                     </div>
                     <!-- /.panel -->
