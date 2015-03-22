@@ -5,6 +5,8 @@
  */
 package admin.controller.course;
 
+import dao.CourseDao;
+import hibernate.DAOFactory;
 import java.io.IOException;
 import java.util.List;
 import java.util.Vector;
@@ -21,21 +23,18 @@ import pojo.Course;
  */
 @WebServlet(urlPatterns = {"/admin/course"})
 public class CourseListView extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-         List<Course> courses = new Vector<Course>();
 
-        Course g = new Course();
-        g.setName("First Course");
-        courses.add(g);
+        List<Course> courses = new Vector<Course>();
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        CourseDao courseDao = daoFactory.getCourseDAO();
 
-        Course g2 = new Course();
-        g2.setName("sec Course");
-        courses.add(g2);
+        courses = courseDao.findAll();
 
         request.setAttribute("courses", courses);
         request.getRequestDispatcher("/admin/view/course/course_list.jsp").forward(request, response);

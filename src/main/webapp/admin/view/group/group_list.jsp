@@ -59,7 +59,13 @@
                                                                 <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                             </form>
                                                         </td>
-
+                                                        
+                                                        <td>
+                                                            <form action="${pageContext.request.contextPath}/admin/course" method="get">
+                                                                <button type="submit" class="btn btn-outline btn-primary">Course List</button>
+                                                            </form>
+                                                        </td>
+                                                        
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
