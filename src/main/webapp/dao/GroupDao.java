@@ -17,6 +17,5 @@ import pojo.MyGroup;
  * please use XXXHibernateDao
  */
 public interface GroupDao extends GenericDAO <MyGroup, Long>{
-    
-    public List<MyGroup> getTrainees(MyGroup g);
+
 }

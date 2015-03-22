@@ -18,8 +18,5 @@ import pojo.MyGroup;
  * @author root
  */
 public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Long> implements GroupDao{
-    public List<MyGroup> getTrainees(MyGroup g){
-        return (List<MyGroup>) getSession().createQuery("from Group ").list();
-        
-    }
+
 }

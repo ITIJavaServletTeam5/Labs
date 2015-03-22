@@ -45,7 +45,7 @@
                                             <td>${trainee.username}</td>
                                             <td>${trainee.email}</td>
                                             <td>
-                                                <form action="${pageContext.request.contextPath}/admin/trainee/edit?email=${trainee.email}" method="get">
+                                                <form action="${pageContext.request.contextPath}/admin/trainee/edit?email=${trainee.id}" method="get">
                                                     <button type="submit" class="btn btn-primary" name=""
                                                             id="${trainee.id}">Edit
                                                     </button>
