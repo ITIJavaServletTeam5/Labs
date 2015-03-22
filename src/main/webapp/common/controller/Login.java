@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/login")
+@WebServlet(name = "Login", urlPatterns = "/login")
 public class Login extends HttpServlet {
 
 

@@ -24,8 +24,8 @@ public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Long> impl
 
     @Override
     public Trainee findByEmail(String email) {
-        Query query = getSession().createQuery("from Trainee where email = :email");
-        query.setEntity("email", email);
+        Query query = getSession().createQuery("from Trainee where email = ?");
+        query.setString(0, email);
 
         return (Trainee) query.uniqueResult();
     }

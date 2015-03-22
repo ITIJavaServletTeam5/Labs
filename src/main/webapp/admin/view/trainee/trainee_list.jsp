@@ -45,18 +45,18 @@
                                             <td>${trainee.username}</td>
                                             <td>${trainee.email}</td>
                                             <td>
-                                                <form action="${pageContext.request.contextPath}/admin/trainee/edit?email=${trainee.id}" method="get">
+                                                <a href="${pageContext.request.contextPath}/admin/trainee/edit?id=${trainee.id}">
                                                     <button type="submit" class="btn btn-primary" name=""
                                                             id="${trainee.id}">Edit
                                                     </button>
-                                                </form>
+                                                </a>
                                             </td>
                                             <td>
-                                                <form action="${pageContext.request.contextPath}/admin/trainee/deactivate" method="post">
+                                                <a href="${pageContext.request.contextPath}/admin/trainee/deactivate?id=${trainee.id}">
                                                     <button type="submit" class="btn btn-danger"
                                                             id="${trainee.id}">Deactivate
                                                     </button>
-                                                </form>
+                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>

@@ -44,6 +44,7 @@
     <div class="row">
         <div class="col-lg-12">
             <form role="form" method="post" action="${pageContext.request.contextPath}/admin/trainee/edit">
+                <input hidden="hidden" name="id" value="${requestScope.trainee.id}">
                 <div class="form-group">
                     <label>Username</label>
                     <input name="username" value="${requestScope.trainee.username}" class="form-control" placeholder="Username" required="">
@@ -54,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input name="password" type="text" value="123456" class="form-control" placeholder="Password"
+                    <input name="password" type="text" value="${requestScope.trainee.password}" class="form-control" placeholder="Password"
                            required="">
 
                     <p class="help-block">this is not the real trainee's password, editing this trainee will have you change his password</p>
