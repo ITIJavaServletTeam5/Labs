@@ -5,17 +5,15 @@
  */
 package admin.controller.group;
 
-import dao.CourseDao;
 import dao.GroupDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pojo.Group;
+import pojo.MyGroup;
 
 /**
  *
@@ -25,17 +23,17 @@ import pojo.Group;
 public class CreateGroup extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        Group group = new Group();
-        group.setName(request.getParameter("groupname"));
-        group.setDescription(request.getParameter("description"));
+        MyGroup myGroup = new MyGroup();
+        myGroup.setName(request.getParameter("groupname"));
+        myGroup.setDescription(request.getParameter("description"));
         
-        group.setActivated(true);
+        myGroup.setActivated(true);
 
         // persist this group
         
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         GroupDao groupDao = daoFactory.getGroupDAO();
-        groupDao.makePersistent(group);
+        groupDao.makePersistent(myGroup);
  
     }
 

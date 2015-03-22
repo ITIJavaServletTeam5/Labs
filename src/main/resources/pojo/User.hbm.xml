@@ -48,7 +48,7 @@
                 <key>
                     <column name="trainee_id" not-null="true" />
                 </key>
-                <many-to-many entity-name="pojo.Group">
+                <many-to-many entity-name="pojo.MyGroup">
                     <column name="group_id" not-null="true" />
                 </many-to-many>
             </set>

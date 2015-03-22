@@ -1,5 +1,7 @@
 package admin.controller.trainee;
 
+import dao.TraineeDao;
+import hibernate.DAOFactory;
 import pojo.Trainee;
 
 import javax.servlet.ServletException;
@@ -22,11 +24,9 @@ public class TraineeListView extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Trainee> trainees = new Vector<Trainee>();
-        Trainee t1 = new Trainee();
-        t1.setUsername("sharno");
-        t1.setEmail("sharnoby3@gmail.com");
-        trainees.add(t1);
+
+        TraineeDao traineeDao = DAOFactory.instance(DAOFactory.HIBERNATE).getTraineeDAO();
+        List<Trainee> trainees = traineeDao.findByAllActivated();
 
         request.setAttribute("trainees", trainees);
         getServletContext().getRequestDispatcher("/admin/view/trainee/trainee_list.jsp").forward(request, response);

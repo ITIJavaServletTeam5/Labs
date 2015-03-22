@@ -7,6 +7,7 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.Query;
 import pojo.Assignment;
@@ -27,5 +28,17 @@ public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Long> impl
         query.setEntity("email", email);
 
         return (Trainee) query.uniqueResult();
+    }
+
+    @Override
+    public List<Trainee> findByAllActivated() {
+        Query query = getSession().createQuery("from Trainee where activated = true ");
+        return (List<Trainee>) query.list();
+    }
+
+    @Override
+    public List<Trainee> findAllDeactivated() {
+        Query query = getSession().createQuery("from Trainee where activated = false ");
+        return (List<Trainee>) query.list();
     }
 }

@@ -6,12 +6,10 @@
 package dao;
 
 import hibernate.GenericHibernateDAO;
-import java.io.Serializable;
+
 import java.util.List;
-import pojo.Assignment;
-import pojo.AssignmentId;
-import pojo.Group;
-import pojo.Trainee;
+
+import pojo.MyGroup;
 
 /**
  *this class is made for customized queries
@@ -19,9 +17,9 @@ import pojo.Trainee;
  * 
  * @author root
  */
-public class GroupHibernateDao extends GenericHibernateDAO<Group, Long> implements GroupDao{
-    public List<Group> getTrainees(Group g){
-        return (List<Group>) getSession().createQuery("from Group ").list();
+public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Long> implements GroupDao{
+    public List<MyGroup> getTrainees(MyGroup g){
+        return (List<MyGroup>) getSession().createQuery("from Group ").list();
         
     }
 }

@@ -14,7 +14,7 @@
     <mapping resource="pojo/Deliveryqueue.hbm.xml"/>
     <mapping resource="pojo/Assistancequeue.hbm.xml"/>
     <mapping resource="pojo/Course.hbm.xml"/>
-    <mapping resource="pojo/Group.hbm.xml"/>
+    <mapping resource="pojo/MyGroup.hbm.xml"/>
     <mapping resource="pojo/Assignment.hbm.xml"/>
     <mapping resource="pojo/User.hbm.xml"/>
     <mapping resource="pojo/Lab.hbm.xml"/>

@@ -14,7 +14,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Tables</h1>
+            <h1 class="page-header">Trainees</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -22,15 +22,15 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    Trainees
-                </div>
+                <%--<div class="panel-heading">--%>
+                    <%--Trainees--%>
+                <%--</div>--%>
                 <c:choose>
                     <c:when test="${not empty requestScope.trainees}">
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-striped table-bordered table-hover" id="traineesTable">
                                     <thead>
                                     <tr>
                                         <th>Username</th>
@@ -45,16 +45,16 @@
                                             <td>${trainee.username}</td>
                                             <td>${trainee.email}</td>
                                             <td>
-                                                <form action="${pageContext.request.contextPath}/admin/trainee/edit" method="get">
-                                                    <button type="submit" class="btn btn-primary"
-                                                            id="trainee${trainee.id}">Edit
+                                                <form action="${pageContext.request.contextPath}/admin/trainee/edit?email=${trainee.email}" method="get">
+                                                    <button type="submit" class="btn btn-primary" name=""
+                                                            id="${trainee.id}">Edit
                                                     </button>
                                                 </form>
                                             </td>
                                             <td>
                                                 <form action="${pageContext.request.contextPath}/admin/trainee/deactivate" method="post">
                                                     <button type="submit" class="btn btn-danger"
-                                                            id="trainee${trainee.id}">Deactivate
+                                                            id="${trainee.id}">Deactivate
                                                     </button>
                                                 </form>
                                             </td>
@@ -84,6 +84,16 @@
     <!--/ .row-->
 </div>
 
+
+
 <jsp:include page="/common/view/scripts.jsp" />
+<!-- data table script -->
+<script>
+    $(document).ready(function() {
+        $('#traineesTable').DataTable({
+            responsive: true
+        });
+    });
+</script>
 </body>
 </html>
