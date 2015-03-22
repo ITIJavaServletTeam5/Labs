@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="wrapper">
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -235,16 +236,16 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-
+                    <c:forEach items="${requestScope.courses}" var="course">
                     <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Group1<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> <c:out value="${course.name}" /><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-
-                            <li>
+                            <c:forEach items="${course.labs}" var="lab">
+<!--                            <li>
                                 <a href="#">Course1 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
+                                <ul class="nav nav-third-level">-->
                                     <li>
-                                        <a href="#">Lab <span class="fa arrow"></span></a>
+                                        <a href="#"><c:out value="${lab.name}" /> <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
                                                 <a href="Assignments.html">Assignments</a>
@@ -253,15 +254,15 @@
 
                                         </ul>
                                     </li>
-
-                                </ul>
-                                <!-- /.nav-third-level -->
-                            </li>
-
+                                    </c:forEach>
+<!--                                </ul>
+                                 /.nav-third-level 
+                            </li>-->
+<!--
                             <li>
                                 <a href="#">Course2 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
+                                <ul class="nav nav-third-level">-->
+<!--                                    <li>
                                         <a href="#">Lab <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
@@ -270,16 +271,16 @@
                                             </li>
 
                                         </ul>
-                                    </li>
+                                    </li>-->
 
-                                </ul>
-                                <!-- /.nav-third-level -->
-                            </li>
+<!--                                </ul>
+                                 /.nav-third-level 
+                            </li>-->
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-
-                    <li>
+                    </c:forEach>
+<!--                    <li>
                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> Group2<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
 
@@ -298,7 +299,7 @@
                                     </li>
 
                                 </ul>
-                                <!-- /.nav-third-level -->
+                                 /.nav-third-level 
                             </li>
 
                             <li>
@@ -316,11 +317,11 @@
                                     </li>
 
                                 </ul>
-                                <!-- /.nav-third-level -->
+                                 /.nav-third-level 
                             </li>
                         </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
+                         /.nav-second-level 
+                    </li>-->
 
                 </ul>
             </div>
