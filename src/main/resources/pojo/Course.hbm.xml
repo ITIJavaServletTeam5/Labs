@@ -8,7 +8,7 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="group" class="pojo.Group" fetch="select">
+        <many-to-one name="myGroup" class="pojo.MyGroup" fetch="select">
             <column name="group_id" />
         </many-to-one>
         <property name="name" type="string">

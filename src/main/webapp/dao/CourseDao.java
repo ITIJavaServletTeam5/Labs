@@ -7,6 +7,7 @@ package dao;
 
 import hibernate.GenericDAO;
 import pojo.Course;
+import pojo.MyGroup;
 
 /**
  *
@@ -16,5 +17,6 @@ import pojo.Course;
  * please use XXXHibernateDao
  */
 public interface CourseDao extends GenericDAO <Course, Long>{
-    
+    public Course findByName (String name);
+    public Course findCourseByNameAndGroupName(String courseName,MyGroup group);
 }

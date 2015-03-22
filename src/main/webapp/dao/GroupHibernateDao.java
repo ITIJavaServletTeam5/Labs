@@ -6,22 +6,26 @@
 package dao;
 
 import hibernate.GenericHibernateDAO;
-import java.io.Serializable;
+
 import java.util.List;
-import pojo.Assignment;
-import pojo.AssignmentId;
-import pojo.Group;
-import pojo.Trainee;
+import org.hibernate.Query;
+
+import pojo.MyGroup;
 
 /**
- *this class is made for customized queries
- * Each one is free to add his own queries here
- * 
+ * this class is made for customized queries Each one is free to add his own
+ * queries here
+ *
  * @author root
  */
-public class GroupHibernateDao extends GenericHibernateDAO<Group, Long> implements GroupDao{
-    public List<Group> getTrainees(Group g){
-        return (List<Group>) getSession().createQuery("from Group ").list();
-        
+public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Long> implements GroupDao {
+
+    @Override
+    public MyGroup findByName(String name) {
+        Query query = getSession().createQuery("from MyGroup where name = :name");
+        query.setString("name", name);
+        query.setMaxResults(1);
+        return (MyGroup) query.uniqueResult();
     }
+
 }

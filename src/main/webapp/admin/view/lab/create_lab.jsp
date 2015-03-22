@@ -15,6 +15,8 @@
     <body>
         <jsp:include page="/admin/view/common/top_and_navigation.jsp" />
 
+
+
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-6">
@@ -23,19 +25,49 @@
                 <!-- /.col-lg-12 -->
             </div>
 
+            <div class="row">
+                <c:choose>
+                    <c:when test="${requestScope.created}">
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Course has been created successfully.
+                        </div>
+                    </c:when>
+
+                    <c:when test="${requestScope.nameError}">
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            There's an Error , the lab name must not be duplicated in the same course
+                        </div>
+                    </c:when>
+                </c:choose>
+            </div>
+
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
 
                         <form role="form" method="post" action="${pageContext.request.contextPath}/admin/lab/create">
+
+                            <div class="form-group">
+                                <label>Course Name</label>
+                                <select class="form-control" name="courseSelected">
+
+                                    <c:forEach items="${requestScope.course}" var="course">
+                                        <option>${course.name}</option>
+                                    </c:forEach>
+
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label>Lab Name</label>
-                                <input class="form-control" placeholder="Lab Name">
+                                <input class="form-control" name="labname" placeholder="Lab Name">
                             </div>
-                            <div class="form-group">
-                                <label>Lab Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
+                            <!--  <div class="form-group">
+                                  <label>Lab Description</label>
+                                  <textarea class="form-control" rows="3" name="labdescription"></textarea>
+                              </div>-->
                             <div class="form-group">
 
                             </div>

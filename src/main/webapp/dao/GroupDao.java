@@ -7,8 +7,7 @@ package dao;
 
 import hibernate.GenericDAO;
 import java.util.List;
-import pojo.Group;
-import pojo.Trainee;
+import pojo.MyGroup;
 
 /**
  *
@@ -17,7 +16,6 @@ import pojo.Trainee;
  * if anyone wants to add his own customized quarry 
  * please use XXXHibernateDao
  */
-public interface GroupDao extends GenericDAO <Group , Long>{
-    
-    public List<Group> getTrainees(Group g);
+public interface GroupDao extends GenericDAO <MyGroup, Long>{
+    public MyGroup findByName (String name);
 }

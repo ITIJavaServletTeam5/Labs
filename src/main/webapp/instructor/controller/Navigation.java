@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Course;
-import pojo.Group;
+import pojo.MyGroup;
 import pojo.Instructor;
 import pojo.Lab;
 
@@ -46,7 +46,7 @@ public class Navigation extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
             InstructorDao ihd = daof.getInstructorDAO();
-            Instructor i = ihd.findById(new Integer(1), true);
+            Instructor i = ihd.findById(new Long(1), true);
             System.out.println(i.getEmail());
             //build the list of lists to be viewed
             Set<Course> courses = new LinkedHashSet<Course>();

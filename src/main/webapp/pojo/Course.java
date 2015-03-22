@@ -12,7 +12,7 @@ public class Course  implements java.io.Serializable {
 
 
      private Integer id;
-     private Group group;
+     private MyGroup myGroup;
      private String name;
      private String description;
      private Boolean activated;
@@ -22,8 +22,8 @@ public class Course  implements java.io.Serializable {
     public Course() {
     }
 
-    public Course(Group group, String name, String description, Boolean activated, Set instructors, Set labs) {
-       this.group = group;
+    public Course(MyGroup myGroup, String name, String description, Boolean activated, Set instructors, Set labs) {
+       this.myGroup = myGroup;
        this.name = name;
        this.description = description;
        this.activated = activated;
@@ -38,12 +38,12 @@ public class Course  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Group getGroup() {
-        return this.group;
+    public MyGroup getMyGroup() {
+        return this.myGroup;
     }
     
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setMyGroup(MyGroup myGroup) {
+        this.myGroup = myGroup;
     }
     public String getName() {
         return this.name;

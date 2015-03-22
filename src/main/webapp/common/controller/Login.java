@@ -17,28 +17,35 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/login")
+@WebServlet(name = "Login", urlPatterns = "/login")
 public class Login extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        System.out.println("Get Method");
         if (session.getAttribute("loggedin") == null) {
             request.getRequestDispatcher("/common/view/login.jsp").forward(request, response);
-        } else {
+        } 
+        else {
             User user = (User) request.getSession().getAttribute("user");
-//            switch (user.getRole()) {
-//                case "TRAINEE":
+           // System.out.println(user.getRole());
+            switch (user.getRole()) {
+                case "TRAINEE":
+                     System.out.println(user.getRole()+"***");
+                    // request.getRequestDispatcher("/admin/trainee").forward(request, response);
+                    // getServletContext().getRequestDispatcher("/admin/trainee").forward(request, response);
                     response.sendRedirect(request.getContextPath() + "/admin/trainee");
-//                    break;
-//                case "INSTRUCTOR":
-//                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
-//                    break;
-//                case "ADMIN":
-//                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
-//                    break;
-//            }
+                    break;
+                case "INSTRUCTOR":
+                    
+                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
+                    break;
+                case "ADMIN":
+                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
+                    break;
+            }
         }
     }
 
@@ -62,6 +69,7 @@ public class Login extends HttpServlet {
 
             session.setAttribute("user", foundUser);
             session.setAttribute("loggedin", true);
+            System.out.println("PostMethod");
 
             doGet(request, response);
 

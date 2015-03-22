@@ -8,6 +8,8 @@ package dao;
 import hibernate.GenericDAO;
 import pojo.Trainee;
 
+import java.util.List;
+
 /**
  *
  * @author root this interface no one allowed to add any code to if anyone wants
@@ -15,4 +17,8 @@ import pojo.Trainee;
  */
 public interface TraineeDao extends GenericDAO<Trainee, Integer> {
     public Trainee findByEmail (String email);
+
+    public List<Trainee> findByAllActivated ();
+
+    public List<Trainee> findAllDeactivated ();
 }

@@ -5,17 +5,15 @@
  */
 package admin.controller.group;
 
-import dao.CourseDao;
 import dao.GroupDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pojo.Group;
+import pojo.MyGroup;
 
 /**
  *
@@ -23,25 +21,34 @@ import pojo.Group;
  */
 @WebServlet(urlPatterns = {"/admin/group/create"})
 public class CreateGroup extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        Group group = new Group();
-        group.setName(request.getParameter("groupname"));
-        group.setDescription(request.getParameter("description"));
-        
-        group.setActivated(true);
+
+        String name = request.getParameter("groupname");
+
+        MyGroup myGroup = new MyGroup();
+        myGroup.setName(request.getParameter("groupname"));
+        myGroup.setDescription(request.getParameter("description"));
+        myGroup.setActivated(true);
 
         // persist this group
-        
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         GroupDao groupDao = daoFactory.getGroupDAO();
-        groupDao.makePersistent(group);
- 
+
+        if (groupDao.findByName(name) == null) {
+            request.setAttribute("created", true);
+            groupDao.makePersistent(myGroup);
+        } else {
+            request.setAttribute("nameError", true);
+        }
+
+        getServletContext().getRequestDispatcher("/admin/view/group/create_group.jsp").forward(request, response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     
+
         getServletContext().getRequestDispatcher("/admin/view/group/create_group.jsp").forward(request, response);
-        
+
     }
 }

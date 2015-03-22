@@ -9,44 +9,44 @@
 
     <!--Servlets-->
     
-<!--        Assignments_Staff
-    <servlet>
-        <servlet-name>instructor.controller.Assignments</servlet-name>
-        <servlet-class>instructor.controller.AssignmentsDownload</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>instructor.controller.Assignments</servlet-name>
-        <url-pattern>/instructor/view/Assignments</url-pattern>
-    </servlet-mapping>-->
-    
-    <!--Queues_Staff-->
-<!--    <servlet>
-        <servlet-name>instructor.controller.QueuesList</servlet-name>
-        <servlet-class>instructor.controller.QueuesList</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>instructor.controller.QueuesList</servlet-name>
-        <url-pattern>/instructor/view/QueuesList</url-pattern>
-    </servlet-mapping>-->
+        <!--Assignments_Staff-->
+    <!--<servlet>-->
+        <!--<servlet-name>instructor.controller.Assignments</servlet-name>-->
+        <!--<servlet-class>instructor.controller.AssignmentsDownload</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>instructor.controller.Assignments</servlet-name>-->
+        <!--<url-pattern>/instructor/view/Assignments</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!---->
+    <!--&lt;!&ndash;Queues_Staff&ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>instructor.controller.QueuesList</servlet-name>-->
+        <!--<servlet-class>instructor.controller.QueuesList</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>instructor.controller.QueuesList</servlet-name>-->
+        <!--<url-pattern>/instructor/view/QueuesList</url-pattern>-->
+    <!--</servlet-mapping>-->
 
 
     <!--Common-->
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>common.controller.Login</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>Logout</servlet-name>
-        <servlet-class>common.controller.Logout</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Logout</servlet-name>
-        <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>Login</servlet-name>-->
+        <!--<servlet-class>common.controller.Login</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>Login</servlet-name>-->
+        <!--<url-pattern>/Login</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet>-->
+        <!--<servlet-name>Logout</servlet-name>-->
+        <!--<servlet-class>common.controller.Logout</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>Logout</servlet-name>-->
+        <!--<url-pattern>/logout</url-pattern>-->
+    <!--</servlet-mapping>-->
 
 
     <!--Filters-->
@@ -58,10 +58,4 @@
         <filter-name>SessionRequestFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-
-    <!--Welcome-->
-    <welcome-file-list>
-        <welcome-file>Login</welcome-file>
-    </welcome-file-list>
 </web-app>

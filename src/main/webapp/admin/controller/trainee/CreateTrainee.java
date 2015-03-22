@@ -32,7 +32,7 @@ public class CreateTrainee extends HttpServlet {
 
         TraineeDao traineeDao = DAOFactory.instance(DAOFactory.HIBERNATE).getTraineeDAO();
 
-        if (traineeDao.findByEmail(email) == null) {
+        if (traineeDao.findByEmail(email) != null) {
             request.setAttribute("emailError", true);
         } else {
             traineeDao.makePersistent(trainee);

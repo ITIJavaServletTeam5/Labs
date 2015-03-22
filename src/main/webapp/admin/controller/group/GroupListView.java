@@ -14,7 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pojo.Group;
+import pojo.MyGroup;
 
 /**
  *
@@ -31,20 +31,12 @@ public class GroupListView extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Group> groups = new Vector<Group>();
+        List<MyGroup> myGroups = new Vector<MyGroup>();
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         GroupDao groupDao = daoFactory.getGroupDAO();
-       groups= groupDao.findAll();
+        myGroups = groupDao.findAll();
 
-     /*   Group g = new Group();
-        g.setName("First Group");
-        groups.add(g);
-
-        Group g2 = new Group();
-        g2.setName("sec Group");
-        groups.add(g2);*/
-
-        request.setAttribute("groups", groups);
+        request.setAttribute("groups", myGroups);
         getServletContext().getRequestDispatcher("/admin/view/group/group_list.jsp").forward(request, response);
     }
 
