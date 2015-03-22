@@ -17,5 +17,5 @@ import pojo.MyGroup;
  * please use XXXHibernateDao
  */
 public interface GroupDao extends GenericDAO <MyGroup, Long>{
-
+    public MyGroup findByName (String name);
 }
