@@ -7,6 +7,7 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+import java.util.List;
 import pojo.Assignment;
 import pojo.AssignmentId;
 import pojo.Assistancequeue;
@@ -19,5 +20,9 @@ import pojo.AssistancequeueId;
  * @author root
  */
 public class AssistancequeueHibernateDao extends GenericHibernateDAO<Assistancequeue, AssistancequeueId> implements AssistancequeueDao{
+
+    public List<Assistancequeue> getTrainees(Assistancequeue g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

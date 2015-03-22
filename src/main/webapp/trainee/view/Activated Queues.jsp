@@ -85,7 +85,7 @@
                                 <form action="/CreateTrainee.jsp" method="get">
                                     <button type="submit" class="btn btn-success">Create Trainee</button>
                                 </form>
-                            </div>
+                            </div> 
                         </div>
                         <!-- /.panel-body -->
                     </c:when>
@@ -100,7 +100,7 @@
                                         <tr>
                                             <th>Order</th>
                                             <th>First Name</th>
-                                            <th>Last Name</th>
+                                            
                                            
                                         </tr>
                                     </thead>
@@ -108,7 +108,7 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Mark</td>
-                                            <td>Otto</td>
+                                           
                                            
                                         </tr>
                                         <tr>
