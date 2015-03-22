@@ -24,7 +24,7 @@ import pojo.Assistancequeue;
  * @author engy
  */
 //@WebServlet(name = "QueuesList", urlPatterns = {"/QueuesList"})
-@WebServlet(urlPatterns = {"/instructor/view/QueuesList"})
+@WebServlet(name = "QueuesList", urlPatterns = {"/instructor/view/QueuesList"})
 public class QueuesList extends HttpServlet {
 
     
