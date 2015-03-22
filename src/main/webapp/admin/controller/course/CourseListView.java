@@ -6,6 +6,7 @@
 package admin.controller.course;
 
 import dao.CourseDao;
+import dao.GroupDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Course;
+import pojo.MyGroup;
 
 /**
  *
@@ -30,13 +32,27 @@ public class CourseListView extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Course> courses = new Vector<Course>();
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         CourseDao courseDao = daoFactory.getCourseDAO();
+        GroupDao groupDao = daoFactory.getGroupDAO();
 
-        courses = courseDao.findAll();
+        List<Course> courses = new Vector<>();
+        int groupId = Integer.parseInt(request.getParameter("id"));
+        
+        MyGroup mygroup = groupDao.findById(groupId);
+        
+        courses = courseDao.findCoursesByGroup(mygroup);
 
         request.setAttribute("courses", courses);
         request.getRequestDispatcher("/admin/view/course/course_list.jsp").forward(request, response);
+    }
+
+    public List<Course> getCourseList() {
+        List<Course> courses = new Vector<Course>();
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        CourseDao courseDao = daoFactory.getCourseDAO();
+        courses = courseDao.findAll();
+
+        return courses;
     }
 }

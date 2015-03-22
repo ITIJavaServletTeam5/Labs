@@ -28,4 +28,12 @@ public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Long> implem
         return (MyGroup) query.uniqueResult();
     }
 
+    @Override
+    public MyGroup findById(int id) {
+        Query query = getSession().createQuery("from MyGroup where id = :id");
+        query.setInteger("id", id);
+        query.setMaxResults(1);
+        return (MyGroup) query.uniqueResult();
+    }
+
 }

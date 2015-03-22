@@ -59,13 +59,14 @@
                                                                 <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                             </form>
                                                         </td>
-                                                        
+
                                                         <td>
-                                                            <form action="${pageContext.request.contextPath}/admin/course" method="get">
-                                                                <button type="submit" class="btn btn-outline btn-primary">Course List</button>
-                                                            </form>
+                                                            <a href="${pageContext.request.contextPath}/admin/course?id=${groups.id}">
+                                                                <button type="submit" class="btn btn-outline btn-primary" id="${groups.id}">Course List
+                                                                </button>
+                                                            </a>
                                                         </td>
-                                                        
+
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -81,7 +82,10 @@
                                 <!-- /.panel-body -->
                             </c:when>
                             <c:otherwise>
-                                <div>There's no groups to display</div>
+                                <div class="alert alert-info alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                      No Groups had been added yet
+                                </div>
                             </c:otherwise>
                         </c:choose>
 
