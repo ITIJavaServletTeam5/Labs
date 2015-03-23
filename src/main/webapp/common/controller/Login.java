@@ -69,6 +69,7 @@ public class Login extends HttpServlet {
 
             session.setAttribute("user", foundUser);
             session.setAttribute("loggedin", true);
+            session.setMaxInactiveInterval(60 * 60);
             System.out.println("PostMethod");
 
             doGet(request, response);

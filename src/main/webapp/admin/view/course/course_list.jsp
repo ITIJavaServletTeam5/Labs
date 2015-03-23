@@ -20,7 +20,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Groups</h1>
+                    <h1 class="page-header">Course</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -30,6 +30,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Activated Course List
+
                         </div>
 
                         <c:choose>
@@ -61,6 +62,13 @@
                                                                 <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                             </form>
                                                         </td>
+                                                        <td>
+                                                            <a href="${pageContext.request.contextPath}/admin/lab?id=${courses.id}">
+                                                                <button type="submit" class="btn btn-outline btn-primary" id="${courses.id}">Lab List
+                                                                </button>
+                                                            </a>
+                                                        </td>
+
 
                                                     </tr>
                                                 </c:forEach>
@@ -77,7 +85,10 @@
                                 <!-- /.panel-body -->
                             </c:when>
                             <c:otherwise>
-                                <div>There's no labs to display</div>
+                                <div class="alert alert-info alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                      No Course had been added yet
+                                </div>
                             </c:otherwise>
                         </c:choose>
 

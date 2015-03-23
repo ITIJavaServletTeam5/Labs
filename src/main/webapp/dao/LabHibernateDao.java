@@ -7,6 +7,7 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+import java.util.List;
 import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
@@ -28,6 +29,13 @@ public class LabHibernateDao extends GenericHibernateDAO<Lab, Long> implements L
         query.setEntity("course", course);
         query.setMaxResults(1);
         return (Lab) query.uniqueResult();
+    }
+
+    @Override
+    public List<Lab> findlabsByCoursesByGroup(Course course) {
+         Query query = getSession().createQuery("from Lab where course= :course");
+        query.setEntity("course", course);
+        return query.list();
     }
 
 }

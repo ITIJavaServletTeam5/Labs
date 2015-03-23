@@ -39,7 +39,7 @@ public class CreateTrainee extends HttpServlet {
             request.setAttribute("created", true);
         }
 
-        // redirect the user
+        // redirect to create page again
         doGet(request, response);
     }
 

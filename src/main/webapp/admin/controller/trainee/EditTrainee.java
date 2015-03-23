@@ -21,19 +21,21 @@ public class EditTrainee extends HttpServlet {
         String password = request.getParameter("password");
 //        String email = request.getParameter("email");
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        Long id = Long.parseLong(request.getParameter("id"));
         TraineeDao traineeDao = DAOFactory.instance(DAOFactory.HIBERNATE).getTraineeDAO();
-        Trainee trainee = traineeDao.findById((long) id, false);
+        Trainee trainee = traineeDao.findById( id, false);
 
 //        trainee.setEmail(email);
         trainee.setPassword(password);
         trainee.setUsername(username);
 
         traineeDao.makePersistent(trainee);
+
+        response.sendRedirect(request.getContextPath() + "/admin/trainee");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        long id = Long.parseLong(request.getParameter("id"));
+        Long id = Long.parseLong(request.getParameter("id"));
 
         TraineeDao traineeDao = DAOFactory.instance(DAOFactory.HIBERNATE).getTraineeDAO();
         Trainee trainee = traineeDao.findById(id, false);

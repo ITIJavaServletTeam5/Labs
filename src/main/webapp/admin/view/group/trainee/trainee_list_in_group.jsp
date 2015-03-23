@@ -5,11 +5,11 @@
 
 <html>
 <head>
-    <jsp:include page="/common/view/head.jsp"/>
-    <title>Create Trainee</title>
+    <jsp:include page="/common/view/head.jsp" />
+    <title>Trainees in group</title>
 </head>
 <body>
-<jsp:include page="/admin/view/common/top_and_navigation.jsp"/>
+<jsp:include page="/admin/view/common/top_and_navigation.jsp" />
 
 <div id="page-wrapper">
     <div class="row">
@@ -23,7 +23,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <%--<div class="panel-heading">--%>
-                <%--Trainees--%>
+                    <%--Trainees--%>
                 <%--</div>--%>
                 <c:choose>
                     <c:when test="${not empty requestScope.trainees}">
@@ -64,7 +64,11 @@
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
-
+                            <div class="col-lg-3 col-lg-offset-9">
+                                <form action="${pageContext.request.contextPath}/admin/trainee/create" method="get">
+                                    <button type="submit" class="btn btn-success">Create Trainee</button>
+                                </form>
+                            </div>
                         </div>
                         <!-- /.panel-body -->
                     </c:when>
@@ -72,11 +76,6 @@
                         <div>There's no trainees to display</div>
                     </c:otherwise>
                 </c:choose>
-                <div class="col-lg-3 col-lg-offset-9">
-                    <form action="${pageContext.request.contextPath}/admin/trainee/create" method="get">
-                        <button type="submit" class="btn btn-success">Create Trainee</button>
-                    </form>
-                </div>
             </div>
             <!-- /.panel -->
         </div>
@@ -86,10 +85,11 @@
 </div>
 
 
-<jsp:include page="/common/view/scripts.jsp"/>
+
+<jsp:include page="/common/view/scripts.jsp" />
 <!-- data table script -->
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#traineesTable').DataTable({
             responsive: true
         });

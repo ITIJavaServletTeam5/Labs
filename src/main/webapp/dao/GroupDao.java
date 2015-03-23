@@ -18,4 +18,5 @@ import pojo.MyGroup;
  */
 public interface GroupDao extends GenericDAO <MyGroup, Long>{
     public MyGroup findByName (String name);
+    public MyGroup findById(Long id);
 }
