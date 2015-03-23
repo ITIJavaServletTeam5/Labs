@@ -18,6 +18,6 @@ import pojo.User;
  * 
  * @author root
  */
-public class UserHibernateDao extends GenericHibernateDAO<User, Integer> implements UserDao{
+public class UserHibernateDao extends GenericHibernateDAO<User, Long> implements UserDao{
     
 }

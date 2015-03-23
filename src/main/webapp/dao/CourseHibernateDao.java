@@ -20,7 +20,7 @@ import pojo.MyGroup;
  *
  * @author root
  */
-public class CourseHibernateDao extends GenericHibernateDAO<Course, Integer> implements CourseDao {
+public class CourseHibernateDao extends GenericHibernateDAO<Course, Long> implements CourseDao {
 
     @Override
     public Course findCourseByNameAndGroupName(String courseName, MyGroup group) {

@@ -18,7 +18,7 @@ import pojo.MyGroup;
  *
  * @author root
  */
-public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Integer> implements GroupDao {
+public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Long> implements GroupDao {
 
     @Override
     public MyGroup findByName(String name) {
@@ -29,9 +29,9 @@ public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Integer> imp
     }
 
     @Override
-    public MyGroup findById(int id) {
+    public MyGroup findById(Long id) {
         Query query = getSession().createQuery("from MyGroup where id = :id");
-        query.setInteger("id", id);
+        query.setLong("id", id);
         query.setMaxResults(1);
         return (MyGroup) query.uniqueResult();
     }

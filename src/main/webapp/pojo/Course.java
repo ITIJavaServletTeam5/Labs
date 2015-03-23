@@ -11,7 +11,7 @@ import java.util.Set;
 public class Course  implements java.io.Serializable {
 
 
-     private Integer id;
+     private Long id;
      private MyGroup myGroup;
      private String name;
      private String description;
@@ -29,11 +29,11 @@ public class Course  implements java.io.Serializable {
        this.labs = labs;
     }
    
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public MyGroup getMyGroup() {
