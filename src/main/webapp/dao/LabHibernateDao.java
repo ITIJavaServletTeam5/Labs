@@ -20,7 +20,7 @@ import pojo.Lab;
  *
  * @author root
  */
-public class LabHibernateDao extends GenericHibernateDAO<Lab, Long> implements LabDao {
+public class LabHibernateDao extends GenericHibernateDAO<Lab, Integer> implements LabDao {
 
     @Override
     public Lab findLabByNameAndCourseName(String labName, Course course) {

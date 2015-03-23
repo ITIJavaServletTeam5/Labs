@@ -18,7 +18,7 @@ import pojo.MyGroup;
  *
  * @author root
  */
-public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Long> implements GroupDao {
+public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Integer> implements GroupDao {
 
     @Override
     public MyGroup findByName(String name) {

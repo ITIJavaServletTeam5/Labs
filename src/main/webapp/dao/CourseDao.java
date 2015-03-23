@@ -15,7 +15,7 @@ import pojo.MyGroup;
  * @author root this interface no one allowed to add any code to if anyone wants
  * to add his own customized quarry please use XXXHibernateDao
  */
-public interface CourseDao extends GenericDAO<Course, Long> {
+public interface CourseDao extends GenericDAO<Course, Integer> {
 
     public Course findByName(String name);
 
