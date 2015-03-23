@@ -16,6 +16,7 @@ import pojo.MyGroup;
  * if anyone wants to add his own customized quarry 
  * please use XXXHibernateDao
  */
-public interface GroupDao extends GenericDAO <MyGroup, Long>{
+public interface GroupDao extends GenericDAO <MyGroup, Integer>{
     public MyGroup findByName (String name);
+    public MyGroup findById(int id);
 }

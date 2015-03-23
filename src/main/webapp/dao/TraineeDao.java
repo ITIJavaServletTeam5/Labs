@@ -16,7 +16,7 @@ import java.util.List;
  * @author root this interface no one allowed to add any code to if anyone wants
  * to add his own customized quarry please use XXXHibernateDao
  */
-public interface TraineeDao extends GenericDAO<Trainee, Long> {
+public interface TraineeDao extends GenericDAO<Trainee, Integer> {
     public Trainee findByEmail (String email);
 
     public List<Trainee> findByAllActivated ();

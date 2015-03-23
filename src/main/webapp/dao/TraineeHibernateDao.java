@@ -21,7 +21,7 @@ import pojo.Trainee;
  * 
  * @author root
  */
-public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Long> implements TraineeDao{
+public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Integer> implements TraineeDao{
 
     @Override
     public Trainee findByEmail(String email) {

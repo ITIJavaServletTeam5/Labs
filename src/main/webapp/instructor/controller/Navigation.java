@@ -42,8 +42,8 @@ public class Navigation extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            /* TODO output your page here. You may use following sample code. */
+//        try {
+//            /* TODO output your page here. You may use following sample code. */
 //            DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
 //            InstructorDao ihd = daof.getInstructorDAO();
 //            Instructor i = ihd.findById(new Long(1), true);
@@ -66,16 +66,16 @@ public class Navigation extends HttpServlet {
 //                //finally add the course to the render list
 //                courses.add((Course)course);
 //            }
-//
-//
+//            
+//            
 //            request.setAttribute("courses", courses);
-            
-//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/instructor/view/common/navigation.jsp");
-//            rd.forward(request, response);
-            
-        } finally {
-            
-        }
+//            
+////            RequestDispatcher rd = getServletContext().getRequestDispatcher("/instructor/view/common/navigation.jsp");
+////            rd.forward(request, response);
+//            
+//        } finally {
+//            
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

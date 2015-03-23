@@ -17,7 +17,7 @@ import java.util.List;
  * if anyone wants to add his own customized quarry 
  * please use XXXHibernateDao
  */
-public interface InstructorDao extends GenericDAO <Instructor, Long>{
+public interface InstructorDao extends GenericDAO <Instructor, Integer>{
     public Instructor findByEmail (String email);
 
 

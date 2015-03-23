@@ -18,7 +18,7 @@ import java.io.IOException;
 public class DeactivateTrainee extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        long id = Long.parseLong(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
 
         TraineeDao traineeDao = DAOFactory.instance(DAOFactory.HIBERNATE).getTraineeDAO();
         Trainee trainee = traineeDao.findById(id, false);
