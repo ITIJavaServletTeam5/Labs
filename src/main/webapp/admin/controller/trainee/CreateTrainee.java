@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/20/15.
  */
-@WebServlet(urlPatterns = "/admin/trainee/create")
+@WebServlet(name = "CreateTrainee", urlPatterns = "/admin/trainee/create")
 public class CreateTrainee extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -39,7 +39,7 @@ public class CreateTrainee extends HttpServlet {
             request.setAttribute("created", true);
         }
 
-        // redirect the user
+        // redirect to create page again
         doGet(request, response);
     }
 

@@ -12,6 +12,7 @@ import java.util.List;
 import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
+import pojo.MyGroup;
 import pojo.Trainee;
 
 /**
@@ -39,6 +40,12 @@ public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Long> impl
     @Override
     public List<Trainee> findAllDeactivated() {
         Query query = getSession().createQuery("from Trainee where activated = false ");
+        return (List<Trainee>) query.list();
+    }
+
+    @Override
+    public List<Trainee> findAllNotInGroup(MyGroup myGroup) {
+        Query query = getSession().createQuery("from Trainee t where activated = true and ? not member of t.groups").setEntity(0, myGroup);
         return (List<Trainee>) query.list();
     }
 }

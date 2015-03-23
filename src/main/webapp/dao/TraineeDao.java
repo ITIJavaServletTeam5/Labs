@@ -6,6 +6,7 @@
 package dao;
 
 import hibernate.GenericDAO;
+import pojo.MyGroup;
 import pojo.Trainee;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface TraineeDao extends GenericDAO<Trainee, Long> {
     public List<Trainee> findByAllActivated ();
 
     public List<Trainee> findAllDeactivated ();
+
+    public List<Trainee> findAllNotInGroup (MyGroup myGroup);
 }
