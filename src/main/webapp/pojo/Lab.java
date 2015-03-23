@@ -2,6 +2,7 @@ package pojo;
 // Generated Mar 20, 2015 2:19:00 PM by Hibernate Tools 4.3.1
 
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,10 +15,10 @@ public class Lab  implements java.io.Serializable {
      private Long id;
      private Course course;
      private String name;
-     private String startTimeQueues;
-     private String endTimeQueues;
-     private String startTimeFileUpload;
-     private String endTimeFileUpload;
+     private Date startTimeQueues;
+     private Date endTimeQueues;
+     private Date startTimeFileUpload;
+     private Date endTimeFileUpload;
      private Boolean activated;
      private Set deliveryqueues = new HashSet(0);
      private Set assignments = new HashSet(0);
@@ -27,7 +28,7 @@ public class Lab  implements java.io.Serializable {
     public Lab() {
     }
 
-    public Lab(Course course, String name, String startTimeQueues, String endTimeQueues, String startTimeFileUpload, String endTimeFileUpload, Boolean activated, Set deliveryqueues, Set assignments, Set instructors, Set assistancequeues) {
+    public Lab(Course course, String name, Date startTimeQueues, Date endTimeQueues, Date startTimeFileUpload, Date endTimeFileUpload, Boolean activated, Set deliveryqueues, Set assignments, Set instructors, Set assistancequeues) {
        this.course = course;
        this.name = name;
        this.startTimeQueues = startTimeQueues;
@@ -62,32 +63,32 @@ public class Lab  implements java.io.Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    public String getStartTimeQueues() {
+    public Date getStartTimeQueues() {
         return this.startTimeQueues;
     }
     
-    public void setStartTimeQueues(String startTimeQueues) {
+    public void setStartTimeQueues(Date startTimeQueues) {
         this.startTimeQueues = startTimeQueues;
     }
-    public String getEndTimeQueues() {
+    public Date getEndTimeQueues() {
         return this.endTimeQueues;
     }
     
-    public void setEndTimeQueues(String endTimeQueues) {
+    public void setEndTimeQueues(Date endTimeQueues) {
         this.endTimeQueues = endTimeQueues;
     }
-    public String getStartTimeFileUpload() {
+    public Date getStartTimeFileUpload() {
         return this.startTimeFileUpload;
     }
     
-    public void setStartTimeFileUpload(String startTimeFileUpload) {
+    public void setStartTimeFileUpload(Date startTimeFileUpload) {
         this.startTimeFileUpload = startTimeFileUpload;
     }
-    public String getEndTimeFileUpload() {
+    public Date getEndTimeFileUpload() {
         return this.endTimeFileUpload;
     }
     
-    public void setEndTimeFileUpload(String endTimeFileUpload) {
+    public void setEndTimeFileUpload(Date endTimeFileUpload) {
         this.endTimeFileUpload = endTimeFileUpload;
     }
     public Boolean getActivated() {
