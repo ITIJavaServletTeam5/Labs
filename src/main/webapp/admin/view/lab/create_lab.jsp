@@ -9,8 +9,17 @@
 
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/view/datePicker/jquery.datetimepicker.css"/>
+        <style type="text/css">
+
+            .custom-date-style {
+                background-color: red !important;
+            }
+
+        </style>
         <jsp:include page="/common/view/head.jsp" />
         <title>Create Lab</title>
+
     </head>
     <body>
         <jsp:include page="/admin/view/common/top_and_navigation.jsp" />
@@ -69,7 +78,13 @@
                                   <textarea class="form-control" rows="3" name="labdescription"></textarea>
                               </div>-->
                             <div class="form-group">
+                                <label>Start Time</label>
+                                <input type="text" name="dateStart" value="" id="datetimepicker_mask"/><br>
+                            </div>
 
+                            <div class="form-group">
+                                <label>End Time</label>
+                                <input type="text" name="dateEnd" value="" id="datetimepicker_mask_two"/><br>
                             </div>
                             <button type="submit" class="btn btn-default">Submit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
@@ -87,5 +102,15 @@
         </div>
         <!-- /#wrapper -->
         <jsp:include page="/common/view/scripts.jsp" />
+
     </body>
+    <script src="${pageContext.request.contextPath}/common/view/datePicker/jquery.datetimepicker.js"></script>
+    <script>
+        $('#datetimepicker_mask').datetimepicker({
+            mask: '9999/19/39 29:59'
+        });
+        $('#datetimepicker_mask_two').datetimepicker({
+            mask: '9999/19/39 29:59'
+        });
+    </script>
 </html>

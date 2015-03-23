@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Navigation
-    Created on : Mar 20, 2015, 1:25:01 PM
-    Author     : Mai Rostom
---%>
 
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>

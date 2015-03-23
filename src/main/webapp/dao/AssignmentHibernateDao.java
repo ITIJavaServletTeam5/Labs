@@ -7,8 +7,11 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+import java.util.List;
+import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
+import pojo.Assistancequeue;
 
 /**
  *this class is made for customized queries
@@ -17,5 +20,9 @@ import pojo.AssignmentId;
  * @author root
  */
 public class AssignmentHibernateDao extends GenericHibernateDAO<Assignment, AssignmentId> implements AssignmentDao{
+
+    
+    
+    
     
 }
