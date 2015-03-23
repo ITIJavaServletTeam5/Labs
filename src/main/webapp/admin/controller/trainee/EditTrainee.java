@@ -21,7 +21,7 @@ public class EditTrainee extends HttpServlet {
         String password = request.getParameter("password");
 //        String email = request.getParameter("email");
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        Long id = Long.parseLong(request.getParameter("id"));
         TraineeDao traineeDao = DAOFactory.instance(DAOFactory.HIBERNATE).getTraineeDAO();
         Trainee trainee = traineeDao.findById( id, false);
 
@@ -33,7 +33,7 @@ public class EditTrainee extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        Long id = Long.parseLong(request.getParameter("id"));
 
         TraineeDao traineeDao = DAOFactory.instance(DAOFactory.HIBERNATE).getTraineeDAO();
         Trainee trainee = traineeDao.findById(id, false);

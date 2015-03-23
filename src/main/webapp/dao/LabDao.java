@@ -17,7 +17,7 @@ import pojo.Lab;
  * if anyone wants to add his own customized quarry 
  * please use XXXHibernateDao
  */
-public interface LabDao extends GenericDAO <Lab, Integer>{
+public interface LabDao extends GenericDAO <Lab, Long>{
      public Lab findLabByNameAndCourseName(String labName,Course course);
 
     public List<Lab> findlabsByCoursesByGroup(Course course);

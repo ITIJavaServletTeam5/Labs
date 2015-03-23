@@ -11,7 +11,7 @@ import java.util.Set;
 public class Lab  implements java.io.Serializable {
 
 
-     private Integer id;
+     private Long id;
      private Course course;
      private String name;
      private String startTimeQueues;
@@ -41,11 +41,11 @@ public class Lab  implements java.io.Serializable {
        this.assistancequeues = assistancequeues;
     }
    
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public Course getCourse() {

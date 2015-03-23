@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class User  implements Serializable {
 
 
-     private long id;
+     private Long id;
      private String email;
      private String password;
      private String username;
@@ -28,10 +28,10 @@ public class User  implements Serializable {
         this.password = password;
     }
    
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
