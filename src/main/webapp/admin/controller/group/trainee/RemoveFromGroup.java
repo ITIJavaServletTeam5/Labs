@@ -1,4 +1,4 @@
-package admin.controller.instructor;
+package admin.controller.group.trainee;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,16 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by sharno on 3/20/15.
+ * Created by sharno on 3/22/15.
  */
-@WebServlet (urlPatterns = "/admin/instructor/activate")
-public class ActivateInstructor extends HttpServlet {
+@WebServlet(urlPatterns = "/admin/group/trainee/remove")
+public class RemoveFromGroup extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // load instructor from database and update him with activated
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // this actually does nothing for now
-        response.sendRedirect("/admin/instructor");
+
     }
 }

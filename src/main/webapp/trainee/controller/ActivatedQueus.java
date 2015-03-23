@@ -53,11 +53,11 @@ public class ActivatedQueus extends HttpServlet {
             throws ServletException, IOException {
         Lab lab=new Lab();
         lab.setName("Java");
-        lab.setId(1);
+        lab.setId(new Long(1));
         
         Trainee trainee=new Trainee();
         trainee.setUsername("Mooki");
-        trainee.setId(2);
+        trainee.setId(new Long(2));
         
         
         

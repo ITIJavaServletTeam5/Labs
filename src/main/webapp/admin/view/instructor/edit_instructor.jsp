@@ -33,7 +33,7 @@
             <c:when test="${requestScope.emailError}">
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    There's already an instructor or trainee with that email
+                    There's already a trainee or instructor with that email
                 </div>
             </c:when>
         </c:choose>
@@ -43,24 +43,25 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form role="form" method="post" action="${pageContext.request.contextPath}/admin/trainee/create">
+            <form role="form" method="post" action="${pageContext.request.contextPath}/admin/instructor/edit">
+                <input hidden="hidden" name="id" value="${requestScope.instructor.id}">
                 <div class="form-group">
                     <label>Username</label>
-                    <input name="username" class="form-control" placeholder="Username" required="">
+                    <input name="username" value="${requestScope.instructor.username}" class="form-control" placeholder="Username" required="">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input name="email" type="email" class="form-control" placeholder="Email" required="">
+                    <input name="email" type="email" value="${requestScope.instructor.email}" class="form-control" placeholder="Email" required="" disabled>
                 </div>
                 <div class="form-group">
-                    <label>Default Password</label>
-                    <input name="password" type="text" value="123456" class="form-control" placeholder="Password"
+                    <label>Password</label>
+                    <input name="password" type="text" value="${requestScope.instructor.password}" class="form-control" placeholder="Password"
                            required="">
 
-                    <p class="help-block">All trainees will have to change their password upon first login</p>
+                    <p class="help-block">this is not the real instructor's password, editing this instructor will have you change his password</p>
                 </div>
-                <button type="submit" class="btn btn-default">Submit Button</button>
-                <button type="reset" class="btn btn-default">Reset Button</button>
+                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="reset" class="btn btn-default">Reset</button>
             </form>
         </div>
         <!-- /.col-lg-12 -->

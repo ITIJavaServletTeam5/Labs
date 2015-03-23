@@ -29,9 +29,9 @@ public class GroupHibernateDao extends GenericHibernateDAO<MyGroup, Long> implem
     }
 
     @Override
-    public MyGroup findById(int id) {
+    public MyGroup findById(Long id) {
         Query query = getSession().createQuery("from MyGroup where id = :id");
-        query.setInteger("id", id);
+        query.setLong("id", id);
         query.setMaxResults(1);
         return (MyGroup) query.uniqueResult();
     }

@@ -33,7 +33,7 @@
             <c:when test="${requestScope.emailError}">
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    There's already a trainee with that email
+                    There's already a trainee or instructor with that email
                 </div>
             </c:when>
         </c:choose>

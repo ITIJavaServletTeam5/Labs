@@ -37,7 +37,7 @@ public class CourseListView extends HttpServlet {
         GroupDao groupDao = daoFactory.getGroupDAO();
 
         List<Course> courses = new Vector<>();
-        int groupId = Integer.parseInt(request.getParameter("id"));
+        Long groupId = Long.parseLong(request.getParameter("id"));
         
         MyGroup mygroup = groupDao.findById(groupId);
         

@@ -8,6 +8,8 @@ package dao;
 import hibernate.GenericDAO;
 import pojo.Instructor;
 
+import java.util.List;
+
 /**
  *
  * @author root
@@ -15,6 +17,11 @@ import pojo.Instructor;
  * if anyone wants to add his own customized quarry 
  * please use XXXHibernateDao
  */
-public interface InstructorDao extends GenericDAO <Instructor, Integer>{
+public interface InstructorDao extends GenericDAO <Instructor, Long>{
     public Instructor findByEmail (String email);
+
+
+    public List<Instructor> findByAllActivated ();
+
+    public List<Instructor> findAllDeactivated ();
 }
