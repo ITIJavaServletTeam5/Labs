@@ -248,8 +248,8 @@
                                         <a href="#"><c:out value="${lab.name}" /> <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="Assignments.html">Assignments</a>
-                                                <a href="Queue.html">Queues</a>
+                                                <a href="/instructor/view/Assignments_list.jsp">Assignments</a>
+                                                <a href="/instructor/view/Queues_list.jsp">Queues</a>
                                             </li>
 
                                         </ul>
