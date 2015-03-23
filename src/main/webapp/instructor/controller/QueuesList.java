@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Assignment;
 import pojo.Assistancequeue;
+import pojo.Lab;
 
 /**
  *
@@ -40,19 +41,22 @@ public class QueuesList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Assistancequeue> Assistancequeues = new Vector<Assistancequeue>();
-        Assistancequeue assistancequeue1 = new Assistancequeue();
-        assistancequeue1.setRequestDate(new Date());
-        Assistancequeues.add(assistancequeue1);
-        Assistancequeue assistancequeue2 = new Assistancequeue();
-        assistancequeue2.setRequestDate(new Date());
-        Assistancequeues.add(assistancequeue2);
-        request.setAttribute("Assistancequeues", Assistancequeues);
+//        List<Assistancequeue> Assistancequeues = new Vector<Assistancequeue>();
+//        Assistancequeue assistancequeue1 = new Assistancequeue();
+//        assistancequeue1.setRequestDate(new Date());
+//        Assistancequeues.add(assistancequeue1);
+//        Assistancequeue assistancequeue2 = new Assistancequeue();
+//        assistancequeue2.setRequestDate(new Date());
+//        Assistancequeues.add(assistancequeue2);
+//        request.setAttribute("lab", Assistancequeues);
         RequestDispatcher rd1 = request.getRequestDispatcher("/instructor/view/navigation");
         rd1.include(request, response);
         
         RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
         rd.include(request, response);
+        //test if lab is choosed
+        Lab l = (Lab) request.getSession().getAttribute("lab");
+        System.out.println(l.getId());
     }
 
     /**

@@ -77,7 +77,7 @@ public class Navigation extends HttpServlet {
             }
             
             
-            request.setAttribute("courses", dtoCourses);
+            request.getSession().setAttribute("courses", dtoCourses);
             
 //            RequestDispatcher rd = getServletContext().getRequestDispatcher("/instructor/view/common/navigation.jsp");
 //            rd.forward(request, response);
