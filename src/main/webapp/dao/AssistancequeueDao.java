@@ -19,4 +19,5 @@ import pojo.AssistancequeueId;
  */
 public interface AssistancequeueDao extends GenericDAO<Assistancequeue, AssistancequeueId> {
     public List<Assistancequeue> getTrainees(Assistancequeue g);
+     public List<Assistancequeue> findAssistanceQueueOfLab (long labId);
 }

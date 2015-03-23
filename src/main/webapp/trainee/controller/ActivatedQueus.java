@@ -5,7 +5,9 @@
  */
 package trainee.controller;
 
+import dao.AssignmentHibernateDao;
 import dao.AssistancequeueDao;
+import dao.DeliveryqueueDao;
 import dao.GroupDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
@@ -20,9 +22,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Assistancequeue;
+import pojo.Deliveryqueue;
 import pojo.Group;
 import pojo.Lab;
 import pojo.Trainee;
+import pojo.User;
 
 /**
  *
@@ -55,13 +59,27 @@ public class ActivatedQueus extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        long labId=Long.parseLong(request.getParameter("labId"));
         
-        List<Assistancequeue> AssistanceQueues = new Vector<Assistancequeue>();
+        
+        
+        
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         AssistancequeueDao assistanceDao = daoFactory.getAssistancequeueDAO();
-        AssistanceQueues = assistanceDao.findAll();
+        
+        List<Assistancequeue> assistanceQueues = assistanceDao.findAssistanceQueueOfLab(labId);
+        List<Deliveryqueue> DeliveryQueues = new Vector<Deliveryqueue>();
+        
+        
+        
+     //   AssistancequeueDao assistanceDao = daoFactory.getAssistancequeueDAO();
+        DeliveryqueueDao  deliveryDao=daoFactory.getDeliveryqueueDAO();
+        
+        assistanceQueues = assistanceDao.findAll();
+        DeliveryQueues = deliveryDao.findAll();
 
-        request.setAttribute("AssistenceQueues", AssistanceQueues);
+        request.setAttribute("DeliveryQueues", DeliveryQueues);
+        request.setAttribute("AssistenceQueues", assistanceQueues);
         getServletContext().getRequestDispatcher("/trainee/view/Activated Queues.jsp").forward(request, response);
     }
         
@@ -78,7 +96,10 @@ public class ActivatedQueus extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Hello All");
+          
+        
+        
+        
         
     }
 

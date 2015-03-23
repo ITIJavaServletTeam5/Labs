@@ -6,8 +6,10 @@
 package dao;
 
 import hibernate.GenericDAO;
+import java.util.List;
 import pojo.Assignment;
 import pojo.AssignmentId;
+import pojo.Assistancequeue;
 
 /**
  *
@@ -18,5 +20,6 @@ import pojo.AssignmentId;
  */
 
 public interface AssignmentDao extends GenericDAO <Assignment, AssignmentId>{
+   
     
 }
