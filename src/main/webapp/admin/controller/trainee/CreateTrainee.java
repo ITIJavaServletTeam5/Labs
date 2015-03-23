@@ -17,21 +17,30 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/20/15.
  */
-@WebServlet(name = "CreateTrainee")
+@WebServlet(urlPatterns = "/admin/trainee/create")
 public class CreateTrainee extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Trainee trainee = new Trainee();
-        trainee.setUsername(request.getParameter("username"));
-        trainee.setEmail(request.getParameter("email"));
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
-        System.out.println(request.getParameter("password"));
-        trainee.setPassword(request.getParameter("password"));
+        Trainee trainee = new Trainee();
+        trainee.setUsername(username);
+        trainee.setEmail(email);
+        trainee.setPassword(password);
         trainee.setActivated(true);
 
-        // persist this trainee
-        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
-        TraineeDao traineeDao = daoFactory.getTraineeDAO();
-        traineeDao.makePersistent(trainee);
+        TraineeDao traineeDao = DAOFactory.instance(DAOFactory.HIBERNATE).getTraineeDAO();
+
+        if (traineeDao.findByEmail(email) != null) {
+            request.setAttribute("emailError", true);
+        } else {
+            traineeDao.makePersistent(trainee);
+            request.setAttribute("created", true);
+        }
+
+        // redirect to create page again
+        doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

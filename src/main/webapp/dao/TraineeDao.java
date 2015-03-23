@@ -6,7 +6,10 @@
 package dao;
 
 import hibernate.GenericDAO;
+import pojo.MyGroup;
 import pojo.Trainee;
+
+import java.util.List;
 
 /**
  *
@@ -14,5 +17,11 @@ import pojo.Trainee;
  * to add his own customized quarry please use XXXHibernateDao
  */
 public interface TraineeDao extends GenericDAO<Trainee, Long> {
+    public Trainee findByEmail (String email);
 
+    public List<Trainee> findByAllActivated ();
+
+    public List<Trainee> findAllDeactivated ();
+
+    public List<Trainee> findAllNotInGroup (MyGroup myGroup);
 }

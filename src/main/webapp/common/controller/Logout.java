@@ -17,6 +17,10 @@ public class Logout extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // just in case it doesn't get invalidated
         request.getSession().invalidate();
+
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 }

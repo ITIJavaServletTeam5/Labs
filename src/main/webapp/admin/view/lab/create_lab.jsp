@@ -9,11 +9,22 @@
 
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/view/datePicker/jquery.datetimepicker.css"/>
+        <style type="text/css">
+
+            .custom-date-style {
+                background-color: red !important;
+            }
+
+        </style>
         <jsp:include page="/common/view/head.jsp" />
         <title>Create Lab</title>
+
     </head>
     <body>
         <jsp:include page="/admin/view/common/top_and_navigation.jsp" />
+
+
 
         <div id="page-wrapper">
             <div class="row">
@@ -23,21 +34,57 @@
                 <!-- /.col-lg-12 -->
             </div>
 
+            <div class="row">
+                <c:choose>
+                    <c:when test="${requestScope.created}">
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Course has been created successfully.
+                        </div>
+                    </c:when>
+
+                    <c:when test="${requestScope.nameError}">
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            There's an Error , the lab name must not be duplicated in the same course
+                        </div>
+                    </c:when>
+                </c:choose>
+            </div>
+
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
 
                         <form role="form" method="post" action="${pageContext.request.contextPath}/admin/lab/create">
+
+                            <div class="form-group">
+                                <label>Course Name</label>
+                                <select class="form-control" name="courseSelected">
+
+                                    <c:forEach items="${requestScope.course}" var="course">
+                                        <option>${course.name}</option>
+                                    </c:forEach>
+
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label>Lab Name</label>
-                                <input class="form-control" placeholder="Lab Name">
+                                <input class="form-control" name="labname" placeholder="Lab Name">
                             </div>
+                            <!--  <div class="form-group">
+                                  <label>Lab Description</label>
+                                  <textarea class="form-control" rows="3" name="labdescription"></textarea>
+                              </div>-->
                             <div class="form-group">
-                                <label>Lab Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <label>Start Time</label>
+                                <input type="text" name="dateStart" value="" id="datetimepicker_mask"/><br>
                             </div>
-                            <div class="form-group">
 
+                            <div class="form-group">
+                                <label>End Time</label>
+                                <input type="text" name="dateEnd" value="" id="datetimepicker_mask_two"/><br>
                             </div>
                             <button type="submit" class="btn btn-default">Submit</button>
                             <button type="reset" class="btn btn-default">Reset</button>
@@ -55,5 +102,15 @@
         </div>
         <!-- /#wrapper -->
         <jsp:include page="/common/view/scripts.jsp" />
+
     </body>
+    <script src="${pageContext.request.contextPath}/common/view/datePicker/jquery.datetimepicker.js"></script>
+    <script>
+        $('#datetimepicker_mask').datetimepicker({
+            mask: '9999/19/39 29:59'
+        });
+        $('#datetimepicker_mask_two').datetimepicker({
+            mask: '9999/19/39 29:59'
+        });
+    </script>
 </html>

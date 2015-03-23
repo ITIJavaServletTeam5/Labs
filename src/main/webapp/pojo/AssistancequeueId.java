@@ -9,29 +9,29 @@ package pojo;
 public class AssistancequeueId  implements java.io.Serializable {
 
 
-     private int labId;
-     private int traineeId;
+     private Long labId;
+     private Long traineeId;
 
     public AssistancequeueId() {
     }
 
-    public AssistancequeueId(int labId, int traineeId) {
+    public AssistancequeueId(Long labId, Long traineeId) {
        this.labId = labId;
        this.traineeId = traineeId;
     }
    
-    public int getLabId() {
+    public Long getLabId() {
         return this.labId;
     }
     
-    public void setLabId(int labId) {
+    public void setLabId(Long labId) {
         this.labId = labId;
     }
-    public int getTraineeId() {
+    public Long getTraineeId() {
         return this.traineeId;
     }
     
-    public void setTraineeId(int traineeId) {
+    public void setTraineeId(Long traineeId) {
         this.traineeId = traineeId;
     }
 
@@ -49,8 +49,8 @@ public class AssistancequeueId  implements java.io.Serializable {
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getLabId();
-         result = 37 * result + this.getTraineeId();
+         result = (int) (37 * result + this.getLabId());
+         result = (int) (37 * result + this.getTraineeId());
          return result;
    }   
 

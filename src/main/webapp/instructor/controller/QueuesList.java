@@ -24,7 +24,7 @@ import pojo.Assistancequeue;
  * @author engy
  */
 //@WebServlet(name = "QueuesList", urlPatterns = {"/QueuesList"})
-@WebServlet(urlPatterns = {"/instructor/view/QueuesList"})
+@WebServlet(name = "QueuesList", urlPatterns = {"/instructor/view/QueuesList"})
 public class QueuesList extends HttpServlet {
 
     
@@ -48,9 +48,11 @@ public class QueuesList extends HttpServlet {
         assistancequeue2.setRequestDate(new Date());
         Assistancequeues.add(assistancequeue2);
         request.setAttribute("Assistancequeues", Assistancequeues);
+        RequestDispatcher rd1 = request.getRequestDispatcher("/instructor/view/navigation");
+        rd1.include(request, response);
         
         RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
-        rd.forward(request, response);
+        rd.include(request, response);
     }
 
     /**

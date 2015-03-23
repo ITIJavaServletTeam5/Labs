@@ -12,6 +12,12 @@
 <!-- MetisMenu CSS -->
 <link href="${pageContext.request.contextPath}/common/view/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
+<!-- DataTables CSS -->
+<link href="${pageContext.request.contextPath}/common/view/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+<!-- DataTables Responsive CSS -->
+<link href="${pageContext.request.contextPath}/common/view/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
 <!-- Custom CSS -->
 <link href="${pageContext.request.contextPath}/common/view/dist/css/sb-admin-2.css" rel="stylesheet">
 

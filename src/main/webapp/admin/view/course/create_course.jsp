@@ -23,25 +23,48 @@
                 <!-- /.col-lg-12 -->
             </div>
 
+            <div class="row">
+                <c:choose>
+                    <c:when test="${requestScope.created}">
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            Course has been created successfully.
+                        </div>
+                    </c:when>
+
+                    <c:when test="${requestScope.nameError}">
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            There's an Error , please check the selected group or course name
+                        </div>
+                    </c:when>
+                </c:choose>
+            </div>
+
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
 
                         <form role="form" method="post"  action="${pageContext.request.contextPath}/admin/course/create">
-                            <fieldset disabled>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Group Name</label>
-                                    <!-- Enter the group name from request-->
-                                    <input class="form-control" id="disabledInput" type="text">
-                                </div>
-                            </fieldset>
+
+                            <div class="form-group">
+                                <label>Group Name</label>
+                                <select class="form-control" name="groupSelected">
+
+                                    <c:forEach items="${requestScope.group}" var="group">
+                                        <option>${group.name}</option>
+                                    </c:forEach>
+
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label>Course Name</label>
-                                <input class="form-control" placeholder="Course Name">
+                                <input class="form-control"  name="coursename" placeholder="Course Name">
                             </div>
                             <div class="form-group">
                                 <label>Course Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea class="form-control" name="coursedecription" rows="3"></textarea>
                             </div>
                             <div class="form-group">
 

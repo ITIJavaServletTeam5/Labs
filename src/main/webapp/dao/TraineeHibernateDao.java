@@ -7,8 +7,12 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+import java.util.List;
+
+import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
+import pojo.MyGroup;
 import pojo.Trainee;
 
 /**
@@ -18,5 +22,30 @@ import pojo.Trainee;
  * @author root
  */
 public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Long> implements TraineeDao{
-    
+
+    @Override
+    public Trainee findByEmail(String email) {
+        Query query = getSession().createQuery("from Trainee where email = ?");
+        query.setString(0, email);
+
+        return (Trainee) query.uniqueResult();
+    }
+
+    @Override
+    public List<Trainee> findByAllActivated() {
+        Query query = getSession().createQuery("from Trainee where activated = true ");
+        return (List<Trainee>) query.list();
+    }
+
+    @Override
+    public List<Trainee> findAllDeactivated() {
+        Query query = getSession().createQuery("from Trainee where activated = false ");
+        return (List<Trainee>) query.list();
+    }
+
+    @Override
+    public List<Trainee> findAllNotInGroup(MyGroup myGroup) {
+        Query query = getSession().createQuery("from Trainee t where activated = true and ? not member of t.groups").setEntity(0, myGroup);
+        return (List<Trainee>) query.list();
+    }
 }

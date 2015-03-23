@@ -75,7 +75,10 @@
                                 <!-- /.panel-body -->
                             </c:when>
                             <c:otherwise>
-                                <div>There's no Labs to display</div>
+                                <div class="alert alert-info alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    No labs had been added yet
+                                </div>
                             </c:otherwise>
                         </c:choose>
 

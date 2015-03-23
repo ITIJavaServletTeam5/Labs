@@ -11,39 +11,37 @@ import java.util.Set;
 public class Course  implements java.io.Serializable {
 
 
-     private Integer id;
-     private Group group;
+     private Long id;
+     private MyGroup myGroup;
      private String name;
      private String description;
      private Boolean activated;
-     private Set instructors = new HashSet(0);
      private Set labs = new HashSet(0);
 
     public Course() {
     }
 
-    public Course(Group group, String name, String description, Boolean activated, Set instructors, Set labs) {
-       this.group = group;
+    public Course(MyGroup myGroup, String name, String description, Boolean activated, Set instructors, Set labs) {
+       this.myGroup = myGroup;
        this.name = name;
        this.description = description;
        this.activated = activated;
-       this.instructors = instructors;
        this.labs = labs;
     }
    
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
     
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public Group getGroup() {
-        return this.group;
+    public MyGroup getMyGroup() {
+        return this.myGroup;
     }
     
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setMyGroup(MyGroup myGroup) {
+        this.myGroup = myGroup;
     }
     public String getName() {
         return this.name;
@@ -66,13 +64,7 @@ public class Course  implements java.io.Serializable {
     public void setActivated(Boolean activated) {
         this.activated = activated;
     }
-    public Set getInstructors() {
-        return this.instructors;
-    }
-    
-    public void setInstructors(Set instructors) {
-        this.instructors = instructors;
-    }
+
     public Set getLabs() {
         return this.labs;
     }
