@@ -9,6 +9,9 @@ import dao.CourseDao;
 import dao.LabDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import javax.servlet.ServletException;
@@ -29,13 +32,22 @@ public class CreateLab extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+
+        // String dates = formatter.format(mydate);
         DAOFactory dAOFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         CourseDao courseDao = dAOFactory.getCourseDAO();
         LabDao labDao = dAOFactory.getLabDAO();
 
         String courseName = request.getParameter("courseSelected");
         String labName = request.getParameter("labname");
+        String startDate = request.getParameter("dateStart");
+        String endDate = request.getParameter("dateEnd");
 
+        Date startD = formatter.parse(startDate, new ParsePosition(0));
+        Date endD = formatter.parse(endDate, new ParsePosition(0));
+
+        System.out.println(startD);
         Lab lab = new Lab();
 
         Course course = courseDao.findByName(courseName);
@@ -43,10 +55,11 @@ public class CreateLab extends HttpServlet {
         lab.setCourse(course);
         lab.setName(labName);
         lab.setActivated(true);
+     //   lab.setStartTimeQueues(start);
 
         Lab courseTest = labDao.findLabByNameAndCourseName(labName, course);
 
-        if (courseTest == null) {
+        if (courseTest == null && (startD.before(endD))) {
             request.setAttribute("created", true);
             labDao.makePersistent(lab);
         } else {
