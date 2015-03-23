@@ -4,21 +4,11 @@
 <!-- Generated Mar 20, 2015 2:19:01 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.Deliveryqueue" table="deliveryqueue" catalog="labmanagement" optimistic-lock="version">
-        <composite-id name="id" class="pojo.DeliveryqueueId">
-            <key-property name="labId">
-                <column name="lab_id" />
-            </key-property>
-            <key-property name="traineeId">
-                <column name="trainee_id" />
-            </key-property>
+        <composite-id>
+            <key-many-to-one name="lab" column="lab_id" class="pojo.Lab" />
+            <key-many-to-one name="trainee" column="trainee_id" class="pojo.Trainee" />
         </composite-id>
-        <many-to-one name="lab" class="pojo.Lab" update="false" insert="false" fetch="select">
-            <column name="lab_id" not-null="true" />
-        </many-to-one>
-        <many-to-one name="trainee" class="pojo.Trainee" update="false" insert="false" fetch="select">
-            <column name="trainee_id" not-null="true" />
-        </many-to-one>
-        <property name="requestDate" type="date">
+        <property name="requestDate" type="timestamp">
             <column name="request_date" length="10" />
         </property>
         <property name="activated" type="java.lang.Boolean">
