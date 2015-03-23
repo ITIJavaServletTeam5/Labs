@@ -55,8 +55,9 @@ public class CreateLab extends HttpServlet {
         lab.setCourse(course);
         lab.setName(labName);
         lab.setActivated(true);
-     //   lab.setStartTimeQueues(start);
-
+        lab.setStartTimeQueues(startD);
+        lab.setEndTimeQueues(endD);
+        
         Lab courseTest = labDao.findLabByNameAndCourseName(labName, course);
 
         if (courseTest == null && (startD.before(endD))) {
