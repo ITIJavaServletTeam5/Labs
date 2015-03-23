@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/22/15.
  */
-@WebServlet(name = "GroupTraineesList", urlPatterns = "/admin/group/trainee")
+@WebServlet(urlPatterns = "/admin/group/trainee")
 public class GroupTraineesList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long groupId = Long.parseLong(request.getParameter("groupId"));

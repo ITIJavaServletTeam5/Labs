@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by sharno on 3/22/15.
  */
-@WebServlet(name = "AddToGroup", urlPatterns = "/admin/group/trainee/add")
+@WebServlet(urlPatterns = "/admin/group/trainee/add")
 public class AddToGroup extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

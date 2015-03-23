@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/20/15.
  */
-@WebServlet(name = "DeactivateTrainee", urlPatterns = "/admin/trainee/deactivate")
+@WebServlet(urlPatterns = "/admin/trainee/deactivate")
 public class DeactivateTrainee extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/22/15.
  */
-@WebServlet(name = "RemoveFromGroup")
+@WebServlet(urlPatterns = "/admin/group/trainee/remove")
 public class RemoveFromGroup extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

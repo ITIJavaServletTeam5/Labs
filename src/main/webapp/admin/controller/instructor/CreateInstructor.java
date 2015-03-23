@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/20/15.
  */
-@WebServlet(name = "CreateInstructor", urlPatterns = "/admin/instructor/create")
+@WebServlet(urlPatterns = "/admin/instructor/create")
 public class CreateInstructor extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");

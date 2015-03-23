@@ -44,31 +44,31 @@ public class Navigation extends HttpServlet {
             throws ServletException, IOException {
         try {
             /* TODO output your page here. You may use following sample code. */
-            DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
-            InstructorDao ihd = daof.getInstructorDAO();
-            Instructor i = ihd.findById(new Long(1), true);
-            System.out.println(i.getEmail());
-            //build the list of lists to be viewed
-            Set<Course> courses = new LinkedHashSet<Course>();
-            for (Object course : i.getCourses()) {
-            System.out.println("test to see if /instructor/view/navigation is accessible");
-                System.out.println(((Course)course).getName());
-                Set<Lab> labs = new LinkedHashSet<Lab>();
-                //get the labs of each of his courses
-                for(Object lab : ((Course)course).getLabs()){
-                    //check if he has that lab or don't include the lab
-                    if (i.getLabs().contains(lab)){
-                        labs.add((Lab)lab);
-                        System.out.println(((Lab)lab).getName());
-                    }
-                }
-                ((Course)course).setLabs(labs);
-                //finally add the course to the render list
-                courses.add((Course)course);
-            }
-            
-            
-            request.setAttribute("courses", courses);
+//            DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
+//            InstructorDao ihd = daof.getInstructorDAO();
+//            Instructor i = ihd.findById(new Long(1), true);
+//            System.out.println(i.getEmail());
+//            //build the list of lists to be viewed
+//            Set<Course> courses = new LinkedHashSet<Course>();
+//            for (Object course : i.getCourses()) {
+//            System.out.println("test to see if /instructor/view/navigation is accessible");
+//                System.out.println(((Course)course).getName());
+//                Set<Lab> labs = new LinkedHashSet<Lab>();
+//                //get the labs of each of his courses
+//                for(Object lab : ((Course)course).getLabs()){
+//                    //check if he has that lab or don't include the lab
+//                    if (i.getLabs().contains(lab)){
+//                        labs.add((Lab)lab);
+//                        System.out.println(((Lab)lab).getName());
+//                    }
+//                }
+//                ((Course)course).setLabs(labs);
+//                //finally add the course to the render list
+//                courses.add((Course)course);
+//            }
+//
+//
+//            request.setAttribute("courses", courses);
             
 //            RequestDispatcher rd = getServletContext().getRequestDispatcher("/instructor/view/common/navigation.jsp");
 //            rd.forward(request, response);

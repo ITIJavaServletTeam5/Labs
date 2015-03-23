@@ -30,6 +30,8 @@ public class EditTrainee extends HttpServlet {
         trainee.setUsername(username);
 
         traineeDao.makePersistent(trainee);
+
+        response.sendRedirect(request.getContextPath() + "/admin/trainee");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -32,6 +32,8 @@ public class EditInstructor extends HttpServlet {
         instructor.setUsername(username);
 
         instructorDAO.makePersistent(instructor);
+
+        response.sendRedirect(request.getContextPath() + "/admin/instructor");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

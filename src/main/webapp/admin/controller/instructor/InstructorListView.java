@@ -17,7 +17,7 @@ import java.util.Vector;
 /**
  * Created by sharno on 3/16/15.
  */
-@WebServlet (name = "InstructorListView", urlPatterns = "/admin/instructor")
+@WebServlet (urlPatterns = "/admin/instructor")
 public class InstructorListView extends javax.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String instructor = request.getParameter("instructor");

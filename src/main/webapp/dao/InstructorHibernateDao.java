@@ -25,7 +25,7 @@ public class InstructorHibernateDao extends GenericHibernateDAO<Instructor, Long
     @Override
     public Instructor findByEmail(String email) {
         Query query = getSession().createQuery("from Instructor where email = :email");
-        query.setEntity("email", email);
+        query.setString("email", email);
 
         return (Instructor) query.uniqueResult();
     }
