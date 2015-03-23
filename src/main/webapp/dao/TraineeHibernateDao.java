@@ -50,6 +50,7 @@ public class TraineeHibernateDao extends GenericHibernateDAO<Trainee, Long> impl
         Query query = getSession().createQuery("from Trainee t where activated = true and ? not member of t.groups").setEntity(0, myGroup);
         return (List<Trainee>) query.list();
     
+    }
     @Override
     public Trainee findByRole(User user) {
         Query query = getSession().createQuery("select t.id from Trainee t, User u where t.id = u.id ");

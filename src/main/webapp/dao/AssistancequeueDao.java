@@ -6,6 +6,7 @@
 package dao;
 
 import hibernate.GenericDAO;
+import java.util.List;
 import pojo.Assistancequeue;
 import pojo.AssistancequeueId;
 
@@ -17,5 +18,6 @@ import pojo.AssistancequeueId;
  * please use XXXHibernateDao
  */
 public interface AssistancequeueDao extends GenericDAO<Assistancequeue, AssistancequeueId> {
-    
+    public List<Assistancequeue> getTrainees(Assistancequeue g);
+     public List<Assistancequeue> findAssistanceQueueOfLab (long labId);
 }

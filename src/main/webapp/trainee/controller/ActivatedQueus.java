@@ -5,6 +5,11 @@
  */
 package trainee.controller;
 
+import dao.AssignmentHibernateDao;
+import dao.AssistancequeueDao;
+import dao.DeliveryqueueDao;
+import dao.GroupDao;
+import hibernate.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -17,8 +22,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Assistancequeue;
+import pojo.Deliveryqueue;
+//import pojo.Group;
 import pojo.Lab;
 import pojo.Trainee;
+import pojo.User;
 
 /**
  *
@@ -51,29 +59,27 @@ public class ActivatedQueus extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Lab lab=new Lab();
-        lab.setName("Java");
-        lab.setId(new Long(1));
-        
-        Trainee trainee=new Trainee();
-        trainee.setUsername("Mooki");
-        trainee.setId(new Long(2));
+        long labId=Long.parseLong(request.getParameter("labId"));
         
         
         
-        List<Assistancequeue> AssistanceQueues = new Vector<Assistancequeue>();
-        Assistancequeue assQueue=new Assistancequeue();
-      
-        assQueue.setLab(lab);
         
-        assQueue.setTrainee(trainee);
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        AssistancequeueDao assistanceDao = daoFactory.getAssistancequeueDAO();
         
-        assQueue.setActivated(Boolean.TRUE);
+        List<Assistancequeue> assistanceQueues = assistanceDao.findAssistanceQueueOfLab(labId);
+        List<Deliveryqueue> DeliveryQueues = new Vector<Deliveryqueue>();
         
-        assQueue.setRequestDate(new Date(2015, 12,14));
         
+        
+     //   AssistancequeueDao assistanceDao = daoFactory.getAssistancequeueDAO();
+        DeliveryqueueDao  deliveryDao=daoFactory.getDeliveryqueueDAO();
+        
+        assistanceQueues = assistanceDao.findAll();
+        DeliveryQueues = deliveryDao.findAll();
 
-        request.setAttribute("AssistenceQueues", AssistanceQueues);
+        request.setAttribute("DeliveryQueues", DeliveryQueues);
+        request.setAttribute("AssistenceQueues", assistanceQueues);
         getServletContext().getRequestDispatcher("/trainee/view/Activated Queues.jsp").forward(request, response);
     }
         
@@ -90,7 +96,10 @@ public class ActivatedQueus extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Hello All");
+          
+        
+        
+        
         
     }
 

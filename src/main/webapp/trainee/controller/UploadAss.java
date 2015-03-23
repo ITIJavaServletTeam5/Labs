@@ -59,6 +59,7 @@ public class UploadAss extends HttpServlet {
             throws ServletException, IOException {
 
         request.setAttribute("labId", 2);
+        System.out.println(request.getAttribute("labId"));
         getServletContext().getRequestDispatcher("/trainee/view/UploadAssignment.jsp").forward(request, response);
 
     }
@@ -88,8 +89,9 @@ public class UploadAss extends HttpServlet {
      //   Trainee t= traineeDao.findByRole(user);
 
 
-//        request.setAttribute("labId", request.getParameter("LabId"));
         int labId = Integer.parseInt(request.getParameter("LabId"));
+        request.setAttribute("labId", request.getParameter("LabId"));
+        
         LabDao labDao = daoFactory.getLabDAO();
        Lab l= labDao.findById((long)labId,true);
        Trainee t= traineeDao.findById((long)user.getId(), true);
