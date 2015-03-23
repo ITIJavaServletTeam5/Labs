@@ -14,7 +14,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Trainees</h1>
+            <h1 class="page-header">Instructors</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -26,11 +26,11 @@
                 <%--Trainees--%>
                 <%--</div>--%>
                 <c:choose>
-                    <c:when test="${not empty requestScope.trainees}">
+                    <c:when test="${not empty requestScope.instructors}">
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="traineesTable">
+                                <table class="table table-striped table-bordered table-hover" id="instructorsTable">
                                     <thead>
                                     <tr>
                                         <th>Username</th>
@@ -40,21 +40,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${requestScope.trainees}" var="trainee">
+                                    <c:forEach items="${requestScope.instructors}" var="instructor">
                                         <tr>
-                                            <td>${trainee.username}</td>
-                                            <td>${trainee.email}</td>
+                                            <td>${instructor.username}</td>
+                                            <td>${instructor.email}</td>
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/admin/trainee/edit?id=${trainee.id}">
+                                                <a href="${pageContext.request.contextPath}/admin/instructor/edit?id=${instructor.id}">
                                                     <button type="submit" class="btn btn-primary" name=""
-                                                            id="${trainee.id}">Edit
+                                                            id="${instructor.id}">Edit
                                                     </button>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="${pageContext.request.contextPath}/admin/trainee/deactivate?id=${trainee.id}">
+                                                <a href="${pageContext.request.contextPath}/admin/instructor/deactivate?id=${instructor.id}">
                                                     <button type="submit" class="btn btn-danger"
-                                                            id="${trainee.id}">Deactivate
+                                                            id="${instructor.id}">Deactivate
                                                     </button>
                                                 </a>
                                             </td>
@@ -69,12 +69,12 @@
                         <!-- /.panel-body -->
                     </c:when>
                     <c:otherwise>
-                        <div>There's no trainees to display</div>
+                        <div>There's no instructors to display</div>
                     </c:otherwise>
                 </c:choose>
                 <div class="col-lg-3 col-lg-offset-9">
-                    <form action="${pageContext.request.contextPath}/admin/trainee/create" method="get">
-                        <button type="submit" class="btn btn-success">Create Trainee</button>
+                    <form action="${pageContext.request.contextPath}/admin/instructor/create" method="get">
+                        <button type="submit" class="btn btn-success">Create Instructor</button>
                     </form>
                 </div>
             </div>
@@ -90,7 +90,7 @@
 <!-- data table script -->
 <script>
     $(document).ready(function () {
-        $('#traineesTable').DataTable({
+        $('#instructorsTable').DataTable({
             responsive: true
         });
     });

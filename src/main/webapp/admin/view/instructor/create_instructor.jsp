@@ -14,7 +14,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Create Trainee</h1>
+            <h1 class="page-header">Create Instructor</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -26,7 +26,7 @@
             <c:when test="${requestScope.created}">
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    Trainee has been created successfully.
+                    Instructor has been created successfully.
                 </div>
             </c:when>
 
@@ -43,7 +43,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form role="form" method="post" action="${pageContext.request.contextPath}/admin/trainee/create">
+            <form role="form" method="post" action="${pageContext.request.contextPath}/admin/instructor/create">
                 <div class="form-group">
                     <label>Username</label>
                     <input name="username" class="form-control" placeholder="Username" required="">
@@ -57,7 +57,7 @@
                     <input name="password" type="text" value="123456" class="form-control" placeholder="Password"
                            required="">
 
-                    <p class="help-block">All trainees will have to change their password upon first login</p>
+                    <p class="help-block">All instructors will have to change their password upon first login</p>
                 </div>
                 <button type="submit" class="btn btn-default">Submit Button</button>
                 <button type="reset" class="btn btn-default">Reset Button</button>

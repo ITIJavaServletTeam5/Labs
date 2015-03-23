@@ -15,8 +15,8 @@ public class MyGroup implements java.io.Serializable {
      private String name;
      private String description;
      private Boolean activated;
-     private Set trainees = new HashSet(0);
-     private Set courses = new HashSet(0);
+     private Set<Trainee> trainees = new HashSet(0);
+     private Set<Course> courses = new HashSet(0);
 
     public MyGroup() {
     }
@@ -73,8 +73,36 @@ public class MyGroup implements java.io.Serializable {
     }
 
 
+    public boolean addTrainee(Trainee trainee) {
+        return this.trainees.add(trainee);
+    }
+    public boolean removeTrainee(Trainee trainee) {
+        return this.trainees.remove(trainee);
+    }
 
+    public boolean addCourse(Course course) {
+        return this.courses.add(course);
+    }
+    public boolean removeCourse(Course course) {
+        return this.courses.remove(course);
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MyGroup)) return false;
+
+        MyGroup myGroup = (MyGroup) o;
+
+        if (id != myGroup.id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
+    }
 }
 
 

@@ -16,9 +16,6 @@ import java.io.IOException;
  */
 @WebServlet(urlPatterns = "/admin/trainee/deactivate")
 public class DeactivateTrainee extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.parseLong(request.getParameter("id"));

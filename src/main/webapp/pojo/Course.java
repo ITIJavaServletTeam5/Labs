@@ -16,7 +16,6 @@ public class Course  implements java.io.Serializable {
      private String name;
      private String description;
      private Boolean activated;
-     private Set instructors = new HashSet(0);
      private Set labs = new HashSet(0);
 
     public Course() {
@@ -27,7 +26,6 @@ public class Course  implements java.io.Serializable {
        this.name = name;
        this.description = description;
        this.activated = activated;
-       this.instructors = instructors;
        this.labs = labs;
     }
    
@@ -66,13 +64,7 @@ public class Course  implements java.io.Serializable {
     public void setActivated(Boolean activated) {
         this.activated = activated;
     }
-    public Set getInstructors() {
-        return this.instructors;
-    }
-    
-    public void setInstructors(Set instructors) {
-        this.instructors = instructors;
-    }
+
     public Set getLabs() {
         return this.labs;
     }
