@@ -5,6 +5,9 @@
  */
 package instructor.controller;
 
+import dao.LabDao;
+import dao.LabHibernateDao;
+import hibernate.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -52,11 +55,19 @@ public class QueuesList extends HttpServlet {
         RequestDispatcher rd1 = request.getRequestDispatcher("/instructor/view/navigation");
         rd1.include(request, response);
         
+        String labId = request.getParameter("labid");
+        if (labId != null){
+        Long labIdLong = Long.parseLong(labId);
+        
+        DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
+        LabDao dao = daof.getLabDAO();
+        Lab lab = dao.findById(labIdLong, true);
+        request.setAttribute("lab", lab);
+        System.out.println("the selected lab id ="+labId);
+        }
         RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
         rd.include(request, response);
         //test if lab is choosed
-        Lab l = (Lab) request.getSession().getAttribute("lab");
-        System.out.println(l.getId());
     }
 
     /**

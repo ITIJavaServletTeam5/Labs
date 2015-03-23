@@ -252,8 +252,8 @@
                                                     <!--<input type="hidden" <c:set var="assignment" scope="session" value="${lab}"/> />-->
                                                     Assignments
                                                     </a>
-                                                <a href="${pageContext.request.contextPath}/instructor/view/QueuesList">
-                                                    <input type="hidden" <c:set var="lab" scope="session" value="${lab}"/> />
+                                                <a href="${pageContext.request.contextPath}/instructor/view/QueuesList?labid=${lab.id}">
+                                                    <!--<input type="hidden" <c:set var="lab" scope="session" value="${lab}"/> />-->
                                                     Queues
                                                 </a>
                                             </li>
