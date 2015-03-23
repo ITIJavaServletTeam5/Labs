@@ -73,10 +73,10 @@
                                                                                                     <td>Larry</td>
                                                                                                     <td><button type="button" class="btn btn-outline btn-primary">Dequeue</button></td>
                                                                                                 </tr>-->
-                                                <c:forEach items="${requestScope.Assistancequeues}" var="assistancequeues" varStatus="status">
+                                                <c:forEach items="${requestScope.lab.assistancequeues}" var="labVar">
                                                     <tr class="odd gradeX">
-                                                        <td><c:out value="${status.count}"/></td>
-                                                        <td><c:out value="${assistancequeues.requestDate}"/></td>
+                                                        <td><c:out value="${labVar.trainee.id}"/></td>
+                                                        <td><c:out value="${labVar.trainee.username}"/></td>
                                                         <td><button type="button" class="btn btn-outline btn-primary">Dequeue</button></td>
                                                     </tr>
                                                 </c:forEach>

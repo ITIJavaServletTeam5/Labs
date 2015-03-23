@@ -5,10 +5,10 @@
 <hibernate-mapping>
     <class name="pojo.Assistancequeue" table="assistancequeue" catalog="labmanagement" optimistic-lock="version">
         <composite-id name="id" class="pojo.AssistancequeueId">
-            <key-property name="labId">
+            <key-property name="labId" type="long">
                 <column name="lab_id" />
             </key-property>
-            <key-property name="traineeId">
+            <key-property name="traineeId" type="long">
                 <column name="trainee_id" />
             </key-property>
         </composite-id>

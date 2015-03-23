@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import pojo.Assignment;
+import pojo.AssignmentId;
 import pojo.Lab;
 import pojo.MyGroup;
 import pojo.Trainee;
@@ -76,56 +77,38 @@ public class UploadAss extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // gets absolute path of the web application
-        String appPath = request.getServletContext().getRealPath("");
-        // constructs path of the directory to save uploaded file
-        String savePath = appPath + File.separator + SAVE_DIR;
-        //System.out.println("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj" + savePath);
-
         User user = (User) request.getSession().getAttribute("user");
         System.out.println(user.getId());
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         TraineeDao traineeDao = daoFactory.getTraineeDAO();
-     //   Trainee t= traineeDao.findByRole(user);
-
+        Trainee t = traineeDao.findById((long) user.getId(), true);
+        traineeDao.makePersistent(t);
 
         int labId = Integer.parseInt(request.getParameter("LabId"));
         request.setAttribute("labId", request.getParameter("LabId"));
-        
+
         LabDao labDao = daoFactory.getLabDAO();
-       Lab l= labDao.findById((long)labId,true);
-       Trainee t= traineeDao.findById((long)user.getId(), true);
-        // creates the save directory if it does not exists
-        File fileSaveDir = new File(savePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
+        Lab l = labDao.findById((long) labId, true);
+        System.out.println("hg"+l);
+        labDao.makePersistent(l);
+        
 
-        for (Part part : request.getParts()) {
-            fileName = extractFileName(part);
-            part.write(savePath + File.separator + fileName);
-//            InputStream fileContent = part.getInputStream();
-//            //byte[] bytes = IOUtils.toByteArray(fileContent);
-        }
-        byte[] data = Files.readAllBytes(Paths.get(savePath + File.separator + fileName));
+        Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
 
-        try {
-            FileInputStream fileInputStream = new FileInputStream(new File(savePath + File.separator + fileName));
-            fileInputStream.read(data);
-            fileInputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String fileName = filePart.getSubmittedFileName();
+        InputStream fileContent = filePart.getInputStream();
+        byte[] fileData = new byte[fileContent.available()];
+        fileContent.read(fileData);
 
         Assignment assignment = new Assignment();
-        //Lab lab = new Lab();
-        //Trainee trainee = new Trainee();
         assignment.setLab(l);
         assignment.setTrainee(t);
-        assignment.setAssignmentData(data);
+        assignment.setId(new AssignmentId(l.getId(), t.getId()));
+        
+        assignment.setAssignmentData(fileData);
 //        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
-       // assignmentDao.makeTransient(assignment);
+        // assignmentDao.makeTransient(assignment);
         assignmentDao.makePersistent(assignment);
         request.setAttribute("message", "Upload has been done successfully!");
         getServletContext().getRequestDispatcher("/trainee/view/message.jsp").forward(
