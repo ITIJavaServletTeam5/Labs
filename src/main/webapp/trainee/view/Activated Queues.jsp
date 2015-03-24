@@ -57,7 +57,7 @@
                                     <tbody id="assistance">
                                     <c:forEach items="${requestScope.AssistenceQueues}" var="AssistenceQueue"
                                                varStatus="status">
-                                      s  <tr>
+                                        <tr>
                                             <td>${status.count}</td>
                                             <td>${AssistenceQueue.trainee.username}</td>
                                             <td>${AssistenceQueue.trainee.email}</td>
@@ -106,7 +106,7 @@
                                         <th>Email</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="delivery-">
+                                    <tbody id="delivery">
                                     <c:forEach items="${requestScope.DeliveryQueues}" var="DeliveryQueue"
                                                varStatus="status">
                                         <tr>

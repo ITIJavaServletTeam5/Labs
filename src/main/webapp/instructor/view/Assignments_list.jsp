@@ -44,12 +44,11 @@
                                             </thead>
                                             <tbody>
 
-                                                <c:forEach items="${requestScope.link}" var="link" varStatus="status">
+                                                <c:forEach items="${requestScope.userList}" var="obj">
                                                     <tr class="odd gradeX">
-                                                        <td><c:out value="${status.count}"/></td>
-                                                        <td><c:out value="${assignment.assignmentData}"/></td>
-                                                        <input type="hidden" name="traineeId" value="${requestScope.traineeId}">
-                                                        <input type="hidden" name="labId" value="${requestScope.labId}">
+                                                        <td><c:out value="${obj.trainee.username}"/></td>
+                                                        <td><a href="<c:url value="/instructor/controller/DownLoadServlet"/>">Link</a></td>
+                                                        
                                                     </tr>
                                                 </c:forEach>
 

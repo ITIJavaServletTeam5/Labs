@@ -10,8 +10,12 @@ import dao.LabHibernateDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Assignment;
 import pojo.Assistancequeue;
+import pojo.Deliveryqueue;
 import pojo.Lab;
 
 /**
@@ -31,7 +36,6 @@ import pojo.Lab;
 @WebServlet(name = "QueuesList", urlPatterns = {"/instructor/view/QueuesList"})
 public class QueuesList extends HttpServlet {
 
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -54,16 +58,30 @@ public class QueuesList extends HttpServlet {
 //        request.setAttribute("lab", Assistancequeues);
         RequestDispatcher rd1 = request.getRequestDispatcher("/instructor/view/navigation");
         rd1.include(request, response);
-        
+
         String labId = request.getParameter("labid");
-        if (labId != null){
-        Long labIdLong = Long.parseLong(labId);
-        
-        DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
-        LabDao dao = daof.getLabDAO();
-        Lab lab = dao.findById(labIdLong, true);
-        request.getSession().setAttribute("lab", lab);
-        System.out.println("the selected lab id ="+labId);
+        if (labId != null) {
+            Long labIdLong = Long.parseLong(labId);
+
+            DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
+            LabDao dao = daof.getLabDAO();
+            Lab lab = dao.findById(labIdLong, true);
+            
+            //sort queues
+            List<Assistancequeue> assL = (fromSetToList(lab.getAssistancequeues()));
+            Collections.sort(assL);
+            
+            List<Deliveryqueue> delL = (fromSetToList(lab.getDeliveryqueues()));
+            Collections.sort(delL);
+            
+            lab.setAssistancequeuesList(assL);
+            lab.setDeliveryqueuesList(delL);
+            for(Deliveryqueue a : delL){
+                System.out.println("this to check on queue order in servlet"+a.getRequestDate());
+            }
+                    
+            request.getSession().setAttribute("ilab", lab);
+            System.out.println("the selected lab id =" + labId);
         }
         RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
         rd.include(request, response);
@@ -92,5 +110,13 @@ public class QueuesList extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    public <T> List<T> fromSetToList(Set<T> set) {
+        List<T> list = new ArrayList<T>();
+        for (T o : set) {
+            list.add(o);
+        }
+        return list;
+    }
 
 }
