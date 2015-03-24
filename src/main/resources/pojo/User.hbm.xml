@@ -70,5 +70,11 @@
                 <key column="id" />
             </join>
         </subclass>
+
+        <subclass name="pojo.Admin" discriminator-value="ADMIN">
+            <join table="admin">
+                <key column="id" />
+            </join>
+        </subclass>
     </class>
 </hibernate-mapping>

@@ -36,11 +36,10 @@ public class Login extends HttpServlet {
                      System.out.println(user.getRole()+"***");
                     // request.getRequestDispatcher("/admin/trainee").forward(request, response);
                     // getServletContext().getRequestDispatcher("/admin/trainee").forward(request, response);
-                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
+                    response.sendRedirect(request.getContextPath() + "/trainee/view/ActivatedQueus");
                     break;
                 case "INSTRUCTOR":
-                    
-                    response.sendRedirect(request.getContextPath() + "/admin/trainee");
+                    response.sendRedirect(request.getContextPath() + "/instructor/view/QueuesList");
                     break;
                 case "ADMIN":
                     response.sendRedirect(request.getContextPath() + "/admin/trainee");
