@@ -57,7 +57,7 @@
                                                     <th>action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  id="assistance">
                                                 <!--                                                <tr>
                                                                                                     <td>1</td>
                                                                                                     <td>Mark</td>
@@ -76,7 +76,7 @@
                                                 <c:forEach items="${sessionScope.ilab.assistancequeuesList}" var="labVar" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
-                                                        <td><c:out value="${labVar.trainee.username}"/></td>
+                                                        <td><c:out value="${labVar.trainee.username}" /></td>
                                                         <td>
                                                             <button type="button" class="btn btn-outline btn-primary" onclick="window.location = '${pageContext.request.contextPath}/instructor/view/assistancedequeue?traineeid=${labVar.trainee.id}&labid=${labVar.lab.id}'">Dequeue</button>
                                                         </td>
@@ -94,15 +94,15 @@
                         <!-- /.col-lg-6 -->
                         <div class="col-lg-6">
                             <div class="panel panel-default">
-                                                                <div class="panel-heading" >
-                                                                    Delivery queue
-                                                                    <!--<button type="button" class="btn btn-success">Transfer queue</button>-->
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    <!--<button type="button" class="btn btn-outline btn-primary" >Transfer queue</button>-->
-                                                                </div>
+                                <div class="panel-heading" >
+                                    Delivery queue
+                                    <!--<button type="button" class="btn btn-success">Transfer queue</button>-->
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <!--<button type="button" class="btn btn-outline btn-primary" >Transfer queue</button>-->
+                                </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive" >
@@ -147,7 +147,6 @@
             <!-- jQuery -->
 
             <jsp:include page="/common/view/scripts.jsp" />
-            
         </body>
 
     </html>
