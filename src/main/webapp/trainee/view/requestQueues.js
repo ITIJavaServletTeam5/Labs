@@ -6,8 +6,7 @@ $(document).ready(function () {
             if (JSON.stringify(data) != JSON.stringify(storedData)) {
                 $("#assistance").html("");
                 for (var i = 0; i < data.AssistanceQueues.length; i++) {
-                    console.log("loop");
-                    $("#assistance").html(
+                    $("#assistance").append(
                         "<tr>" +
                         "<td>" + (i+1) + "</td>" +
                         "<td>" + data.AssistanceQueues[i].user.username + "</td>" +
@@ -18,7 +17,6 @@ $(document).ready(function () {
 
                 $("#delivery").html("");
                 for (var i = 0; i < data.DeliveryQueues.length; i++) {
-                    console.log("loop");
                     $("#delivery").append(
                         "<tr>" +
                         "<td>" + (i+1) + "</td>" +

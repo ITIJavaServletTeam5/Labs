@@ -22,5 +22,5 @@ public interface LabDao extends GenericDAO <Lab, Long>{
 
     public List<Lab> findlabsByCoursesByGroup(Course course);
 
-    
+    public List<Lab> findLabsOfTraineeId(long traineeId);
 }
