@@ -62,7 +62,7 @@ public class QueuesList extends HttpServlet {
         DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
         LabDao dao = daof.getLabDAO();
         Lab lab = dao.findById(labIdLong, true);
-        request.setAttribute("lab", lab);
+        request.getSession().setAttribute("lab", lab);
         System.out.println("the selected lab id ="+labId);
         }
         RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
