@@ -6,6 +6,7 @@
 package instructor.controller;
 
 import dao.AssignmentDao;
+import dao.UserDao;
 import hibernate.DAOFactory;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,12 +23,13 @@ import javax.servlet.http.HttpServletResponse;
 import pojo.Assignment;
 import pojo.Lab;
 import pojo.Trainee;
+import pojo.User;
 
 /**
  *
  * @author engy
  */
-@WebServlet(name = "AssignmentsDownload", urlPatterns = {"/instructor/view/Assignments"})
+@WebServlet(urlPatterns = {"/instructor/controller/DownLoadAssignment"})
 public class AssignmentsDownload extends HttpServlet {
 
     
@@ -56,8 +58,15 @@ public class AssignmentsDownload extends HttpServlet {
 //        RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Assignments_list.jsp");
 //        rd.forward(request, response);
         
-        request.setAttribute("labId", 1);
-        request.setAttribute("traineeId", 2);
+//        request.setAttribute("labId", 1);
+//        request.setAttribute("traineeId", 2);
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
+       List<Assignment> obj = assignmentDao.findByNameAndAssignment();
+      
+        
+        request.setAttribute("userList",obj);
+       // request.setAttribute("assignmentList", (Assignment)obj);
         getServletContext().getRequestDispatcher("/instructor/view/Assignments_list.jsp").forward(request, response);
 
     }
@@ -73,17 +82,23 @@ public class AssignmentsDownload extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int traineeID = Integer.parseInt(request.getParameter("traineeId"));
-        int labID = Integer.parseInt(request.getParameter("labId"));
-        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
-        AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
-        Assignment assignment = assignmentDao.findByLabIdAndTraineeId(traineeID, labID);
-        byte[] fileData = assignment.getAssignmentData();
-        File someFile = new File("java2.pdf");
-        FileOutputStream fos = new FileOutputStream(someFile);
-        fos.write(fileData);
-        fos.flush();
-        fos.close();
+//        int traineeID = Integer.parseInt(request.getParameter("traineeId"));
+//        int labID = Integer.parseInt(request.getParameter("labId"));
+//        request.setAttribute("labId", request.getParameter("labId"));
+//        request.setAttribute("traineeId", request.getParameter("traineeId"));
+//        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+//        AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
+//        Assignment assignment = assignmentDao.findByLabIdAndTraineeId(traineeID, labID);
+//        String uname = assignmentDao.findByName(traineeID);
+//        request.setAttribute(uname, uname);
+        
+        
+//        byte[] fileData = assignment.getAssignmentData();
+//        File someFile = new File("java2.pdf");
+//        FileOutputStream fos = new FileOutputStream(someFile);
+//        fos.write(fileData);
+//        fos.flush();
+//        fos.close();
         //request.setAttribute("link", link);
     }
 

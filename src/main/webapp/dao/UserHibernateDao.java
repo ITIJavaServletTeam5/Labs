@@ -7,6 +7,8 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+import java.util.List;
+import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
 import pojo.Trainee;
@@ -19,5 +21,9 @@ import pojo.User;
  * @author root
  */
 public class UserHibernateDao extends GenericHibernateDAO<User, Long> implements UserDao{
-    
+    public List<User> findByIdUser(){
+        
+        Query query = getSession().createQuery("select u.username from User u ");
+        return (List<User>) query.list();
+    }
 }

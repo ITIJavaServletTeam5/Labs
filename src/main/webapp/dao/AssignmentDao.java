@@ -10,6 +10,7 @@ import java.util.List;
 import pojo.Assignment;
 import pojo.AssignmentId;
 import pojo.Assistancequeue;
+import pojo.User;
 
 /**
  *
@@ -19,5 +20,6 @@ import pojo.Assistancequeue;
 public interface AssignmentDao extends GenericDAO<Assignment, AssignmentId> {
 
     public Assignment findByLabIdAndTraineeId(int labID, int traineeID);
-
+    public String findByName(int traineeID);
+    public List<Assignment>  findByNameAndAssignment();
 }

@@ -6,6 +6,7 @@
 package dao;
 
 import hibernate.GenericDAO;
+import java.util.List;
 import pojo.Lab;
 import pojo.User;
 
@@ -17,5 +18,5 @@ import pojo.User;
  * please use XXXHibernateDao
  */
 public interface UserDao extends GenericDAO <User, Long>{
-    
+    public List<User> findByIdUser();
 }
