@@ -27,32 +27,6 @@ import pojo.*;
 @WebServlet(urlPatterns = {"/trainee/view/RequestDelivery"})
 public class RequestDelivery extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
-
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,17 +41,21 @@ public class RequestDelivery extends HttpServlet {
         LabDao labDao = daoFactory.getLabDAO();
         Lab lab = labDao.findById(labId, false);
 
-        Deliveryqueue deliveryqueue = new Deliveryqueue();
-        deliveryqueue.setTrainee(trainee);
-        deliveryqueue.setLab(lab);
-        deliveryqueue.setRequestDate(new Date());
-        // activated here is being served
-        deliveryqueue.setActivated(false);
-
-        deliveryqueue.setId(new DeliveryqueueId(lab.getId(), trainee.getId()));
-
         DeliveryqueueDao deliveryqueueDAO = daoFactory.getDeliveryqueueDAO();
-        deliveryqueueDAO.makePersistent(deliveryqueue);
+        Deliveryqueue deliveryqueue = deliveryqueueDAO.findById(new DeliveryqueueId(lab.getId(), trainee.getId()), true);
+
+        if (deliveryqueue != null) {
+            deliveryqueueDAO.makeTransient(deliveryqueue);
+        } else {
+            deliveryqueue = new Deliveryqueue();
+            deliveryqueue.setTrainee(trainee);
+            deliveryqueue.setLab(lab);
+            deliveryqueue.setRequestDate(new Date());
+            // activated here is being served
+            deliveryqueue.setActivated(false);
+            deliveryqueue.setId(new DeliveryqueueId(lab.getId(), trainee.getId()));
+            deliveryqueueDAO.makePersistent(deliveryqueue);
+        }
 
         response.sendRedirect(request.getContextPath() + "/trainee/view/ActivatedQueus?labId=" + labId);
     }

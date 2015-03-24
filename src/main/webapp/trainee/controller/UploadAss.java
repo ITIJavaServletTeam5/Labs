@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -109,6 +110,7 @@ public class UploadAss extends HttpServlet {
         assignment.setLab(l);
         assignment.setTrainee(t);
         assignment.setId(new AssignmentId(l.getId(), t.getId()));
+        assignment.setUploadTime(new Date());
         
         assignment.setAssignmentData(fileData);
 //        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);

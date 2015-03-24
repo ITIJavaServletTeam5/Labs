@@ -34,9 +34,7 @@ public class UpdateQueuesJson extends HttpServlet {
         List<Deliveryqueue> deliveryQueues = deliveryDao.findDeliveryQueueOfLab(labId);
 
         Collections.sort(deliveryQueues);
-        Collections.reverse(deliveryQueues);
         Collections.sort(assistanceQueues);
-        Collections.reverse(assistanceQueues);
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("AssistanceQueues", assistanceQueues);
