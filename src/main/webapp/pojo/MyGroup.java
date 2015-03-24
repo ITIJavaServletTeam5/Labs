@@ -3,6 +3,7 @@ package pojo;
 
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -15,8 +16,8 @@ public class MyGroup implements java.io.Serializable {
      private String name;
      private String description;
      private Boolean activated;
-     private Set<Trainee> trainees = new HashSet(0);
-     private Set<Course> courses = new HashSet(0);
+     private Set<Trainee> trainees = new LinkedHashSet(0);
+     private Set<Course> courses = new LinkedHashSet(0);
 
     public MyGroup() {
     }
