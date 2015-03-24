@@ -16,6 +16,7 @@
 
 <body>
 <jsp:include page="/trainee/view/Navigation.jsp"/>
+<input hidden="hidden" id="labId" value="${requestScope.labId}" />
 
 <div id="page-wrapper">
     <div class="row">
@@ -53,7 +54,7 @@
                                         <th>Email</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="assistance">
                                     <c:forEach items="${requestScope.AssistenceQueues}" var="AssistenceQueue"
                                                varStatus="status">
                                         <tr>
@@ -105,7 +106,7 @@
                                         <th>Email</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="delivery">
                                     <c:forEach items="${requestScope.DeliveryQueues}" var="DeliveryQueue"
                                                varStatus="status">
                                         <tr>
@@ -152,6 +153,7 @@
     </div>
     <!-- /#wrapper -->
     <jsp:include page="/common/view/scripts.jsp"/>
+    <script src="requestQueues.js"></script>
 </div>
 </body>
 </html>

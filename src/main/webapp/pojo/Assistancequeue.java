@@ -69,10 +69,14 @@ public class Assistancequeue  implements java.io.Serializable, Comparable {
         this.activated = activated;
     }
 
-
     @Override
     public int compareTo(Object o) {
         return this.requestDate.compareTo(((Assistancequeue)o).requestDate);
+    }
+
+    @Override
+    public String toString() {
+        return trainee.toString();
     }
 }
 

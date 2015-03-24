@@ -70,6 +70,14 @@ public class User  implements Serializable {
     public void setActivated(Boolean activated) {
         this.activated = activated;
     }
+
+    @Override
+    public String toString() {
+        return "{\"user\":{" +
+                "\"username\":\"" + username + '"' +
+                ", \"email\":\"" + email + '"' +
+                "}}";
+    }
 }
 
 

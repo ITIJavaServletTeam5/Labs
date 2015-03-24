@@ -64,6 +64,8 @@ public class Trainee extends User implements java.io.Serializable {
     public void setGroups(Set groups) {
         this.groups = groups;
     }
+
+
 }
 
 

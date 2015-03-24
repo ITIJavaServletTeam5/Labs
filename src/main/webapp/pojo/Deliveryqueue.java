@@ -71,6 +71,11 @@ public class Deliveryqueue  implements java.io.Serializable, Comparable {
     public int compareTo(Object o) {
         return this.requestDate.compareTo(((Deliveryqueue)o).requestDate);
     }
+
+    @Override
+    public String toString() {
+        return trainee.toString();
+    }
 }
 
 
