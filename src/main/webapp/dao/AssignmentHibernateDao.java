@@ -12,6 +12,7 @@ import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
 import pojo.Assistancequeue;
+import pojo.User;
 
 /**
  *this class is made for customized queries
@@ -22,11 +23,24 @@ import pojo.Assistancequeue;
 public class AssignmentHibernateDao extends GenericHibernateDAO<Assignment, AssignmentId> implements AssignmentDao{
 
     
+    @Override
     public Assignment findByLabIdAndTraineeId(int labID, int traineeID){
         
         Query query = getSession().createQuery("from Assignment a where a.id=labID and a.lab=traineeID ");
         return (Assignment) query.list().get(0);
     }
     
+    @Override
+    public String findByName(int traineeID){
+        
+        Query query = getSession().createQuery("select username from User u where u.id=traineeID ");
+        return (String)query.list().get(0);
+    }
     
+    @Override
+    public List<Assignment> findByNameAndAssignment(){
+        
+        Query query = getSession().createQuery(" from Assignment ");
+        return query.list();
+    }
 }
