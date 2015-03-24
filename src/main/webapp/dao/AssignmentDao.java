@@ -23,3 +23,4 @@ public interface AssignmentDao extends GenericDAO<Assignment, AssignmentId> {
     public String findByName(int traineeID);
     public List<Assignment>  findByNameAndAssignment();
 }
+

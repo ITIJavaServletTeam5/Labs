@@ -7,6 +7,9 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+import java.util.List;
+
+import org.hibernate.Query;
 import pojo.Assignment;
 import pojo.AssignmentId;
 import pojo.Deliveryqueue;
@@ -19,5 +22,11 @@ import pojo.DeliveryqueueId;
  * @author root
  */
 public class DeliveryqueueHibernateDao extends GenericHibernateDAO<Deliveryqueue, DeliveryqueueId> implements DeliveryqueueDao{
-    
+
+    @Override
+    public List<Deliveryqueue> findDeliveryQueueOfLab(long labId) {
+        Query query = getSession().createQuery("from Deliveryqueue dq where dq.id.labId =?");
+        query.setString(0, String.valueOf(labId));
+        return query.list();
+    }
 }
