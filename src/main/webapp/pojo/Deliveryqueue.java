@@ -9,6 +9,7 @@ import java.util.Date;
  */
 public class Deliveryqueue  implements java.io.Serializable, Comparable {
 
+
      private DeliveryqueueId id;
      private Lab lab;
      private Trainee trainee;
@@ -18,6 +19,7 @@ public class Deliveryqueue  implements java.io.Serializable, Comparable {
     public Deliveryqueue() {
     }
 
+	
     public Deliveryqueue(DeliveryqueueId id, Lab lab, Trainee trainee) {
         this.id = id;
         this.lab = lab;
@@ -30,11 +32,11 @@ public class Deliveryqueue  implements java.io.Serializable, Comparable {
        this.requestDate = requestDate;
        this.activated = activated;
     }
-
+   
     public DeliveryqueueId getId() {
         return this.id;
     }
-
+    
     public void setId(DeliveryqueueId id) {
         this.id = id;
     }

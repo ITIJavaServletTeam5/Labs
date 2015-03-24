@@ -5,6 +5,9 @@
  */
 package instructor.controller;
 
+import dao.LabDao;
+import dao.LabHibernateDao;
+import hibernate.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -18,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Assignment;
 import pojo.Assistancequeue;
+import pojo.Lab;
 
 /**
  *
@@ -40,19 +44,30 @@ public class QueuesList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Assistancequeue> Assistancequeues = new Vector<Assistancequeue>();
-        Assistancequeue assistancequeue1 = new Assistancequeue();
-        assistancequeue1.setRequestDate(new Date());
-        Assistancequeues.add(assistancequeue1);
-        Assistancequeue assistancequeue2 = new Assistancequeue();
-        assistancequeue2.setRequestDate(new Date());
-        Assistancequeues.add(assistancequeue2);
-        request.setAttribute("Assistancequeues", Assistancequeues);
+//        List<Assistancequeue> Assistancequeues = new Vector<Assistancequeue>();
+//        Assistancequeue assistancequeue1 = new Assistancequeue();
+//        assistancequeue1.setRequestDate(new Date());
+//        Assistancequeues.add(assistancequeue1);
+//        Assistancequeue assistancequeue2 = new Assistancequeue();
+//        assistancequeue2.setRequestDate(new Date());
+//        Assistancequeues.add(assistancequeue2);
+//        request.setAttribute("lab", Assistancequeues);
         RequestDispatcher rd1 = request.getRequestDispatcher("/instructor/view/navigation");
         rd1.include(request, response);
         
+        String labId = request.getParameter("labid");
+        if (labId != null){
+        Long labIdLong = Long.parseLong(labId);
+        
+        DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
+        LabDao dao = daof.getLabDAO();
+        Lab lab = dao.findById(labIdLong, true);
+        request.getSession().setAttribute("lab", lab);
+        System.out.println("the selected lab id ="+labId);
+        }
         RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
         rd.include(request, response);
+        //test if lab is choosed
     }
 
     /**

@@ -5,32 +5,27 @@
  */
 package instructor.controller;
 
+import dao.AssistancequeueDao;
 import dao.InstructorDao;
-import dao.InstructorHibernateDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pojo.Course;
-import pojo.MyGroup;
-import pojo.Instructor;
-import pojo.Lab;
+import pojo.Assistancequeue;
+import pojo.AssistancequeueId;
 import pojo.User;
 
 /**
  *
  * @author root
  */
-@WebServlet(name = "Navigation", urlPatterns = {"/instructor/view/navigation"})
-public class Navigation extends HttpServlet {
+@WebServlet(name = "Dequeue", urlPatterns = {"/instructor/view/assistancedequeue"})
+public class AssistanceDequeue extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,48 +38,21 @@ public class Navigation extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
-            InstructorDao ihd = daof.getInstructorDAO();
-            User u = (User) request.getSession().getAttribute("user");
-            Instructor i = ihd.findById(u.getId(), true);
-            
-            System.out.println(i.getEmail());
-            //build the list of lists to be viewed
-            Set<Course> dtoCourses = new LinkedHashSet<Course>();
-            Set<Course> hisCourses = new LinkedHashSet<Course>();
-            for (Object lab : i.getLabs()){
-                // getting all his courses
-                hisCourses.add(((Lab)lab).getCourse());
-            }
-            
-            for (Object course : hisCourses) {
-            System.out.println("test to see if /instructor/view/navigation is accessible");
-                System.out.println(((Course)course).getName());
-                Set<Lab> labs = new LinkedHashSet<Lab>();
-                //get the labs of each of his courses
-                for(Object lab : ((Course)course).getLabs()){
-                    //check if he has that lab or don't include the lab
-                    if (i.getLabs().contains(lab)){
-                        labs.add((Lab)lab);
-                        System.out.println(((Lab)lab).getName());
-                    }
-                }
-                ((Course)course).setLabs(labs);
-                //finally add the course to the render list
-                dtoCourses.add((Course)course);
-            }
-            
-            
-            request.getSession().setAttribute("courses", dtoCourses);
-            
-//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/instructor/view/common/navigation.jsp");
-//            rd.forward(request, response);
-            
-        } finally {
-            
-        }
+        
+        //dequeue
+        String traineeId = request.getParameter("traineeid");
+        Long traineeIdLong = Long.parseLong(traineeId);
+        String labId = request.getParameter("labid");
+        Long labIdLong = Long.parseLong(labId);
+
+        AssistancequeueId aqi = new AssistancequeueId(labIdLong, traineeIdLong);
+
+        DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
+        AssistancequeueDao ihd = daof.getAssistancequeueDAO();
+        Assistancequeue assistancequeue = ihd.findById(aqi, true);
+        ihd.makeTransient(assistancequeue);
+        //resetting the same lab before leaving 
+        response.sendRedirect(request.getContextPath()+"/instructor/view/QueuesList?labid="+labId);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

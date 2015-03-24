@@ -5,6 +5,10 @@
  */
 package instructor.controller;
 
+import dao.AssignmentDao;
+import hibernate.DAOFactory;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pojo.Assignment;
+import pojo.Lab;
 import pojo.Trainee;
 
 /**
@@ -39,17 +44,22 @@ public class AssignmentsDownload extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Assignment> Assignments = new Vector<Assignment>();
-        Assignment assignment1 = new Assignment();
-        assignment1.setAssignmentData(new byte[100]);
-        Assignments.add(assignment1);
-        Assignment assignment2 = new Assignment();
-        assignment2.setAssignmentData(new byte[100]);
-        Assignments.add(assignment2);
-        request.setAttribute("Assignments", Assignments);
+//        List<Assignment> Assignments = new Vector<Assignment>();
+//        Assignment assignment1 = new Assignment();
+//        assignment1.setAssignmentData(new byte[100]);
+//        Assignments.add(assignment1);
+//        Assignment assignment2 = new Assignment();
+//        assignment2.setAssignmentData(new byte[100]);
+//        Assignments.add(assignment2);
+//        request.setAttribute("Assignments", Assignments);
+//        
+//        RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Assignments_list.jsp");
+//        rd.forward(request, response);
         
-        RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Assignments_list.jsp");
-        rd.forward(request, response);
+        request.setAttribute("labId", 1);
+        request.setAttribute("traineeId", 2);
+        getServletContext().getRequestDispatcher("/instructor/view/Assignments_list.jsp").forward(request, response);
+
     }
 
     /**
@@ -63,7 +73,18 @@ public class AssignmentsDownload extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        int traineeID = Integer.parseInt(request.getParameter("traineeId"));
+        int labID = Integer.parseInt(request.getParameter("labId"));
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
+        Assignment assignment = assignmentDao.findByLabIdAndTraineeId(traineeID, labID);
+        byte[] fileData = assignment.getAssignmentData();
+        File someFile = new File("java2.pdf");
+        FileOutputStream fos = new FileOutputStream(someFile);
+        fos.write(fileData);
+        fos.flush();
+        fos.close();
+        //request.setAttribute("link", link);
     }
 
     /**

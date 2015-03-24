@@ -32,39 +32,39 @@ public class Assistancequeue  implements java.io.Serializable, Comparable {
        this.requestDate = requestDate;
        this.activated = activated;
     }
-
+   
     public AssistancequeueId getId() {
         return this.id;
     }
-
+    
     public void setId(AssistancequeueId id) {
         this.id = id;
     }
     public Lab getLab() {
         return this.lab;
     }
-
+    
     public void setLab(Lab lab) {
         this.lab = lab;
     }
     public Trainee getTrainee() {
         return this.trainee;
     }
-
+    
     public void setTrainee(Trainee trainee) {
         this.trainee = trainee;
     }
     public Date getRequestDate() {
         return this.requestDate;
     }
-
+    
     public void setRequestDate(Date requestDate) {
         this.requestDate = requestDate;
     }
     public Boolean getActivated() {
         return this.activated;
     }
-
+    
     public void setActivated(Boolean activated) {
         this.activated = activated;
     }

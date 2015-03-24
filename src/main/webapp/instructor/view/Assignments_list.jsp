@@ -44,10 +44,12 @@
                                             </thead>
                                             <tbody>
 
-                                                <c:forEach items="${requestScope.Assignments}" var="assignment" varStatus="status">
+                                                <c:forEach items="${requestScope.link}" var="link" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
                                                         <td><c:out value="${assignment.assignmentData}"/></td>
+                                                        <input type="hidden" name="traineeId" value="${requestScope.traineeId}">
+                                                        <input type="hidden" name="labId" value="${requestScope.labId}">
                                                     </tr>
                                                 </c:forEach>
 
