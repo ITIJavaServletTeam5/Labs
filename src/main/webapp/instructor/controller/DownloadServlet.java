@@ -5,13 +5,20 @@
  */
 package instructor.controller;
 
+import dao.AssignmentDao;
+import hibernate.DAOFactory;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import pojo.Assignment;
+import pojo.Trainee;
 
 /**
  *
@@ -19,7 +26,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/instructor/controller/DownLoadServlet"})
 public class DownloadServlet extends HttpServlet {
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -35,7 +41,30 @@ public class DownloadServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("tetstttt");
+        int traineeId = Integer.parseInt(request.getParameter("test"));
+        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
+        Assignment b = assignmentDao.findByteById(traineeId);
+        byte[] content = b.getAssignmentData();
+        String filePath = "D:\\";
+        FileInputStream fileToDownload = new FileInputStream(filePath);
+        ServletOutputStream output = response.getOutputStream();
+        int readBytes = 0;
+        while ((readBytes = fileToDownload.read(content, 0, 10000)) != -1) {
+            output.write(readBytes);
+        }
+
+        output.close();
+        fileToDownload.close();
+//        while ((readBytes = fileToDownload.read(buffer, 0, 10000)) != -1) {
+//            output.write(readBytes);
+//        }
+//
+//        output.close();
+//        fileToDownload.close();
+//        fileToDownload.close();
+//        Assignment b = assignmentDao.findById((long) "traineeId", true);
+//        Assignment b = assignmentDao.findById("traineeId", true);
     }
 
     /**
@@ -49,7 +78,7 @@ public class DownloadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**

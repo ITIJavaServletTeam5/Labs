@@ -43,4 +43,9 @@ public class AssignmentHibernateDao extends GenericHibernateDAO<Assignment, Assi
         Query query = getSession().createQuery(" from Assignment ");
         return query.list();
     }
+    
+    public Assignment findByteById(int traineeId){
+        Query query = getSession().createQuery("select a.assignmentData from Assignment a where a.trainee.id=traineeId");
+        return (Assignment) query.uniqueResult();
+    }
 }
