@@ -237,20 +237,20 @@
                         <!-- /input-group -->
                     </li>
                     <c:forEach items="${sessionScope.courses}" var="course">
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> <c:out value="${course.name}" /><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <c:forEach items="${course.labs}" var="lab">
-<!--                            <li>
-                                <a href="#">Course1 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">-->
-                                    <li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> <c:out value="${course.name}" /><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <c:forEach items="${course.labs}" var="lab">
+                                    <!--                            <li>
+                                                                    <a href="#">Course1 <span class="fa arrow"></span></a>
+                                                                    <ul class="nav nav-third-level">-->
+                                    <li draggable="true" id="${lab.id}"  ondrop="drop(event);alert(${lab.id});window.location = '${pageContext.request.contextPath}/instructor/view/transferqueues?labid=${lab.id}'" ondragover="allowDrop(event)">
                                         <a href="#"><c:out value="${lab.name}" /> <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
-                                            <li>
+                                            <li >
                                                 <a href="${pageContext.request.contextPath}/instructor/view/Assignments">
                                                     Assignments
-                                                    </a>
+                                                </a>
                                                 <a href="${pageContext.request.contextPath}/instructor/view/QueuesList?labid=${lab.id}">
                                                     Queues
                                                 </a>
@@ -258,79 +258,99 @@
 
                                         </ul>
                                     </li>
-                                    </c:forEach>
-<!--                                </ul>
-                                 /.nav-third-level 
-                            </li>-->
-<!--
-                            <li>
-                                <a href="#">Course2 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">-->
-<!--                                    <li>
-                                        <a href="#">Lab <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="Assignments.html">Assignments</a>
-                                                <a href="Queue.html">Queues</a>
-                                            </li>
+                                </c:forEach>
+                                <!--                                </ul>
+                                                                 /.nav-third-level 
+                                                            </li>-->
+                                <!--
+                                                            <li>
+                                                                <a href="#">Course2 <span class="fa arrow"></span></a>
+                                                                <ul class="nav nav-third-level">-->
+                                <!--                                    <li>
+                                                                        <a href="#">Lab <span class="fa arrow"></span></a>
+                                                                        <ul class="nav nav-third-level">
+                                                                            <li>
+                                                                                <a href="Assignments.html">Assignments</a>
+                                                                                <a href="Queue.html">Queues</a>
+                                                                            </li>
+                                
+                                                                        </ul>
+                                                                    </li>-->
 
-                                        </ul>
-                                    </li>-->
-
-<!--                                </ul>
-                                 /.nav-third-level 
-                            </li>-->
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
+                                <!--                                </ul>
+                                                                 /.nav-third-level 
+                                                            </li>-->
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </c:forEach>
-<!--                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Group2<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-
-                            <li>
-                                <a href="#">Course1 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Lab <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="tables.html">Assignments</a>
-                                                <a href="Queue.html">Queues</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                                 /.nav-third-level 
-                            </li>
-
-                            <li>
-                                <a href="#">Course2 <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Lab <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="Assignments.html">Assignments</a>
-                                                <a href="Queue.html">Queues</a>
-                                            </li>
-
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                                 /.nav-third-level 
-                            </li>
-                        </ul>
-                         /.nav-second-level 
-                    </li>-->
+                    <!--                                        <li>
+                                                                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Group2<span class="fa arrow"></span></a>
+                                                                <ul class="nav nav-second-level">
+                                        
+                                                                    <li>
+                                                                        <a href="#">Course1 <span class="fa arrow"></span></a>
+                                                                        <ul class="nav nav-third-level">
+                                                                            <li>
+                                                                                <a href="#">Lab <span class="fa arrow"></span></a>
+                                                                                <ul class="nav nav-third-level">
+                                                                                    <li>
+                                                                                        <a href="tables.html">Assignments</a>
+                                                                                        <a href="Queue.html">Queues</a>
+                                                                                    </li>
+                                        
+                                                                                </ul>
+                                                                            </li>
+                                        
+                                                                        </ul>
+                                                                         /.nav-third-level 
+                                                                    </li>
+                                        
+                                                                    <li>
+                                                                        <a href="#">Course2 <span class="fa arrow"></span></a>
+                                                                        <ul class="nav nav-third-level">
+                                                                            <li>
+                                                                                <a href="#">Lab <span class="fa arrow"></span></a>
+                                                                                <ul class="nav nav-third-level">
+                                                                                    <li>
+                                                                                        <a href="Assignments.html">Assignments</a>
+                                                                                        <a href="Queue.html">Queues</a>
+                                                                                    </li>
+                                        
+                                                                                </ul>
+                                                                            </li>
+                                        
+                                                                        </ul>
+                                                                         /.nav-third-level 
+                                                                    </li>
+                                                                </ul>
+                                                                 /.nav-second-level 
+                                                            </li>-->
 
                 </ul>
-            </div>
+            </div><br/>
+            <div class="btn btn-outline btn-primary" ondragstart="drag(event)" draggable="true" id="dragable">Transfer queue</div>
             <!-- /.sidebar-collapse -->
         </div>
         <!-- /.navbar-static-side -->
     </nav>
 </div>
+<script>
+    function allowDrop(ev) {
+//        alert("drop allowed");
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+//        alert("drag started");
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        alert("drop happenned  " + ev.target.id);
+        
+//        ev.target.appendChild(document.getElementById(data));
+    }
+</script>

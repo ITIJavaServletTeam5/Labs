@@ -2,9 +2,11 @@ package pojo;
 // Generated Mar 20, 2015 2:19:00 PM by Hibernate Tools 4.3.1
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -26,6 +28,8 @@ public class Lab  implements java.io.Serializable {
      private Set assignments = new LinkedHashSet(0);
      private Set instructors = new LinkedHashSet(0);
      private Set<Assistancequeue> assistancequeues = new TreeSet(new AssistancequeueCmp());
+     private List<Deliveryqueue> deliveryqueuesList = new ArrayList();
+    private List<Assistancequeue> assistancequeuesList = new ArrayList<>();
 
     public Lab() {
     }
@@ -127,6 +131,22 @@ public class Lab  implements java.io.Serializable {
     
     public void setAssistancequeues(Set assistancequeues) {
         this.assistancequeues = assistancequeues;
+    }
+
+    public List<Deliveryqueue> getDeliveryqueuesList() {
+        return deliveryqueuesList;
+    }
+
+    public List<Assistancequeue> getAssistancequeuesList() {
+        return assistancequeuesList;
+    }
+
+    public void setDeliveryqueuesList(List<Deliveryqueue> deliveryqueuesList) {
+        this.deliveryqueuesList = deliveryqueuesList;
+    }
+
+    public void setAssistancequeuesList(List<Assistancequeue> assistancequeueList) {
+        this.assistancequeuesList = assistancequeueList;
     }
 
 

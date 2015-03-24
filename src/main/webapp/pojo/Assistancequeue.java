@@ -71,7 +71,7 @@ public class Assistancequeue  implements java.io.Serializable ,Comparable<Assist
 
     @Override
     public int compareTo(Assistancequeue o) {
-        return this.requestDate.compareTo(requestDate);
+        return this.requestDate.compareTo(o.requestDate);
     }
 
 
