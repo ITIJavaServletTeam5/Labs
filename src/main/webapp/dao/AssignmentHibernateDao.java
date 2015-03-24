@@ -22,7 +22,11 @@ import pojo.Assistancequeue;
 public class AssignmentHibernateDao extends GenericHibernateDAO<Assignment, AssignmentId> implements AssignmentDao{
 
     
-    
+    public Assignment findByLabIdAndTraineeId(int labID, int traineeID){
+        
+        Query query = getSession().createQuery("from Assignment a where a.id=labID and a.lab=traineeID ");
+        return (Assignment) query.list().get(0);
+    }
     
     
 }

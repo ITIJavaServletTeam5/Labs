@@ -59,7 +59,7 @@ public class UploadAss extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute("labId", 2);
+        request.setAttribute("labId", 1);
         System.out.println(request.getAttribute("labId"));
         getServletContext().getRequestDispatcher("/trainee/view/UploadAssignment.jsp").forward(request, response);
 
@@ -77,11 +77,15 @@ public class UploadAss extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        PrintWriter out = response.getWriter();
         User user = (User) request.getSession().getAttribute("user");
+        
         System.out.println(user.getId());
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         TraineeDao traineeDao = daoFactory.getTraineeDAO();
         Trainee t = traineeDao.findById((long) user.getId(), true);
+        out.println(t.getId());
+//        System.out.println("jhhgygy"+t.getId());
         traineeDao.makePersistent(t);
 
         int labId = Integer.parseInt(request.getParameter("LabId"));
@@ -89,7 +93,8 @@ public class UploadAss extends HttpServlet {
 
         LabDao labDao = daoFactory.getLabDAO();
         Lab l = labDao.findById((long) labId, true);
-        System.out.println("hg"+l);
+        out.println(l.getId());
+//        System.out.println("hg"+l.getId());
         labDao.makePersistent(l);
         
 
