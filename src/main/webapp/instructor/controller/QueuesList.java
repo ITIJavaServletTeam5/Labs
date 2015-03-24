@@ -73,6 +73,9 @@ public class QueuesList extends HttpServlet {
             
             List<Deliveryqueue> delL = (fromSetToList(lab.getDeliveryqueues()));
             Collections.sort(delL);
+            
+            lab.setAssistancequeuesList(assL);
+            lab.setDeliveryqueuesList(delL);
             for(Deliveryqueue a : delL){
                 System.out.println("this to check on queue order in servlet"+a.getRequestDate());
             }

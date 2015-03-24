@@ -27,7 +27,7 @@
                 <div id="page-wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Queues</h1>
+                            <h1 class="page-header">Queues ${sessionScope.ilab.name}</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -73,7 +73,7 @@
                                                                                                     <td>Larry</td>
                                                                                                     <td><button type="button" class="btn btn-outline btn-primary">Dequeue</button></td>
                                                                                                 </tr>-->
-                                                <c:forEach items="${sessionScope.ilab.assistancequeues}" var="labVar" varStatus="status">
+                                                <c:forEach items="${sessionScope.ilab.assistancequeuesList}" var="labVar" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
                                                         <td><c:out value="${labVar.trainee.username}"/></td>
@@ -115,7 +115,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${sessionScope.ilab.deliveryqueues}" var="labVar" varStatus="status">
+                                                <c:forEach items="${sessionScope.ilab.deliveryqueuesList}" var="labVar" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
                                                         <td><c:out value="${labVar.trainee.username}"/></td>
