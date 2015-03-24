@@ -9,6 +9,8 @@ import hibernate.GenericDAO;
 import pojo.Deliveryqueue;
 import pojo.DeliveryqueueId;
 
+import java.util.List;
+
 /**
  *
  * @author root
@@ -17,5 +19,5 @@ import pojo.DeliveryqueueId;
  * please use XXXHibernateDao
  */
 public interface DeliveryqueueDao extends GenericDAO<Deliveryqueue, DeliveryqueueId> {
-    
+    public List<Deliveryqueue> findDeliveryQueueOfLab (long labId);
 }

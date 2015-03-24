@@ -1,51 +1,47 @@
-
-<%@page contentType="text/html" pageEncoding="windows-1252"%>
+<%@page contentType="text/html" pageEncoding="windows-1252" %>
 <!DOCTYPE html>
 <%@ taglib prefix="c"
            uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
-    
-    
-    
-    
-    
+
 
 <head>
-    <jsp:include page="/common/view/head.jsp" />
+    <jsp:include page="/common/view/head.jsp"/>
     <title>
         Activated Queues
     </title>
 
-    
+
 </head>
 
 <body>
-    <jsp:include page="/trainee/view/Navigation.jsp" />
-    
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Queues</h1>
+<jsp:include page="/trainee/view/Navigation.jsp"/>
+<input hidden="hidden" id="labId" value="${requestScope.labId}" />
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Queues</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Assistance Queue
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Assistance Queue
-                        </div>
-                        <!-- /.panel-heading -->
-                        <c:choose>
+                <!-- /.panel-heading -->
+                <c:choose>
                     <c:when test="${not empty requestScope.AssistenceQueues}">
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -55,35 +51,23 @@
                                     <tr>
                                         <th>Order</th>
                                         <th>Name</th>
-                                        
+                                        <th>Email</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <c:forEach items="${requestScope.AssistenceQueues}" var="AssistenceQueues" varStatus="status">
+                                    <tbody id="assistance">
+                                    <c:forEach items="${requestScope.AssistenceQueues}" var="AssistenceQueue"
+                                               varStatus="status">
                                         <tr>
                                             <td>${status.count}</td>
-                                             
-                                            <td>${AssistenceQueues.userName}</td>
-                                            <td>
-                                                <form action="/RequestAssistance" method="get">
-                                                   
-                                                        <button type="button" class="btn btn-outline btn-primary">Request Assistance
-                                                    </button>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <form action="/RequestDelivery" method="post">
-                                                    <button type="button" class="btn btn-outline btn-primary">Request Delivery
-                                                    </button>
-                                                </form>
-                                            </td>
+                                            <td>${AssistenceQueue.trainee.username}</td>
+                                            <td>${AssistenceQueue.trainee.email}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
-                           
+
                         </div>
                         <!-- /.panel-body -->
                     </c:when>
@@ -91,22 +75,25 @@
                         <div>There's no trainees to display</div>
                     </c:otherwise>
                 </c:choose>
-                        
-                        <!-- /.panel-body -->
-                  
-					 <button type="button" class="btn btn-outline btn-primary">Request Assistance</button>
-                    <!-- /.panel -->
+
+                <!-- /.panel-body -->
+                <form method="post" action="${pageContext.request.contextPath}/trainee/view/RequestAssistance">
+                    <input hidden="hidden" type="text" name="labId" value="${requestScope.labId}">
+                    <button type="submit" class="btn btn-outline btn-primary">Request Assistance</button>
+                </form>
+                <!-- /.panel -->
+            </div>
+        </div>
+        <!-- /.col-lg-6 -->
+
+        <%--<div class="row">--%>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Delivery Queue
                 </div>
-                <!-- /.col-lg-6 -->
-				
-                <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                           Delivery Queue
-                        </div>
-                        <!-- /.panel-heading -->
-                        <c:choose>
+                <!-- /.panel-heading -->
+                <c:choose>
                     <c:when test="${not empty requestScope.DeliveryQueues}">
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -116,34 +103,23 @@
                                     <tr>
                                         <th>Order</th>
                                         <th>Name</th>
-                                        
+                                        <th>Email</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <c:forEach items="${requestScope.AssistenceQueues}" var="AssistenceQueues" varStatus="status">
+                                    <tbody id="delivery">
+                                    <c:forEach items="${requestScope.DeliveryQueues}" var="DeliveryQueue"
+                                               varStatus="status">
                                         <tr>
                                             <td>${status.count}</td>
-                                            <td>${AssistenceQueues.userName}</td>
-                                            <td>
-                                                <form action="/RequestAssistance" method="Get">
-                                                   
-                                                        <button type="button" class="btn btn-outline btn-primary">Request Assistance
-                                                    </button>
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <form action="/RequestDelivery" method="Get">
-                                                    <button type="button" class="btn btn-outline btn-primary">Request Delivery
-                                                    </button>
-                                                </form>
-                                            </td>
+                                            <td>${DeliveryQueue.trainee.username}</td>
+                                            <td>${DeliveryQueue.trainee.email}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
                             <!-- /.table-responsive -->
-                           
+
                         </div>
                         <!-- /.panel-body -->
                     </c:when>
@@ -151,31 +127,33 @@
                         <div>There's no trainees to display</div>
                     </c:otherwise>
                 </c:choose>
-                        
-                        <!-- /.panel-body -->
-                  
-					 <button type="button" class="btn btn-outline btn-primary">Request Delivery</button>
-                    <!-- /.panel -->
-                </div>
-					
-                   
-                        <!-- /.panel-heading -->
-                      
-                               
-                             
-                        <!-- /.panel-body -->
-                  
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-6 -->
-                
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-6 -->
-				
-             </div>
-        <!-- /#wrapper -->
-        <jsp:include page="/common/view/scripts.jsp" />
+
+                <!-- /.panel-body -->
+                <form method="post" action="${pageContext.request.contextPath}/trainee/view/RequestDelivery">
+                    <input hidden="hidden" type="text" name="labId" value="${requestScope.labId}">
+                    <button type="submit" class="btn btn-outline btn-primary">Request Delivery</button>
+                </form>
+                <!-- /.panel -->
             </div>
-    </body>
+
+
+            <!-- /.panel-heading -->
+
+
+            <!-- /.panel-body -->
+
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-6 -->
+
+        <!-- /.panel -->
+        <%--</div>--%>
+        <!-- /row -->
+
+    </div>
+    <!-- /#wrapper -->
+    <jsp:include page="/common/view/scripts.jsp"/>
+    <script src="requestQueues.js"></script>
+</div>
+</body>
 </html>

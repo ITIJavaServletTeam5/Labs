@@ -13,13 +13,11 @@ import pojo.Assistancequeue;
 
 /**
  *
- * @author root
- * this interface no one allowed to add any code to 
- * if anyone wants to add his own customized quarry 
- * please use XXXHibernateDao
+ * @author root this interface no one allowed to add any code to if anyone wants
+ * to add his own customized quarry please use XXXHibernateDao
  */
+public interface AssignmentDao extends GenericDAO<Assignment, AssignmentId> {
 
-public interface AssignmentDao extends GenericDAO <Assignment, AssignmentId>{
-   
-    
+    public Assignment findByLabIdAndTraineeId(int labID, int traineeID);
+
 }
