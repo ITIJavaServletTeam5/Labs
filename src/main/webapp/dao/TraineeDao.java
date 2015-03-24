@@ -10,6 +10,8 @@ import pojo.MyGroup;
 import pojo.Trainee;
 
 import java.util.List;
+import pojo.Lab;
+import pojo.User;
 
 /**
  *
@@ -24,4 +26,8 @@ public interface TraineeDao extends GenericDAO<Trainee, Long> {
     public List<Trainee> findAllDeactivated ();
 
     public List<Trainee> findAllNotInGroup (MyGroup myGroup);
+    
+    public Trainee findByRole(User user);
+    
+    public Lab findByLabId(int labID);
 }

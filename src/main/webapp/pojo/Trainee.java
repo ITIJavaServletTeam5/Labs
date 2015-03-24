@@ -3,6 +3,7 @@ package pojo;
 
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -12,10 +13,10 @@ public class Trainee extends User implements java.io.Serializable {
 
 
 //     private int id;
-     private Set assistancequeues = new HashSet(0);
-     private Set assignments = new HashSet(0);
-     private Set deliveryqueues = new HashSet(0);
-     private Set groups = new HashSet(0);
+     private Set assistancequeues = new LinkedHashSet(0);
+     private Set assignments = new LinkedHashSet(0);
+     private Set deliveryqueues = new LinkedHashSet(0);
+     private Set groups = new LinkedHashSet(0);
 
     public Trainee() {
     }
@@ -64,6 +65,8 @@ public class Trainee extends User implements java.io.Serializable {
     public void setGroups(Set groups) {
         this.groups = groups;
     }
+
+
 }
 
 

@@ -19,7 +19,7 @@ public class Assignment  implements java.io.Serializable {
     public Assignment() {
     }
 
-	
+
     public Assignment(AssignmentId id, Lab lab, Trainee trainee) {
         this.id = id;
         this.lab = lab;
@@ -36,7 +36,7 @@ public class Assignment  implements java.io.Serializable {
     public AssignmentId getId() {
         return this.id;
     }
-    
+
     public void setId(AssignmentId id) {
         this.id = id;
     }

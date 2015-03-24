@@ -3,6 +3,7 @@ package pojo;
 
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Instructor extends User implements java.io.Serializable {
 
 
-     private Set labs = new HashSet(0);
+     private Set labs = new LinkedHashSet(0);
 
     public Instructor() {
     }

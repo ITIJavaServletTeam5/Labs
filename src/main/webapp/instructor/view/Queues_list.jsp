@@ -73,11 +73,13 @@
                                                                                                     <td>Larry</td>
                                                                                                     <td><button type="button" class="btn btn-outline btn-primary">Dequeue</button></td>
                                                                                                 </tr>-->
-                                                <c:forEach items="${requestScope.Assistancequeues}" var="assistancequeues" varStatus="status">
+                                                <c:forEach items="${sessionScope.lab.assistancequeues}" var="labVar" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
-                                                        <td><c:out value="${assistancequeues.requestDate}"/></td>
-                                                        <td><button type="button" class="btn btn-outline btn-primary">Dequeue</button></td>
+                                                        <td><c:out value="${labVar.trainee.username}"/></td>
+                                                        <td>
+                                                                <button type="button" class="btn btn-outline btn-primary" onclick="window.location='${pageContext.request.contextPath}/instructor/view/assistancedequeue?traineeid=${labVar.trainee.id}&labid=${labVar.lab.id}'">Dequeue</button>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -113,11 +115,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${requestScope.Assistancequeues}" var="assistancequeues" varStatus="status">
+                                                <c:forEach items="${sessionScope.lab.deliveryqueues}" var="labVar" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
-                                                        <td><c:out value="${assistancequeues.requestDate}"/></td>
-                                                        <td><button type="button" class="btn btn-outline btn-primary">Dequeue</button></td>
+                                                        <td><c:out value="${labVar.trainee.username}"/></td>
+                                                        <td>
+                                                                <button type="button" class="btn btn-outline btn-primary" onclick="window.location='${pageContext.request.contextPath}/instructor/view/deliverydequeue?traineeid=${labVar.trainee.id}&labid=${labVar.lab.id}'">Dequeue</button>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -143,6 +147,9 @@
             <!-- jQuery -->
 
             <jsp:include page="/common/view/scripts.jsp" />
+            <script>
+
+            </script>
         </body>
 
     </html>

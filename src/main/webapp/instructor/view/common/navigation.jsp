@@ -236,7 +236,7 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-                    <c:forEach items="${requestScope.courses}" var="course">
+                    <c:forEach items="${sessionScope.courses}" var="course">
                     <li>
                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> <c:out value="${course.name}" /><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -248,8 +248,14 @@
                                         <a href="#"><c:out value="${lab.name}" /> <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li>
-                                                <a href="Assignments.html">Assignments</a>
-                                                <a href="Queue.html">Queues</a>
+                                                <a href="${pageContext.request.contextPath}/instructor/view/Assignments">
+                                                    <!--<input type="hidden" <c:set var="assignment" scope="session" value="${lab}"/> />-->
+                                                    Assignments
+                                                    </a>
+                                                <a href="${pageContext.request.contextPath}/instructor/view/QueuesList?labid=${lab.id}">
+                                                    <!--<input type="hidden" <c:set var="lab" scope="session" value="${lab}"/> />-->
+                                                    Queues
+                                                </a>
                                             </li>
 
                                         </ul>

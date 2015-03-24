@@ -5,33 +5,56 @@
  */
 package instructor.controller;
 
-import dao.LabDao;
-import dao.LabHibernateDao;
+import dao.AssistancequeueDao;
+import dao.InstructorDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
-import java.util.List;
-import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pojo.Assignment;
 import pojo.Assistancequeue;
-import pojo.Lab;
+import pojo.AssistancequeueId;
+import pojo.User;
 
 /**
  *
- * @author engy
+ * @author root
  */
-//@WebServlet(name = "QueuesList", urlPatterns = {"/QueuesList"})
-@WebServlet(name = "QueuesList", urlPatterns = {"/instructor/view/QueuesList"})
-public class QueuesList extends HttpServlet {
+@WebServlet(name = "Dequeue", urlPatterns = {"/instructor/view/assistancedequeue"})
+public class AssistanceDequeue extends HttpServlet {
 
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        //dequeue
+        String traineeId = request.getParameter("traineeid");
+        Long traineeIdLong = Long.parseLong(traineeId);
+        String labId = request.getParameter("labid");
+        Long labIdLong = Long.parseLong(labId);
+
+        AssistancequeueId aqi = new AssistancequeueId(labIdLong, traineeIdLong);
+
+        DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
+        AssistancequeueDao ihd = daof.getAssistancequeueDAO();
+        Assistancequeue assistancequeue = ihd.findById(aqi, true);
+        ihd.makeTransient(assistancequeue);
+        //resetting the same lab before leaving 
+        response.sendRedirect(request.getContextPath()+"/instructor/view/QueuesList?labid="+labId);
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -44,30 +67,7 @@ public class QueuesList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        List<Assistancequeue> Assistancequeues = new Vector<Assistancequeue>();
-//        Assistancequeue assistancequeue1 = new Assistancequeue();
-//        assistancequeue1.setRequestDate(new Date());
-//        Assistancequeues.add(assistancequeue1);
-//        Assistancequeue assistancequeue2 = new Assistancequeue();
-//        assistancequeue2.setRequestDate(new Date());
-//        Assistancequeues.add(assistancequeue2);
-//        request.setAttribute("lab", Assistancequeues);
-        RequestDispatcher rd1 = request.getRequestDispatcher("/instructor/view/navigation");
-        rd1.include(request, response);
-        
-        String labId = request.getParameter("labid");
-        if (labId != null){
-        Long labIdLong = Long.parseLong(labId);
-        
-        DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
-        LabDao dao = daof.getLabDAO();
-        Lab lab = dao.findById(labIdLong, true);
-        request.getSession().setAttribute("lab", lab);
-        System.out.println("the selected lab id ="+labId);
-        }
-        RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
-        rd.include(request, response);
-        //test if lab is choosed
+        processRequest(request, response);
     }
 
     /**
@@ -81,6 +81,7 @@ public class QueuesList extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
