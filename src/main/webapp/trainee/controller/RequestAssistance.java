@@ -28,42 +28,6 @@ import pojo.*;
 @WebServlet(urlPatterns = {"/trainee/view/RequestAssistance"})
 public class RequestAssistance extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        out.print("Request is sent");
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -78,17 +42,21 @@ public class RequestAssistance extends HttpServlet {
         LabDao labDao = daoFactory.getLabDAO();
         Lab lab = labDao.findById(labId, false);
 
-        Assistancequeue assistancequeue = new Assistancequeue();
-        assistancequeue.setTrainee(trainee);
-        assistancequeue.setLab(lab);
-        assistancequeue.setRequestDate(new Date());
-        // activated here is being served
-        assistancequeue.setActivated(false);
-
-        assistancequeue.setId(new AssistancequeueId(lab.getId(), trainee.getId()));
-
         AssistancequeueDao assistancequeueDao = daoFactory.getAssistancequeueDAO();
-        assistancequeueDao.makePersistent(assistancequeue);
+        Assistancequeue assistancequeue = assistancequeueDao.findById(new AssistancequeueId(lab.getId(), trainee.getId()), true);
+
+        if (assistancequeue != null) {
+            assistancequeueDao.makeTransient(assistancequeue);
+        } else {
+            assistancequeue = new Assistancequeue();
+            assistancequeue.setTrainee(trainee);
+            assistancequeue.setLab(lab);
+            assistancequeue.setRequestDate(new Date());
+            // activated here is being served
+            assistancequeue.setActivated(false);
+            assistancequeue.setId(new AssistancequeueId(lab.getId(), trainee.getId()));
+            assistancequeueDao.makePersistent(assistancequeue);
+        }
 
         response.sendRedirect(request.getContextPath() + "/trainee/view/ActivatedQueus?labId=" + labId);
     }

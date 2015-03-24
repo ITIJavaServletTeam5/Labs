@@ -16,7 +16,7 @@
 
 <body>
 <jsp:include page="/trainee/view/Navigation.jsp"/>
-<input hidden="hidden" id="labId" value="${requestScope.labId}" />
+<input hidden="hidden" id="labId" value="${requestScope.labId}"/>
 
 <div id="page-wrapper">
     <div class="row">
@@ -57,6 +57,9 @@
                                     <tbody id="assistance">
                                     <c:forEach items="${requestScope.AssistenceQueues}" var="AssistenceQueue"
                                                varStatus="status">
+                                        <c:if test="${AssistenceQueue.trainee.id == sessionScope.user.id}">
+                                            <c:set var="inAssistance" value="true"/>
+                                        </c:if>
                                         <tr>
                                             <td>${status.count}</td>
                                             <td>${AssistenceQueue.trainee.username}</td>
@@ -79,7 +82,16 @@
                 <!-- /.panel-body -->
                 <form method="post" action="${pageContext.request.contextPath}/trainee/view/RequestAssistance">
                     <input hidden="hidden" type="text" name="labId" value="${requestScope.labId}">
-                    <button type="submit" class="btn btn-outline btn-primary">Request Assistance</button>
+                    <button type="submit" class="btn btn-outline btn-primary">
+                        <c:choose>
+                            <c:when test="${inAssistance}">
+                                Cancel Assistance Request
+                            </c:when>
+                            <c:otherwise>
+                                Request Assistance
+                            </c:otherwise>
+                        </c:choose>
+                    </button>
                 </form>
                 <!-- /.panel -->
             </div>
@@ -109,6 +121,9 @@
                                     <tbody id="delivery">
                                     <c:forEach items="${requestScope.DeliveryQueues}" var="DeliveryQueue"
                                                varStatus="status">
+                                        <c:if test="${DeliveryQueue.trainee.id == sessionScope.user.id}">
+                                            <c:set var="inDelivery" value="true"/>
+                                        </c:if>
                                         <tr>
                                             <td>${status.count}</td>
                                             <td>${DeliveryQueue.trainee.username}</td>
@@ -131,27 +146,48 @@
                 <!-- /.panel-body -->
                 <form method="post" action="${pageContext.request.contextPath}/trainee/view/RequestDelivery">
                     <input hidden="hidden" type="text" name="labId" value="${requestScope.labId}">
-                    <button type="submit" class="btn btn-outline btn-primary">Request Delivery</button>
+                    <button type="submit" class="btn btn-outline btn-primary">
+                        <c:choose>
+                            <c:when test="${inDelivery}">
+                                Cancel Delivery Request
+                            </c:when>
+                            <c:otherwise>
+                                Request Delivery
+                            </c:otherwise>
+                        </c:choose>
+                    </button>
                 </form>
-                <!-- /.panel -->
             </div>
-
-
-            <!-- /.panel-heading -->
-
-
-            <!-- /.panel-body -->
-
             <!-- /.panel -->
         </div>
         <!-- /.col-lg-6 -->
-
-        <!-- /.panel -->
-        <%--</div>--%>
-        <!-- /row -->
-
     </div>
-    <!-- /#wrapper -->
+    <!-- /row -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel-body">
+                <div class="alert alert-success" id="assistanceServed">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel-body">
+                <div class="alert alert-success" id="deliveryServed">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body">
+                <div class="alert alert-success" hidden="hidden" id="notification">
+                    Queues has changed.
+                </div>
+            </div>
+        </div>
+    </div>
     <jsp:include page="/common/view/scripts.jsp"/>
     <script src="requestQueues.js"></script>
 </div>
