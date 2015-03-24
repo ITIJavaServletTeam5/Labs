@@ -70,8 +70,8 @@ public class Deliveryqueue  implements java.io.Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return this.requestDate.compareTo(((Deliveryqueue)o).requestDate);
+    public int compareTo(Deliveryqueue o) {
+        return this.requestDate.compareTo(o.requestDate);
     }
 
     @Override
