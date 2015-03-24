@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Deliveryqueue  implements java.io.Serializable, Comparable {
 
-
+     private DeliveryqueueId id;
      private Lab lab;
      private Trainee trainee;
      private Date requestDate;
@@ -18,6 +18,26 @@ public class Deliveryqueue  implements java.io.Serializable, Comparable {
     public Deliveryqueue() {
     }
 
+    public Deliveryqueue(DeliveryqueueId id, Lab lab, Trainee trainee) {
+        this.id = id;
+        this.lab = lab;
+        this.trainee = trainee;
+    }
+    public Deliveryqueue(DeliveryqueueId id, Lab lab, Trainee trainee, Date requestDate, Boolean activated) {
+       this.id = id;
+       this.lab = lab;
+       this.trainee = trainee;
+       this.requestDate = requestDate;
+       this.activated = activated;
+    }
+
+    public DeliveryqueueId getId() {
+        return this.id;
+    }
+
+    public void setId(DeliveryqueueId id) {
+        this.id = id;
+    }
     public Lab getLab() {
         return this.lab;
     }
@@ -48,29 +68,8 @@ public class Deliveryqueue  implements java.io.Serializable, Comparable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Deliveryqueue)) return false;
-
-        Deliveryqueue that = (Deliveryqueue) o;
-
-        if (!lab.equals(that.lab)) return false;
-        if (!trainee.equals(that.trainee)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = lab.hashCode();
-        result = 31 * result + trainee.hashCode();
-        return result;
-    }
-
-
-    @Override
     public int compareTo(Object o) {
-        return ((Deliveryqueue)o).requestDate.compareTo(this.requestDate);
+        return this.requestDate.compareTo(((Deliveryqueue)o).requestDate);
     }
 }
 

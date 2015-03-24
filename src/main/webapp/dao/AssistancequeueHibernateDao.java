@@ -27,7 +27,7 @@ public class AssistancequeueHibernateDao extends GenericHibernateDAO<Assistanceq
     }
 
     public List<Assistancequeue> findAssistanceQueueOfLab(long labId) {
-        Query query = getSession().createQuery("from Assistancequeue aq where aq.lab.id = ?");
+        Query query = getSession().createQuery("from Assistancequeue aq where aq.id.labId = ?");
         query.setString(0, String.valueOf(labId));
         return query.list();
     }

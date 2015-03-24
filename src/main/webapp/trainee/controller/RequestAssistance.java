@@ -20,10 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pojo.Assistancequeue;
-import pojo.Lab;
-import pojo.Trainee;
-import pojo.User;
+import pojo.*;
 
 /**
  * @author Mai Rostom
@@ -87,6 +84,8 @@ public class RequestAssistance extends HttpServlet {
         assistancequeue.setRequestDate(new Date());
         // activated here is being served
         assistancequeue.setActivated(false);
+
+        assistancequeue.setId(new AssistancequeueId(lab.getId(), trainee.getId()));
 
         AssistancequeueDao assistancequeueDao = daoFactory.getAssistancequeueDAO();
         assistancequeueDao.makePersistent(assistancequeue);

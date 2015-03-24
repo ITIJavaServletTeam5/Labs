@@ -19,10 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pojo.Deliveryqueue;
-import pojo.Lab;
-import pojo.Trainee;
-import pojo.User;
+import pojo.*;
 
 /**
  * @author Mai Rostom
@@ -76,6 +73,8 @@ public class RequestDelivery extends HttpServlet {
         deliveryqueue.setRequestDate(new Date());
         // activated here is being served
         deliveryqueue.setActivated(false);
+
+        deliveryqueue.setId(new DeliveryqueueId(lab.getId(), trainee.getId()));
 
         DeliveryqueueDao deliveryqueueDAO = daoFactory.getDeliveryqueueDAO();
         deliveryqueueDAO.makePersistent(deliveryqueue);

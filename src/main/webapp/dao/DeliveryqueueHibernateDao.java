@@ -25,7 +25,7 @@ public class DeliveryqueueHibernateDao extends GenericHibernateDAO<Deliveryqueue
 
     @Override
     public List<Deliveryqueue> findDeliveryQueueOfLab(long labId) {
-        Query query = getSession().createQuery("from Deliveryqueue dq where dq.lab.id =?");
+        Query query = getSession().createQuery("from Deliveryqueue dq where dq.id.labId =?");
         query.setString(0, String.valueOf(labId));
         return query.list();
     }
