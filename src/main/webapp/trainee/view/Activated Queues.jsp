@@ -79,32 +79,81 @@
                 <!-- /.panel-body -->
                 <form method="post" action="${pageContext.request.contextPath}/trainee/view/RequestAssistance">
                     <input hidden="hidden" type="text" name="labId" value="${requestScope.labId}">
-                    <button type="submit" onsubmit="change()" value="Request Assistance" class="btn btn-outline btn-primary" id="myButton1">Request Assistance</button>
+                    <button type="submit" class="btn btn-outline btn-primary">Request Assistance</button>
                 </form>
                 <!-- /.panel -->
-                
-                <script>
-                    
-    function change() 
-{
-    var elem = document.getElementById("myButton1");
-    if (elem.value=="Request Assistance") elem.value = "Cancel Request Assistance";
-    else elem.value = "Cancel Request Assistance";
-}
-                </script>
             </div>
         </div>
         <!-- /.col-lg-6 -->
-</div>
+
         <%--<div class="row">--%>
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Delivery Queue
                 </div>
+                <!-- /.panel-heading -->
+                <c:choose>
+                    <c:when test="${not empty requestScope.DeliveryQueues}">
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Order</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="delivery">
+                                    <c:forEach items="${requestScope.DeliveryQueues}" var="DeliveryQueue"
+                                               varStatus="status">
+                                        <tr>
+                                            <td>${status.count}</td>
+                                            <td>${DeliveryQueue.trainee.username}</td>
+                                            <td>${DeliveryQueue.trainee.email}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
                             </div>
+                            <!-- /.table-responsive -->
+
                         </div>
+                        <!-- /.panel-body -->
+                    </c:when>
+                    <c:otherwise>
+                        <div>There's no trainees to display</div>
+                    </c:otherwise>
+                </c:choose>
+
+                <!-- /.panel-body -->
+                <form method="post" action="${pageContext.request.contextPath}/trainee/view/RequestDelivery">
+                    <input hidden="hidden" type="text" name="labId" value="${requestScope.labId}">
+                    <button type="submit" class="btn btn-outline btn-primary">Request Delivery</button>
+                </form>
+                <!-- /.panel -->
+            </div>
+
+
+            <!-- /.panel-heading -->
+
+
+            <!-- /.panel-body -->
+
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-6 -->
+
+        <!-- /.panel -->
+        <%--</div>--%>
+        <!-- /row -->
+
+    </div>
+    <!-- /#wrapper -->
+    <jsp:include page="/common/view/scripts.jsp"/>
+    <script src="requestQueues.js"></script>
 </div>
-    </body>
-    <!-- /.panel-body -->
+</body>
 </html>
