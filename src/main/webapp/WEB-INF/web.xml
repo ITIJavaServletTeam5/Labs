@@ -92,7 +92,7 @@
 
     <filter>
         <filter-name>admin filter</filter-name>
-        <filter-class>common.controller.LoginFilter</filter-class>
+        <filter-class>common.controller.AdminFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>admin filter</filter-name>
@@ -101,7 +101,7 @@
 
     <filter>
         <filter-name>instructor filter</filter-name>
-        <filter-class>common.controller.LoginFilter</filter-class>
+        <filter-class>common.controller.InstructorFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>instructor filter</filter-name>
@@ -110,7 +110,7 @@
 
     <filter>
         <filter-name>trainee filter</filter-name>
-        <filter-class>common.controller.LoginFilter</filter-class>
+        <filter-class>common.controller.TraineeFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>trainee filter</filter-name>
