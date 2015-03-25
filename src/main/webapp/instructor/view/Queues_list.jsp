@@ -29,6 +29,8 @@
 
         <body>
             <jsp:include page="/instructor/view/common/navigation.jsp" />
+            <input hidden="hidden" id="labId" value="${sessionScope.ilab.id}">
+            <!--<input hidden="hidden" id="traineeId" value="${sessionScope.ilab.id}">-->
             <div id="wrapper">
 
                 <!-- Navigation -->
@@ -87,7 +89,9 @@
                                                         <td><c:out value="${status.count}"/></td>
                                                         <td><c:out value="${labVar.trainee.username}" /></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-outline btn-primary" onclick="window.location = '${pageContext.request.contextPath}/instructor/view/assistancedequeue?traineeid=${labVar.trainee.id}&labid=${labVar.lab.id}'">Dequeue</button>
+                                                            <a href="${pageContext.request.contextPath}/instructor/view/assistancedequeue?traineeid=${labVar.trainee.id}&labid=${labVar.lab.id}">
+                                                                <button type="button" class="btn btn-outline btn-primary">Dequeue</button>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -171,13 +175,15 @@
                                                     <th>action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="delivery">
                                                 <c:forEach items="${sessionScope.ilab.deliveryqueuesList}" var="labVar" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
                                                         <td><c:out value="${labVar.trainee.username}"/></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-outline btn-primary" onclick="window.location = '${pageContext.request.contextPath}/instructor/view/deliverydequeue?traineeid=${labVar.trainee.id}&labid=${labVar.lab.id}'">Dequeue</button>
+                                                            <a href="${pageContext.request.contextPath}/instructor/view/deliverydequeue?traineeid=${labVar.trainee.id}&labid=${labVar.lab.id}">
+                                                                <button type="button" class="btn btn-outline btn-primary" >Dequeue</button>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -207,13 +213,15 @@
         </body>
         <script src="${pageContext.request.contextPath}/common/view/datePicker/jquery.datetimepicker.js"></script>
         <script>
-                                                                $('#datetimepicker_mask').datetimepicker({
-                                                                    mask: '9999/19/39 29:59'
-                                                                });
-                                                                $('#datetimepicker_mask_two').datetimepicker({
-                                                                    mask: '9999/19/39 29:59'
-                                                                });
+            $('#datetimepicker_mask').datetimepicker({
+                mask: '9999/19/39 29:59'
+            });
+            $('#datetimepicker_mask_two').datetimepicker({
+                mask: '9999/19/39 29:59'
+            });
         </script>
+
+        <script src="requestQueues.js"></script>
     </html>
 
 </html>
