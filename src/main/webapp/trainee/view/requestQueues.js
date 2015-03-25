@@ -2,12 +2,21 @@ var storedData = {};
 var assistanceServed;
 var deliveryServed;
 
+var queuedInAssistance = false;
+var queuedInDelivery = false;
+
 $(document).ready(function () {
     setInterval(function () {
         $.getJSON("updateQueues", {labId: $("#labId").val()}, function (data) {
             if (JSON.stringify(data) != JSON.stringify(storedData)) {
+                queuedInAssistance = false;
+                queuedInDelivery = false;
+
                 $("#assistance").html("");
                 for (var i = 0; i < data.AssistanceQueues.length; i++) {
+                    if (data.AssistanceQueues[i].user.id === $("#traineeId").val()) {
+                        queuedInAssistance = true;
+                    }
                     $("#assistance").append(
                         "<tr>" +
                         "<td>" + (i+1) + "</td>" +
@@ -19,6 +28,9 @@ $(document).ready(function () {
 
                 $("#delivery").html("");
                 for (var i = 0; i < data.DeliveryQueues.length; i++) {
+                    if (data.DeliveryQueues[i].user.id === $("#traineeId").val()) {
+                        queuedInAssistance = true;
+                    }
                     $("#delivery").append(
                         "<tr>" +
                         "<td>" + (i+1) + "</td>" +
@@ -26,6 +38,17 @@ $(document).ready(function () {
                         "<td>" + data.DeliveryQueues[i].user.email + "</td>" +
                         "</tr>"
                     );
+                }
+
+                if (queuedInAssistance) {
+                    $("#assistanceButton").text("Cancel Assistance Request");
+                } else {
+                    $("#assistanceButton").text("Request Assistance");
+                }
+                if (queuedInDelivery) {
+                    $("#deliveryButton").text("Cancel Delivery Request");
+                } else {
+                    $("#deliveryButton").text("Request Delivery");
                 }
 
                 // notification is shown when queues change and currently served persons are updated

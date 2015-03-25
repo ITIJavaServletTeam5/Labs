@@ -17,6 +17,7 @@
 <body>
 <jsp:include page="/trainee/view/Navigation.jsp"/>
 <input hidden="hidden" id="labId" value="${requestScope.labId}"/>
+<input hidden="hidden" id="traineeId" value="${sessionScope.user.id}"/>
 
 <div id="page-wrapper">
     <div class="row">
@@ -82,7 +83,7 @@
                 <!-- /.panel-body -->
                 <form method="post" action="${pageContext.request.contextPath}/trainee/view/RequestAssistance">
                     <input hidden="hidden" type="text" name="labId" value="${requestScope.labId}">
-                    <button type="submit" class="btn btn-outline btn-primary">
+                    <button type="submit" class="btn btn-outline btn-primary" id="assistanceButton">
                         <c:choose>
                             <c:when test="${inAssistance}">
                                 Cancel Assistance Request
@@ -146,7 +147,7 @@
                 <!-- /.panel-body -->
                 <form method="post" action="${pageContext.request.contextPath}/trainee/view/RequestDelivery">
                     <input hidden="hidden" type="text" name="labId" value="${requestScope.labId}">
-                    <button type="submit" class="btn btn-outline btn-primary">
+                    <button type="submit" class="btn btn-outline btn-primary" id="deliveryButton">
                         <c:choose>
                             <c:when test="${inDelivery}">
                                 Cancel Delivery Request
