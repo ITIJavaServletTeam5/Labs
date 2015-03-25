@@ -46,8 +46,9 @@
 
                                                 <c:forEach items="${requestScope.userList}" var="obj">
                                                     <tr class="odd gradeX">
-                                                        <td><c:out value="${obj.trainee.username}"/></td>
-                                                        <td><a href="<c:url value="/instructor/controller/DownLoadServlet"/>">Link</a></td>
+                                                        
+                                                        <td><c:out value="${obj.trainee.username}"/></td> 
+                                                        <td><a href="<c:url value="/instructor/controller/DownLoadServlet"/>?test=${obj.trainee.id}">Link</a></td>
                                                         
                                                     </tr>
                                                 </c:forEach>

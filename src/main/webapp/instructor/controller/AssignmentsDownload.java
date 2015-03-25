@@ -66,9 +66,9 @@ public class AssignmentsDownload extends HttpServlet {
       
         
         request.setAttribute("userList",obj);
-       // request.setAttribute("assignmentList", (Assignment)obj);
+//        request.setAttribute("traineeId", obj);
         getServletContext().getRequestDispatcher("/instructor/view/Assignments_list.jsp").forward(request, response);
-
+        
     }
 
     /**

@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/25/15.
  */
-@WebFilter(filterName = "AdminFilter", urlPatterns = "/admin/*")
+//@WebFilter(filterName = "AdminFilter", urlPatterns = "/admin/*")
 public class AdminFilter implements Filter {
     public void destroy() {
     }
@@ -29,5 +29,4 @@ public class AdminFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
 
     }
-
 }
