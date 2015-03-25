@@ -7,6 +7,7 @@ package instructor.controller;
 
 import dao.AssignmentDao;
 import hibernate.DAOFactory;
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,32 +40,24 @@ public class DownloadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        //response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         int traineeId = Integer.parseInt(request.getParameter("test"));
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
         Assignment b = assignmentDao.findByteById(traineeId);
         byte[] content = b.getAssignmentData();
-        String filePath = "D:\\";
-        FileInputStream fileToDownload = new FileInputStream(filePath);
+        
+        String fileName = "Assignment.pdf";
+        
         ServletOutputStream output = response.getOutputStream();
-        int readBytes = 0;
-        while ((readBytes = fileToDownload.read(content, 0, 10000)) != -1) {
-            output.write(readBytes);
-        }
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
 
+        output.write(content);
         output.close();
-        fileToDownload.close();
-//        while ((readBytes = fileToDownload.read(buffer, 0, 10000)) != -1) {
-//            output.write(readBytes);
-//        }
-//
-//        output.close();
-//        fileToDownload.close();
-//        fileToDownload.close();
-//        Assignment b = assignmentDao.findById((long) "traineeId", true);
-//        Assignment b = assignmentDao.findById("traineeId", true);
+        
+        
     }
 
     /**

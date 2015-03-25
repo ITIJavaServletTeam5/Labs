@@ -1,19 +1,37 @@
-<%-- 
-    Document   : message
-    Created on : Mar 22, 2015, 11:45:54 PM
-    Author     : engy
---%>
+<%@page contentType="text/html" pageEncoding="windows-1252" %>
+<!DOCTYPE html>
+<%@ taglib prefix="c"
+           uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="en">
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Upload</title>
+    <jsp:include page="/common/view/head.jsp"/>
+    <title>
+        Trainee
+    </title>
+
+
 </head>
+
 <body>
-    <h2>${requestScope.message}</h2>
+<jsp:include page="/trainee/view/Navigation.jsp"/>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                
+                <div class="panel-body">
+                    <p>${requestScope.message}</p>
+                </div>
+                
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- / .row -->
+    <jsp:include page="/common/view/scripts.jsp"/>
+</div>
 </body>
 </html>
