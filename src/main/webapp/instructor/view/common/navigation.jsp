@@ -53,7 +53,7 @@
                                         <a href="#"><c:out value="${lab.name}" /> <span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li >
-                                                <a href="${pageContext.request.contextPath}/instructor/view/Assignments">
+                                                <a href="${pageContext.request.contextPath}/instructor/controller/DownLoadAssignment">
                                                     <!--<input type="hidden" <c:set var="assignment" scope="session" value="${lab}"/> />-->
                                                     Assignments
                                                 </a>
