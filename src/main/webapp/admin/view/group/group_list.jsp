@@ -24,7 +24,7 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Activated Group List
@@ -39,9 +39,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>Groupname</th>
-                                                    <th></th>
-                                                    <th></th>
-
+                                                    <th>Edit</th>
+                                                    <th>Deactivate</th>
+                                                    <th>Courses</th>
+                                                    <th>List of group trainees</th>
+                                                    <th>Add trainees to group</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -66,7 +68,18 @@
                                                                 </button>
                                                             </a>
                                                         </td>
-
+                                                        <td>
+                                                            <a href="${pageContext.request.contextPath}/admin/group/trainee?groupId=${groups.id}">
+                                                                <button type="submit" class="btn btn-outline btn-primary" id="${groups.id}">List of trainees in group
+                                                                </button>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a href="${pageContext.request.contextPath}/admin/group/trainee/add?groupId=${groups.id}">
+                                                                <button type="submit" class="btn btn-outline btn-primary" id="${groups.id}">Add trainees to group
+                                                                </button>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
