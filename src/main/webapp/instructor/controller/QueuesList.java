@@ -10,6 +10,8 @@ import dao.LabHibernateDao;
 import hibernate.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -66,20 +68,20 @@ public class QueuesList extends HttpServlet {
             DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
             LabDao dao = daof.getLabDAO();
             Lab lab = dao.findById(labIdLong, true);
-            
+
             //sort queues
             List<Assistancequeue> assL = (fromSetToList(lab.getAssistancequeues()));
             Collections.sort(assL);
-            
+
             List<Deliveryqueue> delL = (fromSetToList(lab.getDeliveryqueues()));
             Collections.sort(delL);
-            
+
             lab.setAssistancequeuesList(assL);
             lab.setDeliveryqueuesList(delL);
-            for(Deliveryqueue a : delL){
-                System.out.println("this to check on queue order in servlet"+a.getRequestDate());
+            for (Deliveryqueue a : delL) {
+                System.out.println("this to check on queue order in servlet" + a.getRequestDate());
             }
-                    
+
             request.getSession().setAttribute("ilab", lab);
             System.out.println("the selected lab id =" + labId);
         }
@@ -99,6 +101,45 @@ public class QueuesList extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DAOFactory dAOFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
+        LabDao labDao = dAOFactory.getLabDAO();
+
+        String labId = request.getParameter("labid");
+        Long labIdLong = Long.parseLong(labId);
+
+        Lab lab = labDao.findById(labIdLong, true);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        String startDate = request.getParameter("dateStart");
+        String endDate = request.getParameter("dateEnd");
+
+        System.out.println(startDate + "       " + endDate);
+        Date startD = formatter.parse(startDate, new ParsePosition(0));
+        Date endD = formatter.parse(endDate, new ParsePosition(0));
+
+        lab.setStartTimeFileUpload(startD);
+        lab.setEndTimeFileUpload(endD);
+        labDao.makePersistent(lab);
+
+        List<Assistancequeue> assL = (fromSetToList(lab.getAssistancequeues()));
+        Collections.sort(assL);
+
+        List<Deliveryqueue> delL = (fromSetToList(lab.getDeliveryqueues()));
+        Collections.sort(delL);
+
+        lab.setAssistancequeuesList(assL);
+        lab.setDeliveryqueuesList(delL);
+
+        if ((startD.before(endD))) {
+            request.setAttribute("created", true);
+        } else {
+            request.setAttribute("nameError", true);
+        }
+
+        request.getSession().setAttribute("ilab", lab);
+
+        RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
+        rd.include(request, response);
     }
 
     /**
