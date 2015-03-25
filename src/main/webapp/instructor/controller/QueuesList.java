@@ -112,29 +112,31 @@ public class QueuesList extends HttpServlet {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         String startDate = request.getParameter("dateStart");
         String endDate = request.getParameter("dateEnd");
+        System.out.println("start data " + startDate);
+                System.out.println("end date "+ endDate);
+        if (startDate != null && endDate != null && !startDate.equals("____/__/__ __:__") && !endDate.equals("____/__/__ __:__")) {
+            System.out.println(startDate + "       " + endDate);
+            Date startD = formatter.parse(startDate, new ParsePosition(0));
+            Date endD = formatter.parse(endDate, new ParsePosition(0));
 
-        System.out.println(startDate + "       " + endDate);
-        Date startD = formatter.parse(startDate, new ParsePosition(0));
-        Date endD = formatter.parse(endDate, new ParsePosition(0));
+            lab.setStartTimeFileUpload(startD);
+            lab.setEndTimeFileUpload(endD);
+            labDao.makePersistent(lab);
 
-        lab.setStartTimeFileUpload(startD);
-        lab.setEndTimeFileUpload(endD);
-        labDao.makePersistent(lab);
+            if ((startD.before(endD))) {
+                request.setAttribute("created", true);
+            } else {
+                request.setAttribute("nameError", true);
+            }
+        }
 
         List<Assistancequeue> assL = (fromSetToList(lab.getAssistancequeues()));
         Collections.sort(assL);
 
         List<Deliveryqueue> delL = (fromSetToList(lab.getDeliveryqueues()));
         Collections.sort(delL);
-
         lab.setAssistancequeuesList(assL);
         lab.setDeliveryqueuesList(delL);
-
-        if ((startD.before(endD))) {
-            request.setAttribute("created", true);
-        } else {
-            request.setAttribute("nameError", true);
-        }
 
         request.getSession().setAttribute("ilab", lab);
 

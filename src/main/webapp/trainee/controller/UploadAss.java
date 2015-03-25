@@ -125,8 +125,9 @@ public class UploadAss extends HttpServlet {
             assignmentDao.makePersistent(assignment);
         }
         request.setAttribute("message", "Upload has been done successfully!");
-        getServletContext().getRequestDispatcher("/trainee/view/message.jsp").forward(
-                request, response);
+//        getServletContext().getRequestDispatcher("/trainee/view/message.jsp").forward(
+//                request, response);
+        response.sendRedirect(request.getContextPath()+"/trainee/view/message.jsp");
     }
 
     /**

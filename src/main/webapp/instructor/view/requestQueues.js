@@ -12,7 +12,7 @@ $(document).ready(function () {
                         "<tr>" +
                         "<td>" + (i+1) + "</td>" +
                         "<td>" + data.AssistanceQueues[i].user.username + "</td>" +
-                        "<td><a href=deliverydequeue?traineeid=" + data.AssistanceQueues[i].user.id + "&labid=" + $("#labId").val() + "<button type='button' class='btn btn-outline btn-primary' >Dequeue</button></a></td>" +
+                        "<td><a href=\"assistancedequeue?traineeid=" + data.AssistanceQueues[i].user.id + "&labid=" + $("#labId").val() + "\" ><button type='button' class='btn btn-outline btn-primary' >Dequeue</button></a></td>" +
                         "</tr>"
                     );
                 }
@@ -23,7 +23,7 @@ $(document).ready(function () {
                         "<tr>" +
                         "<td>" + (i+1) + "</td>" +
                         "<td>" + data.DeliveryQueues[i].user.username + "</td>" +
-                        "<td><a href=deliverydequeue?traineeid=" + data.DeliveryQueues[i].user.id + "&labid=" + $("#labId").val() + "<button type='button' class='btn btn-outline btn-primary' >Dequeue</button></a></td>" +
+                        "<td><a href=\"deliverydequeue?traineeid=" + data.DeliveryQueues[i].user.id + "&labid=" + $("#labId").val() + "\" ><button type='button' class='btn btn-outline btn-primary' >Dequeue</button></a></td>" +
                         "</tr>"
                     );
                 }

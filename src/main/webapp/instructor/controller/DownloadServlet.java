@@ -41,7 +41,7 @@ public class DownloadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+//        PrintWriter out = response.getWriter();
         int traineeId = Integer.parseInt(request.getParameter("test"));
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
