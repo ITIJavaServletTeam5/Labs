@@ -49,7 +49,10 @@ public class DeliveryDequeue extends HttpServlet {
 
         DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
         DeliveryqueueDao ihd = daof.getDeliveryqueueDAO();
-        Deliveryqueue deliveryqueue = ihd.findById(dqi, true);
+        Deliveryqueue deliveryqueue = ihd.findById(dqi, false);
+        System.out.println("lab id "+labIdLong);
+        System.out.println("trainee id " + traineeIdLong);
+        System.out.println(deliveryqueue);
         ihd.makeTransient(deliveryqueue);
         //resetting the same lab before leaving 
         response.sendRedirect(request.getContextPath()+"/instructor/view/QueuesList?labid="+labId);

@@ -23,7 +23,7 @@
             <div class="panel panel-primary">
                 
                 <div class="panel-body">
-                    <p>${requestScope.message}</p>
+                    <p>Upload has been done successfully!</p>
                 </div>
                 
             </div>
