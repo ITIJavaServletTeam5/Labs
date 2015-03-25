@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/17/15.
  */
-@WebFilter(urlPatterns = "/*")
+//@WebFilter(urlPatterns = "/*")
 public class LoginFilter implements Filter {
 
     @Override
@@ -27,7 +27,8 @@ public class LoginFilter implements Filter {
         if (session.getAttribute("loggedin") == null &&
                 (httpRequest.getRequestURI().contains("/admin") ||
                         httpRequest.getRequestURI().contains("/trainee") ||
-                        httpRequest.getRequestURI().contains("/instructor"))) {
+                        httpRequest.getRequestURI().contains("/instructor"))
+                ) {
 //            chain.doFilter(request, response);
          httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
 //            request.getRequestDispatcher("login").forward(request, response);

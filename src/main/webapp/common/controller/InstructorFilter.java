@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by sharno on 3/25/15.
  */
-@WebFilter(filterName = "InstructorFilter", urlPatterns = "/instructor/*")
+//@WebFilter(filterName = "InstructorFilter", urlPatterns = "/instructor/*")
 public class InstructorFilter implements Filter {
     public void destroy() {
     }
