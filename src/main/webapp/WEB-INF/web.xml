@@ -78,4 +78,42 @@
         <description>Add Security Config on staff</description>
         <role-name>staff</role-name>
     </security-role>
+
+
+    <!--Filters-->
+    <filter>
+        <filter-name>login filter</filter-name>
+        <filter-class>common.controller.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>login filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>admin filter</filter-name>
+        <filter-class>common.controller.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>admin filter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>instructor filter</filter-name>
+        <filter-class>common.controller.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>instructor filter</filter-name>
+        <url-pattern>/instructor/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>trainee filter</filter-name>
+        <filter-class>common.controller.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>trainee filter</filter-name>
+        <url-pattern>/trainee/*</url-pattern>
+    </filter-mapping>
 </web-app>
