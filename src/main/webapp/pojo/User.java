@@ -76,6 +76,7 @@ public class User  implements Serializable {
         return "{\"user\":{" +
                 "\"username\":\"" + username + '"' +
                 ", \"email\":\"" + email + '"' +
+                ", \"id\":\"" + id + '"' +
                 "}}";
     }
 }
