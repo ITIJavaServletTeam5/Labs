@@ -41,6 +41,7 @@
                                                     <th>Labname</th>
                                                     <th></th>
                                                     <th></th>
+                                                    <th></th>
 
                                                 </tr>
                                             </thead>
@@ -58,6 +59,11 @@
                                                             <form action="${pageContext.request.contextPath}/admin/lab/deactive" method="post">
                                                                 <button type="submit" class="btn btn-outline btn-primary">Deactivated</button>
                                                             </form>
+                                                        </td>
+                                                        <td>
+                                                            <a href="${pageContext.request.contextPath}/admin/group/course/lab/instructor/add?labId=${labs.id}">
+                                                                <button type="submit" class="btn btn-outline btn-primary">Add instructors to lab</button>
+                                                            </a>
                                                         </td>
 
                                                     </tr>

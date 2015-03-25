@@ -150,6 +150,9 @@ public class Lab  implements java.io.Serializable {
     }
 
 
+    public boolean addInstructor(Instructor instructor) {
+        return this.instructors.add(instructor);
+    }
 
 
 }
