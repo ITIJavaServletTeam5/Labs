@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -78,12 +79,15 @@ public class UploadAss extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+
         PrintWriter out = response.getWriter();
         User user = (User) request.getSession().getAttribute("user");
-        
+
         System.out.println(user.getId());
         DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         TraineeDao traineeDao = daoFactory.getTraineeDAO();
+
         Trainee t = traineeDao.findById((long) user.getId(), true);
         out.println(t.getId());
 //        System.out.println("jhhgygy"+t.getId());
@@ -96,8 +100,7 @@ public class UploadAss extends HttpServlet {
         Lab l = labDao.findById((long) labId, true);
         out.println(l.getId());
 //        System.out.println("hg"+l.getId());
-        labDao.makePersistent(l);
-        
+        labDao.makePersistent(l);              //!!??
 
         Part filePart = request.getPart("file"); // Retrieves <input type="file" name="file">
 
@@ -106,17 +109,21 @@ public class UploadAss extends HttpServlet {
         byte[] fileData = new byte[fileContent.available()];
         fileContent.read(fileData);
 
+        Date endUpLoad = l.getEndTimeFileUpload();
+
         Assignment assignment = new Assignment();
         assignment.setLab(l);
         assignment.setTrainee(t);
         assignment.setId(new AssignmentId(l.getId(), t.getId()));
         assignment.setUploadTime(new Date());
-        
+
         assignment.setAssignmentData(fileData);
 //        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);
         AssignmentDao assignmentDao = daoFactory.getAssignmentDAO();
         // assignmentDao.makeTransient(assignment);
-        assignmentDao.makePersistent(assignment);
+        if (new Date().before(endUpLoad)) {
+            assignmentDao.makePersistent(assignment);
+        }
         request.setAttribute("message", "Upload has been done successfully!");
         getServletContext().getRequestDispatcher("/trainee/view/message.jsp").forward(
                 request, response);

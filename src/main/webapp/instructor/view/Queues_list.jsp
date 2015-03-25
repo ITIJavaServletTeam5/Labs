@@ -13,6 +13,15 @@
 
         <head>
 
+            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/common/view/datePicker/jquery.datetimepicker.css"/>
+            <style type="text/css">
+
+                .custom-date-style {
+                    background-color: red !important;
+                }
+
+            </style>
+
             <jsp:include page="/common/view/head.jsp" />
             <title>Queues List</title>
 
@@ -87,8 +96,56 @@
                                     </div>
                                     <!-- /.table-responsive -->
                                 </div>
+
                                 <!-- /.panel-body -->
                             </div>
+
+                            <form role="form" method="post" action="${pageContext.request.contextPath}/instructor/view/QueuesList?labid=${sessionScope.ilab.id}">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="form-group">
+                                    <label>Start Time</label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <input type="text" name="dateStart" value="" id="datetimepicker_mask"/><br>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>End Time</label>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="text" name="dateEnd" value="" id="datetimepicker_mask_two"/><br>
+                                </div>
+                                <button type="submit" class="btn btn-outline btn-primary">Open UpLoad Assignment</button>
+                            </form>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <div class="row">
+                                <c:choose>
+                                    <c:when test="${requestScope.created}">
+                                        <div class="alert alert-success alert-dismissable">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            Course has been created successfully.
+                                        </div>
+                                    </c:when>
+
+                                    <c:when test="${requestScope.nameError}">
+                                        <div class="alert alert-danger alert-dismissable">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                            There's an Error , the lab name must not be duplicated in the same course
+                                        </div>
+                                    </c:when>
+                                </c:choose>
+                            </div>
+
                             <!-- /.panel -->
                         </div>
                         <!-- /.col-lg-6 -->
@@ -148,7 +205,15 @@
 
             <jsp:include page="/common/view/scripts.jsp" />
         </body>
-
+        <script src="${pageContext.request.contextPath}/common/view/datePicker/jquery.datetimepicker.js"></script>
+        <script>
+                                                                $('#datetimepicker_mask').datetimepicker({
+                                                                    mask: '9999/19/39 29:59'
+                                                                });
+                                                                $('#datetimepicker_mask_two').datetimepicker({
+                                                                    mask: '9999/19/39 29:59'
+                                                                });
+        </script>
     </html>
 
 </html>
