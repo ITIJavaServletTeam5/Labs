@@ -137,14 +137,14 @@
                                     <c:when test="${requestScope.created}">
                                         <div class="alert alert-success alert-dismissable">
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            Course has been created successfully.
+                                            the upload Assignment allowance period has been opened.
                                         </div>
                                     </c:when>
 
                                     <c:when test="${requestScope.nameError}">
                                         <div class="alert alert-danger alert-dismissable">
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                            There's an Error , the lab name must not be duplicated in the same course
+                                            There's an Error ,
                                         </div>
                                     </c:when>
                                 </c:choose>
