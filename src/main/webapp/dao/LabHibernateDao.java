@@ -7,6 +7,7 @@ package dao;
 
 import hibernate.GenericHibernateDAO;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import pojo.Assignment;
@@ -35,6 +36,17 @@ public class LabHibernateDao extends GenericHibernateDAO<Lab, Long> implements L
     public List<Lab> findlabsByCoursesByGroup(Course course) {
          Query query = getSession().createQuery("from Lab where course= :course");
         query.setEntity("course", course);
+        return query.list();
+    }
+
+    @Override
+    public List<Lab> findLabsOfTraineeId(long traineeId) {
+        Query query = getSession().createQuery("select l from Lab l, MyGroup g, Course c, Trainee t where " +
+                "l member of c.labs and " +
+                "c member of g.courses and " +
+                "t member of g.trainees and " +
+                "t.id = :traineeId");
+        query.setString("traineeId", String.valueOf(traineeId));
         return query.list();
     }
 

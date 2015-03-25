@@ -27,7 +27,7 @@
                 <div id="page-wrapper">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Queues</h1>
+                            <h1 class="page-header">Queues ${sessionScope.ilab.name}</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -57,7 +57,7 @@
                                                     <th>action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody  id="assistance">
                                                 <!--                                                <tr>
                                                                                                     <td>1</td>
                                                                                                     <td>Mark</td>
@@ -73,10 +73,10 @@
                                                                                                     <td>Larry</td>
                                                                                                     <td><button type="button" class="btn btn-outline btn-primary">Dequeue</button></td>
                                                                                                 </tr>-->
-                                                <c:forEach items="${sessionScope.ilab.assistancequeues}" var="labVar" varStatus="status">
+                                                <c:forEach items="${sessionScope.ilab.assistancequeuesList}" var="labVar" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
-                                                        <td><c:out value="${labVar.trainee.username}"/></td>
+                                                        <td><c:out value="${labVar.trainee.username}" /></td>
                                                         <td>
                                                             <button type="button" class="btn btn-outline btn-primary" onclick="window.location = '${pageContext.request.contextPath}/instructor/view/assistancedequeue?traineeid=${labVar.trainee.id}&labid=${labVar.lab.id}'">Dequeue</button>
                                                         </td>
@@ -94,15 +94,15 @@
                         <!-- /.col-lg-6 -->
                         <div class="col-lg-6">
                             <div class="panel panel-default">
-                                                                <div class="panel-heading" >
-                                                                    Delivery queue
-                                                                    <!--<button type="button" class="btn btn-success">Transfer queue</button>-->
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                    <!--<button type="button" class="btn btn-outline btn-primary" >Transfer queue</button>-->
-                                                                </div>
+                                <div class="panel-heading" >
+                                    Delivery queue
+                                    <!--<button type="button" class="btn btn-success">Transfer queue</button>-->
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <!--<button type="button" class="btn btn-outline btn-primary" >Transfer queue</button>-->
+                                </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="table-responsive" >
@@ -115,7 +115,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${sessionScope.ilab.deliveryqueues}" var="labVar" varStatus="status">
+                                                <c:forEach items="${sessionScope.ilab.deliveryqueuesList}" var="labVar" varStatus="status">
                                                     <tr class="odd gradeX">
                                                         <td><c:out value="${status.count}"/></td>
                                                         <td><c:out value="${labVar.trainee.username}"/></td>
@@ -147,7 +147,6 @@
             <!-- jQuery -->
 
             <jsp:include page="/common/view/scripts.jsp" />
-            
         </body>
 
     </html>

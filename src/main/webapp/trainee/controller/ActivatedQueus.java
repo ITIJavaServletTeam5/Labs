@@ -27,27 +27,6 @@ import java.util.Vector;
 @WebServlet(urlPatterns = {"/trainee/view/ActivatedQueus"})
 public class ActivatedQueus extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -62,9 +41,7 @@ public class ActivatedQueus extends HttpServlet {
         List<Deliveryqueue> deliveryQueues = deliveryDao.findDeliveryQueueOfLab(labId);
 
         Collections.sort(deliveryQueues);
-        Collections.reverse(deliveryQueues);
         Collections.sort(assistanceQueues);
-        Collections.reverse(assistanceQueues);
 
         request.setAttribute("DeliveryQueues", deliveryQueues);
         request.setAttribute("AssistenceQueues", assistanceQueues);

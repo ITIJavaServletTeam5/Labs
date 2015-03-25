@@ -1,4 +1,6 @@
 var storedData = {};
+var assistanceServed;
+var deliveryServed;
 
 $(document).ready(function () {
     setInterval(function () {
@@ -6,8 +8,7 @@ $(document).ready(function () {
             if (JSON.stringify(data) != JSON.stringify(storedData)) {
                 $("#assistance").html("");
                 for (var i = 0; i < data.AssistanceQueues.length; i++) {
-                    console.log("loop");
-                    $("#assistance").html(
+                    $("#assistance").append(
                         "<tr>" +
                         "<td>" + (i+1) + "</td>" +
                         "<td>" + data.AssistanceQueues[i].user.username + "</td>" +
@@ -18,7 +19,6 @@ $(document).ready(function () {
 
                 $("#delivery").html("");
                 for (var i = 0; i < data.DeliveryQueues.length; i++) {
-                    console.log("loop");
                     $("#delivery").append(
                         "<tr>" +
                         "<td>" + (i+1) + "</td>" +
@@ -26,6 +26,21 @@ $(document).ready(function () {
                         "<td>" + data.DeliveryQueues[i].user.email + "</td>" +
                         "</tr>"
                     );
+                }
+
+                // notification is shown when queues change and currently served persons are updated
+                if (JSON.stringify(storedData) !== "{}") {
+                    if (storedData.AssistanceQueues.length != data.AssistanceQueues.length) {
+                        $("#assistanceServed").html(storedData.AssistanceQueues[0].user.username + " is currently being assisted");
+                    }
+                    if (storedData.DeliveryQueues.length != data.DeliveryQueues.length) {
+                        $("#deliveryServed").html(storedData.DeliveryQueues[0].user.username + " is currently delivering");
+                    }
+
+                    $("#notification").show();
+                    setTimeout(function() {
+                        $("#notification").hide();
+                    }, 5000)
                 }
                 storedData = data;
             }

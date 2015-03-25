@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+            <a class="navbar-brand" href="" draggable="false">SB Admin v2.0</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -213,7 +213,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -332,6 +332,7 @@
                 </ul>
             </div><br/>
             <div class="btn btn-outline btn-primary" ondragstart="drag(event)" draggable="true" id="dragable">Transfer queue</div>
+            <div class="btn btn-outline btn-primary" onclick="window.location = '${pageContext.request.contextPath}/instructor/view/cancelqueues'" >Cancel Queues</div>
             <!-- /.sidebar-collapse -->
         </div>
         <!-- /.navbar-static-side -->

@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -58,9 +59,9 @@ public class UploadAss extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.setAttribute("labId", 1);
-        System.out.println(request.getAttribute("labId"));
+        long labId = Long.parseLong(request.getParameter("labId"));
+        request.setAttribute("labId", labId);
+//        System.out.println(request.getAttribute("labId"));
         getServletContext().getRequestDispatcher("/trainee/view/UploadAssignment.jsp").forward(request, response);
 
     }
@@ -109,6 +110,7 @@ public class UploadAss extends HttpServlet {
         assignment.setLab(l);
         assignment.setTrainee(t);
         assignment.setId(new AssignmentId(l.getId(), t.getId()));
+        assignment.setUploadTime(new Date());
         
         assignment.setAssignmentData(fileData);
 //        DAOFactory daoFactory = DAOFactory.instance(DAOFactory.HIBERNATE);

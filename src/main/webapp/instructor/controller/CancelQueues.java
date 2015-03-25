@@ -3,21 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trainee.controller;
+package instructor.controller;
 
+import dao.AssistancequeueDao;
+import dao.DeliveryqueueDao;
+import hibernate.DAOFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import pojo.Assistancequeue;
+import pojo.Deliveryqueue;
+import pojo.Lab;
 
 /**
  *
  * @author root
  */
-public class Controller extends HttpServlet {
+@WebServlet(name = "CancelQueues", urlPatterns = {"/instructor/view/cancelqueues"})
+public class CancelQueues extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,25 +38,25 @@ public class Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controller</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controller at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            String nextJSP = "/trainee/view/home.jsp";
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
-            dispatcher.forward(request, response);
-        } finally {
-            out.close();
+        RequestDispatcher rd1 = request.getRequestDispatcher("/instructor/view/navigation");
+        rd1.include(request, response);
+        
+        DAOFactory daof = DAOFactory.instance(DAOFactory.HIBERNATE);
+        AssistancequeueDao aq = daof.getAssistancequeueDAO();
+        DeliveryqueueDao dq = daof.getDeliveryqueueDAO();
+
+        Long labId = ((Lab) request.getSession().getAttribute("ilab")).getId();
+        
+        for(Object assObject : aq.findAssistanceQueueOfLab(labId)){
+            aq.makeTransient((Assistancequeue)assObject);
         }
+        
+        for(Object delObject : dq.findDeliveryQueueOfLab(labId)){
+            dq.makeTransient((Deliveryqueue)delObject);
+        }
+        
+        RequestDispatcher rd = request.getRequestDispatcher("/instructor/view/Queues_list.jsp");
+        rd.include(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
